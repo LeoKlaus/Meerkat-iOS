@@ -12,7 +12,7 @@ import UIKit
 class MockApiHandler: ApiHandler {
     
     convenience init(mock: Bool = true) {
-        self.init(serverURL: URL(string: "https://google.com")!)
+        self.init(serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!)
     }
     
     override func sendRequest(to endpoint: ApiEndpoint, method: HTTPMethod = .GET, body: Data? = nil, parameters: [URLQueryItem] = []) async throws -> Data {
@@ -20,6 +20,10 @@ class MockApiHandler: ApiHandler {
         switch endpoint {
         case .register, .login, .logout, .requestPasswordReset, .confirmPasswordReset:
             return Data()
+        case .health:
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .iso8601
+            return try encoder.encode(HealthStatus.mock)
         default:
             throw ApiError.forbidden
         }

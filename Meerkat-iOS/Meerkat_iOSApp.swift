@@ -23,7 +23,11 @@ struct Meerkat_iOSApp: App {
                     LoginView(connectionHandler: self.$connectionHandler)
                 }
             }
-            .withErrorHandling()
+            .withErrorHandling(onTap: self.handleErrorToast)
         }
+    }
+    
+    func handleErrorToast(_ toast: ErrorToast) {
+        print(toast.errorDescription)
     }
 }

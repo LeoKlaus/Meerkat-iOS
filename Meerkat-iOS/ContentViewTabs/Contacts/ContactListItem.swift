@@ -20,9 +20,8 @@ struct ContactListItem: View {
                 Text(contact.fullName)
                 HStack {
                     ForEach(contact.circles ?? [], id: \.self) { circle in
-                        Text(circle)
-                            .foregroundStyle(.secondary)
-                            .font(.footnote)
+                        CircleItem(circle: circle)
+                            .font(.caption)
                     }
                 }
             }

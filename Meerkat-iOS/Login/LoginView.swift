@@ -27,6 +27,13 @@ struct LoginView: View {
     
     var connectionPage: some View {
         VStack {
+            
+            Image(.meerkatLogo)
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: 200)
+                .padding()
+            
             HStack(spacing: 0) {
                 Picker("Protocol", selection: self.$connectionProtocol) {
                     Text("https://").tag("https://")
@@ -55,6 +62,13 @@ struct LoginView: View {
     var loginPage: some View {
         VStack {
             Spacer()
+            
+            
+            Image(.meerkatLogo)
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: 200)
+                .padding()
             
             TextField("Username", text: self.$username)
                 .autocorrectionDisabled()

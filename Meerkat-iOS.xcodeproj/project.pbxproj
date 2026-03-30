@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4AE064A02F792A89008E3CAB /* MeerkatAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4AE0649F2F792A89008E3CAB /* MeerkatAPI */; };
+		4AE064A92F794F18008E3CAB /* EasyErrorHandling in Frameworks */ = {isa = PBXBuildFile; productRef = 4AE064A82F794F18008E3CAB /* EasyErrorHandling */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		4AE064902F792457008E3CAB /* Meerkat-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meerkat-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AE064A92F794F18008E3CAB /* EasyErrorHandling in Frameworks */,
+				4AE064A02F792A89008E3CAB /* MeerkatAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = "Meerkat-iOS";
 			packageProductDependencies = (
+				4AE0649F2F792A89008E3CAB /* MeerkatAPI */,
+				4AE064A82F794F18008E3CAB /* EasyErrorHandling */,
 			);
 			productName = "Meerkat-iOS";
 			productReference = 4AE064902F792457008E3CAB /* Meerkat-iOS.app */;
@@ -94,6 +103,10 @@
 			);
 			mainGroup = 4AE064872F792457008E3CAB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4AE0649E2F792A89008E3CAB /* XCLocalSwiftPackageReference "../MeerkatAPI" */,
+				4AE064A72F794F18008E3CAB /* XCLocalSwiftPackageReference "../EasyErrorHandling" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4AE064912F792457008E3CAB /* Products */;
 			projectDirPath = "";
@@ -351,6 +364,28 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		4AE0649E2F792A89008E3CAB /* XCLocalSwiftPackageReference "../MeerkatAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../MeerkatAPI;
+		};
+		4AE064A72F794F18008E3CAB /* XCLocalSwiftPackageReference "../EasyErrorHandling" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../EasyErrorHandling;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4AE0649F2F792A89008E3CAB /* MeerkatAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MeerkatAPI;
+		};
+		4AE064A82F794F18008E3CAB /* EasyErrorHandling */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EasyErrorHandling;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4AE064882F792457008E3CAB /* Project object */;
 }

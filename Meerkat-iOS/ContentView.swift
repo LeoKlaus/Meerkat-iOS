@@ -6,16 +6,22 @@
 //
 
 import SwiftUI
+import EasyErrorHandling
 
 struct ContentView: View {
+    
+    @State private var connectionHandler: ConnectionHandler?
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group {
+            if let connectionHandler {
+                ContactList()
+                    .environment(connectionHandler)
+            } else {
+                LoginView(connectionHandler: self.$connectionHandler)
+            }
         }
-        .padding()
+        .withErrorHandling()
     }
 }
 

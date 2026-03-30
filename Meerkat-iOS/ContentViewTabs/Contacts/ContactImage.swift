@@ -41,7 +41,7 @@ struct ContactImage: View {
     
     private func getContactImage() async throws {
         if let photo = self.contact.photo, !photo.isEmpty {
-            self.imageData = try await self.connectionHandler.getContactImage(contactId: self.contact.id)
+            self.imageData = try await self.connectionHandler.getContactImage(contact: self.contact)
         }
     }
 }

@@ -25,8 +25,8 @@ class ConnectionHandler {
         return try await self.apiHandler.getContacts()
     }
     
-    func getContactImage(contactId: Int) async throws -> Data {
-        return try await self.apiHandler.getContactImage(contactId: contactId)
+    func getContactImage(contact: Contact) async throws -> Data {
+        return try await self.apiHandler.getContactImage(contact: contact)
     }
 }
 

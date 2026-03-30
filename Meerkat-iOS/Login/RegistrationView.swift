@@ -53,9 +53,9 @@ struct RegistrationView: View {
                     Text("Submit")
                 }
             }
-                .buttonStyle(.glassProminent)
-                .padding()
-                .disabled(self.username.isEmpty || self.mailAddress.isEmpty || self.password.isEmpty || self.isWaitingForRegistration)
+            .glassProminentButtonStyleIfAvailable()
+            .padding()
+            .disabled(self.username.isEmpty || self.mailAddress.isEmpty || self.password.isEmpty || self.isWaitingForRegistration)
         }
         .padding()
         .textFieldStyle(.roundedBorder)

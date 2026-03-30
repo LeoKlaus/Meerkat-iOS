@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EasyErrorHandling
 
 struct CircleItem: View {
     
@@ -14,13 +15,23 @@ struct CircleItem: View {
     var body: some View {
         Text(circle)
             .padding(.horizontal, 10)
+            .foregroundStyle(.secondary)
             .overlay(
                 RoundedRectangle(cornerRadius: .infinity)
-                    .stroke(Color.gray)
+                    .stroke(.tertiary)
             )
     }
 }
 
 #Preview {
     CircleItem(circle: "Family")
+}
+
+#Preview("ContactItem") {
+    List {
+        ContactListItem(contact: .mock)
+            .frame(maxHeight: 50)
+    }
+    .withErrorHandling()
+    .environment(ConnectionHandler.mock)
 }

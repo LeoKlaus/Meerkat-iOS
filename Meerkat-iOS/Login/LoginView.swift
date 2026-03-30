@@ -44,6 +44,7 @@ struct LoginView: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .textContentType(.URL)
+                    .onSubmit(self.connect)
             }
             
             Button(action: self.connect) {
@@ -53,7 +54,7 @@ struct LoginView: View {
                     Text("Connect")
                 }
             }
-            .buttonStyle(.glassProminent)
+            .glassProminentButtonStyleIfAvailable()
             .padding()
             .disabled(self.isCheckingConnection || self.serverURL.isEmpty)
         }
@@ -79,6 +80,7 @@ struct LoginView: View {
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
                 .textContentType(.password)
+                .onSubmit(self.login)
             
             Button(action: self.login) {
                 if self.isCheckingConnection {
@@ -87,7 +89,7 @@ struct LoginView: View {
                     Text("Connect")
                 }
             }
-            .buttonStyle(.glassProminent)
+            .glassProminentButtonStyleIfAvailable()
             .padding()
             .disabled(self.username.isEmpty || self.password.isEmpty || self.isCheckingConnection)
             

@@ -60,7 +60,7 @@ struct ResetPasswordView: View {
                         Text("Reset Password")
                     }
                 }
-                .buttonStyle(.glassProminent)
+                .glassProminentButtonStyleIfAvailable()
                 .disabled(self.isResettingPassword || self.token.isEmpty || self.newPassword.isEmpty)
             }
         }

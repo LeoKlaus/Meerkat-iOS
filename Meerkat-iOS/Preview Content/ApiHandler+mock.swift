@@ -11,11 +11,22 @@ import UIKit
 
 class MockApiHandler: ApiHandler {
     
-    convenience init() {
+    convenience init(mock: Bool = true) {
         self.init(serverURL: URL(string: "https://google.com")!)
     }
     
+    override func sendRequest(to endpoint: ApiEndpoint, method: HTTPMethod = .GET, body: Data? = nil, parameters: [URLQueryItem] = []) async throws -> Data {
+        try await Task.sleep(for: .milliseconds(Int.random(in: 250...500)))
+        switch endpoint {
+        case .register, .login, .logout, .requestPasswordReset, .confirmPasswordReset:
+            return Data()
+        default:
+            throw ApiError.forbidden
+        }
+    }
+    
     override func get<T: Decodable>(from endpoint: ApiEndpoint, parameters: [URLQueryItem] = []) async throws -> T {
+        try await Task.sleep(for: .milliseconds(Int.random(in: 250...500)))
         switch endpoint {
         case .me:
             return User.mock as! T

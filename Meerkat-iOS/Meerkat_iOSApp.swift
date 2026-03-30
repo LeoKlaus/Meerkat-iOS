@@ -6,12 +6,24 @@
 //
 
 import SwiftUI
+import EasyErrorHandling
 
 @main
 struct Meerkat_iOSApp: App {
+    
+    @State private var connectionHandler: ConnectionHandler?
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Group {
+                if let connectionHandler {
+                    ContentView()
+                        .environment(connectionHandler)
+                } else {
+                    LoginView(connectionHandler: self.$connectionHandler)
+                }
+            }
+            .withErrorHandling()
         }
     }
 }

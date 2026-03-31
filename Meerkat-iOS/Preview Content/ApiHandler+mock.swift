@@ -15,7 +15,7 @@ class MockApiHandler: ApiHandler {
         self.init(serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!)
     }
     
-    override func sendRequest(to endpoint: ApiEndpoint, method: HTTPMethod = .GET, body: Data? = nil, parameters: [URLQueryItem] = []) async throws -> Data {
+    override func sendRequest(to endpoint: ApiEndpoint, method: HTTPMethod = .GET, body: Data? = nil, multipartBoundary: String? = nil, parameters: [URLQueryItem] = []) async throws -> Data {
         try await Task.sleep(for: .milliseconds(Int.random(in: 250...500)))
         switch endpoint {
         case .register, .login, .logout, .requestPasswordReset, .confirmPasswordReset:

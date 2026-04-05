@@ -16,7 +16,7 @@ extension DateComponents {
         if let date = self.date {
             if let birthYear = self.year {
                 let currentYear = Calendar.current.component(.year, from: Date())
-                return String(localized: "\(formatter.string(from: date)) (turns \(currentYear - birthYear) years)")
+                return String(localized: "\(formatter.string(from: date)) (turns \(currentYear - birthYear))")
             }
             
             return formatter.string(from: date)

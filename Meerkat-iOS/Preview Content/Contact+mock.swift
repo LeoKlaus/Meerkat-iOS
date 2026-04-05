@@ -22,7 +22,7 @@ extension Contact {
         phone: "+15551234567",
         birthday: "1985-03-15",
         photo: "alice_profile.jpg",
-        relationships: "Married",
+        relationships: [],
         address: "123 Main St, Anytown",
         howWeMet: "Online Dating",
         foodPreference: "Italian",
@@ -47,7 +47,7 @@ extension Contact {
         phone: nil, // No phone number
         birthday: "1992-08-20",
         photo: nil, // No photo
-        relationships: "Single",
+        relationships: [],
         address: "456 Oak Ave, Somecity",
         howWeMet: nil, // How we met unknown
         foodPreference: "Mexican",
@@ -72,7 +72,32 @@ extension Contact {
         phone: "+447700900123",
         birthday: nil, // Birthday unknown
         photo: "",
-        relationships: "Dating",
+        relationships: [],
+        address: nil, // No address
+        howWeMet: "Mutual Friend",
+        foodPreference: "Japanese",
+        workInformation: nil, // No work information
+        contactInformation: "Preferred contact via text",
+        circles: ["Acquaintances"],
+        customFields: ["petName": "Snoopy"],
+        archived: false,
+        photoThumbnail: nil // No thumbnail
+    )
+    
+    nonisolated static let placeholder = Contact(
+        id: 4,
+        createdAt: Date(),
+        updatedAt: Calendar.current.date(byAdding: .hour, value: -1, to: Date()), // 1 hour ago
+        deletedAt: nil,
+        firstname: "Charlie",
+        lastname: "Brown",
+        nickname: "Chuck",
+        gender: .other,
+        email: "charlie.brown@example.com",
+        phone: "+447700900123",
+        birthday: nil, // Birthday unknown
+        photo: "",
+        relationships: [],
         address: nil, // No address
         howWeMet: "Mutual Friend",
         foodPreference: "Japanese",

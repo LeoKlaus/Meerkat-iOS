@@ -8,7 +8,8 @@
 import Foundation
 
 enum UserDefaultKey: String, CaseIterable {
-    case serverURL
+    case connectedInstances
+    case activeInstance
 }
 
 extension String {

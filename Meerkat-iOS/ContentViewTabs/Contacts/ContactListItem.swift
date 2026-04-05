@@ -16,12 +16,17 @@ struct ContactListItem: View {
     var body: some View {
         HStack {
             ContactImage(contact: self.contact)
+                .clipShape(Circle())
+            
             VStack(alignment: .leading) {
-                Text(contact.fullName)
-                HStack {
-                    ForEach(contact.circles ?? [], id: \.self) { circle in
-                        CircleItem(circle: circle)
-                            .font(.caption)
+                Text(self.contact.fullName)
+                
+                if let circles = self.contact.circles, !circles.isEmpty {
+                    HStack {
+                        ForEach(circles, id: \.self) { circle in
+                            CircleItem(circle: circle)
+                                .font(.caption)
+                        }
                     }
                 }
             }
@@ -32,7 +37,34 @@ struct ContactListItem: View {
 #Preview {
     List {
         ContactListItem(contact: .mock)
-            .frame(maxHeight: 50)
+            .frame(height: 50)
+        ContactListItem(
+            contact: Contact(
+                id: 4,
+                createdAt: .now,
+                updatedAt: nil,
+                deletedAt: nil,
+                firstname: "Max",
+                lastname: "Mustermann",
+                nickname: "Maxi",
+                gender: .male,
+                email: nil,
+                phone: nil,
+                birthday: nil,
+                photo: nil,
+                relationships: nil,
+                address: nil,
+                howWeMet: nil,
+                foodPreference: nil,
+                workInformation: nil,
+                contactInformation: nil,
+                circles: nil,
+                customFields: nil,
+                archived: false,
+                photoThumbnail: nil
+            )
+        )
+        .frame(maxHeight: 50)
     }
     .withErrorHandling()
     .environment(ConnectionHandler.mock)

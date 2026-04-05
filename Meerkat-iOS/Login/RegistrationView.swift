@@ -14,7 +14,7 @@ struct RegistrationView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var errorHandler: ErrorHandler
     
-    let apiHandler: ApiHandler
+    let serverURL: URL
     
     @State private var username: String = ""
     @State private var mailAddress: String = ""
@@ -25,6 +25,14 @@ struct RegistrationView: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
+            Image(.meerkatLogo)
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: 200)
+                .padding()
+            
             TextField("Username", text: self.$username)
                 .textInputAutocapitalization(.never)
                 .textContentType(.username)
@@ -56,6 +64,8 @@ struct RegistrationView: View {
             .glassProminentButtonStyleIfAvailable()
             .padding()
             .disabled(self.username.isEmpty || self.mailAddress.isEmpty || self.password.isEmpty || self.isWaitingForRegistration)
+            
+            Spacer()
         }
         .padding()
         .textFieldStyle(.roundedBorder)
@@ -67,7 +77,7 @@ struct RegistrationView: View {
         }
         Task {
             do {
-                try await self.apiHandler.register(username: self.username, password: self.password, mailAddress: self.mailAddress, language: self.language)
+                try await ApiHandler.register(serverURL: self.serverURL, username: self.username, password: self.password, mailAddress: self.mailAddress, language: self.language)
                 self.errorHandler.showInfo("Registration complete!")
                 self.dismiss()
             } catch {
@@ -81,6 +91,6 @@ struct RegistrationView: View {
 }
 
 #Preview {
-    RegistrationView(apiHandler: .mock)
+    RegistrationView(serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!)
         .withErrorHandling()
 }

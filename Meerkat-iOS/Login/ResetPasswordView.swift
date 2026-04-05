@@ -15,7 +15,7 @@ struct ResetPasswordView: View {
     
     @EnvironmentObject var errorHandler: ErrorHandler
     
-    let apiHandler: ApiHandler
+    let serverURL: URL
     
     @State var mailAddress: String = ""
     @State private var token: String = ""
@@ -29,6 +29,14 @@ struct ResetPasswordView: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
+            Image(.meerkatLogo)
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: 200)
+                .padding()
+            
             TextField("Email", text: self.$mailAddress)
                 .textInputAutocapitalization(.never)
                 .textContentType(.emailAddress)
@@ -63,6 +71,8 @@ struct ResetPasswordView: View {
                 .glassProminentButtonStyleIfAvailable()
                 .disabled(self.isResettingPassword || self.token.isEmpty || self.newPassword.isEmpty)
             }
+            
+            Spacer()
         }
         .textFieldStyle(.roundedBorder)
         .padding()
@@ -81,7 +91,7 @@ struct ResetPasswordView: View {
         
         Task {
             do {
-                try await self.apiHandler.requestPasswordReset(mailAddress: self.mailAddress)
+                try await ApiHandler.requestPasswordReset(serverURL: self.serverURL, mailAddress: self.mailAddress)
             } catch {
                 self.errorHandler.handle(error, while: "requesting password reset")
             }
@@ -100,7 +110,7 @@ struct ResetPasswordView: View {
         
         Task {
             do {
-                try await self.apiHandler.confirmPasswordReset(token: self.token, newPassword: self.newPassword)
+                try await ApiHandler.confirmPasswordReset(serverURL: self.serverURL, token: self.token, newPassword: self.newPassword)
                 self.errorHandler.showInfo("Password reset!")
                 self.dismiss()
             } catch {
@@ -116,6 +126,6 @@ struct ResetPasswordView: View {
 }
 
 #Preview {
-    ResetPasswordView(apiHandler: .mock)
+    ResetPasswordView(serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!)
         .withErrorHandling()
 }

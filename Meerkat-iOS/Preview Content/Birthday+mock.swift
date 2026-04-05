@@ -28,4 +28,11 @@ extension Birthday {
         birthday: "2024-01-01",
         contactId: 2
     )
+    
+    nonisolated static let placeholder = Birthday(
+        type: .contact,
+        name: "Anniversary",
+        birthday: "2024-01-01",
+        contactId: nil
+    )
 }

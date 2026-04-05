@@ -12,7 +12,7 @@ import UIKit
 class MockApiHandler: ApiHandler {
     
     convenience init(mock: Bool = true) {
-        self.init(serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!)
+        self.init(serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!, token: "")
     }
     
     override func sendRequest(to endpoint: ApiEndpoint, method: HTTPMethod = .GET, body: Data? = nil, multipartBoundary: String? = nil, parameters: [URLQueryItem] = []) async throws -> Data {
@@ -36,6 +36,25 @@ class MockApiHandler: ApiHandler {
             return User.mock as! T
         case .contacts:
             return PaginatedResponse<Contact>.getContactsMock() as! T
+        case .contact(let id):
+            switch id {
+            case 1:
+                return Contact.mock as! T
+            case 2:
+                return Contact.mock2 as! T
+            case 3:
+                return Contact.mock3 as! T
+            default:
+                throw ApiError.notFound
+            }
+        case .unassignedNotes:
+            return PaginatedResponse<Note>.getNotesMock() as! T
+        case .activities:
+            return PaginatedResponse<Activity>.getActivitiesMock() as! T
+        case .birthdays:
+            return PaginatedResponse<Birthday>.getBirthdaysMock() as! T
+        case .upcomingReminders:
+            return PaginatedResponse<Reminder>.getRemindersMock() as! T
         default:
             throw ApiError.forbidden
         }

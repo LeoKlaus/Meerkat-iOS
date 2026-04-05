@@ -11,19 +11,24 @@ import MeerkatAPI
 
 struct LoginView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var errorHandler: ErrorHandler
     
     @State private var connectionProtocol: String = "https://"
-    @State private var serverURL: String = ""
+    @State private var serverURLString: String = ""
     @State private var username: String = ""
     @State private var password: String = ""
     
     @State private var isCheckingConnection: Bool = false
     
     @State private var healthStatus: HealthStatus?
-    @State var apiHandler: ApiHandler? = ApiHandler()
+    
+    @State var serverURL: URL?
     
     @Binding var connectionHandler: ConnectionHandler?
+    
+    var isInitialSetup: Bool = true
     
     var connectionPage: some View {
         VStack {
@@ -40,7 +45,7 @@ struct LoginView: View {
                     Text("http://").tag("http://")
                 }
                 
-                TextField("Server", text: self.$serverURL)
+                TextField("Server", text: self.$serverURLString)
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
                     .textContentType(.URL)
@@ -56,14 +61,14 @@ struct LoginView: View {
             }
             .glassProminentButtonStyleIfAvailable()
             .padding()
-            .disabled(self.isCheckingConnection || self.serverURL.isEmpty)
+            .disabled(self.isCheckingConnection || self.serverURLString.isEmpty)
         }
     }
     
-    var loginPage: some View {
+    @ViewBuilder
+    func loginPage(serverURL: URL) -> some View {
         VStack {
             Spacer()
-            
             
             Image(.meerkatLogo)
                 .resizable()
@@ -80,9 +85,13 @@ struct LoginView: View {
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
                 .textContentType(.password)
-                .onSubmit(self.login)
+                .onSubmit {
+                    self.login(serverURL: serverURL)
+                }
             
-            Button(action: self.login) {
+            Button {
+                self.login(serverURL: serverURL)
+            } label: {
                 if self.isCheckingConnection {
                     ProgressView()
                 } else {
@@ -95,31 +104,30 @@ struct LoginView: View {
             
             Spacer()
             
-            if let apiHandler {
-                
-                NavigationLink(destination: RegistrationView(apiHandler: apiHandler)) {
+            Group {
+                NavigationLink(destination: RegistrationView(serverURL: serverURL)) {
                     Text("Register")
                 }
                 .padding()
                 
-                NavigationLink(destination: ResetPasswordView(apiHandler: apiHandler)) {
+                NavigationLink(destination: ResetPasswordView(serverURL: serverURL)) {
                     Text("Forgot password?")
                 }
-            }
-            
-            VStack {
-                if let serverHost = self.apiHandler?.serverURL.host() {
-                    Text("Connected to \(serverHost)")
+                
+                VStack {
+                    if let serverHost = self.serverURL?.host() {
+                        Text("Connected to \(serverHost)")
+                    }
+                    Text("(Meerkat version \(self.healthStatus?.version ?? "unknown"))")
+                    Button(action: self.disconnect) {
+                        Text("Disconnect")
+                            .underline()
+                    }
                 }
-                Text("(Meerkat version \(self.healthStatus?.version ?? "unknown"))")
-                Button(action: self.disconnect) {
-                    Text("Disconnect")
-                        .underline()
-                }
+                .foregroundStyle(.secondary)
+                .font(.caption)
+                .padding()
             }
-            .foregroundStyle(.secondary)
-            .font(.caption)
-            .padding()
         }
     }
     
@@ -127,8 +135,8 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if apiHandler != nil {
-                    self.loginPage
+                if let serverURL {
+                    self.loginPage(serverURL: serverURL)
                         .throwingTask(taskDescription: "checking server connection", self.checkServerConnection)
                 } else {
                     self.connectionPage
@@ -144,18 +152,15 @@ struct LoginView: View {
             self.isCheckingConnection = true
         }
         
-        guard let url = URL(string: self.connectionProtocol + self.serverURL) else {
+        guard let url = URL(string: self.connectionProtocol + self.serverURLString) else {
             self.errorHandler.handle("Server URL is not valid", while: "connecting to server")
             return
         }
         
-        let apiHandler = ApiHandler(serverURL: url)
-        
         Task {
             do {
-                self.healthStatus = try await apiHandler.checkHealth()
-                self.apiHandler = apiHandler
-                UserDefaults.meerkat?.set(url, forKey: .userDefaults(.serverURL))
+                self.healthStatus = try await ApiHandler.checkHealth(url)
+                self.serverURL = url
             } catch {
                 self.errorHandler.handle(error, while: "connecting to server")
             }
@@ -166,42 +171,53 @@ struct LoginView: View {
     }
     
     
-    private func login() {
+    private func login(serverURL: URL) {
         withAnimation {
             self.isCheckingConnection = true
         }
         
-        guard let apiHandler else {
-            self.errorHandler.handle("Missing apiHandler, this is weird.", while: "logging in")
-            return
-        }
-        
         Task {
             do {
-                let loginResponse = try await apiHandler.login(username: self.username, password: self.password)
+                let loginResponse = try await ApiHandler.login(serverURL: serverURL, username: self.username, password: self.password)
+                
                 // TODO: Do something with this?
                 print(loginResponse)
-                self.connectionHandler = ConnectionHandler(apiHandler: apiHandler)
+                
+                let tokenResponse = try await ApiHandler.createApiToken(serverURL: serverURL, name: "Meerkat-iOS")
+                
+                guard let token = tokenResponse.token else {
+                    self.errorHandler.handle("Server didn't return a token", while: "logging in")
+                    return
+                }
+                
+                if self.isInitialSetup {
+                    self.connectionHandler = try ConnectionHandler(serverURL: serverURL, username: self.username, token: token)
+                } else {
+                    let newInstance = ConnectedInstance(serverURL: serverURL, username: self.username)
+                    try newInstance.save(token: token)
+                    try self.connectionHandler?.switchInstance(to: newInstance)
+                    self.dismiss()
+                }
+                
             } catch {
                 self.errorHandler.handle(error, while: "logging in")
             }
-            
-            withAnimation {
-                self.isCheckingConnection = false
-            }
+        }
+        
+        withAnimation {
+            self.isCheckingConnection = false
         }
     }
     
     private func checkServerConnection() async throws {
-        guard let apiHandler else {
+        guard let serverURL else {
             return
         }
-        self.healthStatus = try await apiHandler.checkHealth()
+        self.healthStatus = try await ApiHandler.checkHealth(serverURL)
     }
     
     private func disconnect() {
-        UserDefaults.meerkat?.removeObject(forKey: .userDefaults(.serverURL))
-        self.apiHandler = nil
+        self.serverURL = nil
     }
 }
 
@@ -212,7 +228,7 @@ struct LoginView: View {
 
 #Preview("Login Page") {
     LoginView(
-        apiHandler: .mock,
+        serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!,
         connectionHandler: .constant(nil)
     )
     .withErrorHandling()

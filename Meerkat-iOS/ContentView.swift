@@ -34,6 +34,7 @@ struct ContentView: View {
                 SettingsView()
             }
         }
+        //.id(self.connectionHandler?.currentInstance.id)
     }
 }
 

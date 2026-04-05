@@ -18,7 +18,7 @@ extension PaginatedResponse {
             ],
             limit: 10,
             page: 1,
-            total: 1,
+            total: 3,
             totalPages: 1
         )
     }
@@ -32,7 +32,7 @@ extension PaginatedResponse {
             ],
             limit: 10,
             page: 1,
-            total: 1,
+            total: 3,
             totalPages: 1
         )
     }
@@ -46,7 +46,7 @@ extension PaginatedResponse {
             ],
             limit: 10,
             page: 1,
-            total: 1,
+            total: 3,
             totalPages: 1
         )
     }
@@ -60,7 +60,7 @@ extension PaginatedResponse {
             ],
             limit: 10,
             page: 1,
-            total: 1,
+            total: 3,
             totalPages: 1
         )
     }
@@ -74,7 +74,7 @@ extension PaginatedResponse {
             ],
             limit: 10,
             page: 1,
-            total: 1,
+            total: 3,
             totalPages: 1
         )
     }
@@ -88,7 +88,21 @@ extension PaginatedResponse {
             ],
             limit: 10,
             page: 1,
-            total: 1,
+            total: 3,
+            totalPages: 1
+        )
+    }
+    
+    nonisolated static func getRemindersMock() -> PaginatedResponse<Reminder> {
+        return PaginatedResponse<Reminder>(
+            results: [
+                .mock,
+                .mock2,
+                .mock3
+            ],
+            limit: 10,
+            page: 1,
+            total: 3,
             totalPages: 1
         )
     }

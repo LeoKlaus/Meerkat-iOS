@@ -23,7 +23,6 @@ struct ContactImage: View {
                 image
                 .resizable()
                 .scaledToFit()
-                .clipShape(.circle)
         } else {
             ZStack {
                 Circle()
@@ -35,13 +34,13 @@ struct ContactImage: View {
                     .scaledToFit()
                     .padding()
             }
-            .throwingTask(taskDescription: "loading contact image for \(contact.firstname)", self.getContactImage)
+            .throwingTask(taskDescription: "loading contact image for \(contact.fullName)", self.getContactImage)
         }
     }
     
     private func getContactImage() async throws {
         if let photo = self.contact.photo, !photo.isEmpty {
-            self.imageData = try await self.connectionHandler.getContactImage(contact: self.contact)
+            self.imageData = try await self.connectionHandler.getContactImage(self.contact)
         }
     }
 }

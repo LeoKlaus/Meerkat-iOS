@@ -25,7 +25,7 @@ struct BirthdayListItem: View {
                         .clipShape(.circle)
                     VStack(alignment: .leading) {
                         Text(birthday.name)
-                        Text(birthday.birthday)
+                        Text(birthday.birthday.toBirthdayString())
                             .foregroundStyle(.secondary)
                             .font(.caption)
                     }
@@ -35,7 +35,7 @@ struct BirthdayListItem: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text(birthday.name)
-                    Text(birthday.birthday)
+                    Text(birthday.birthday.toBirthdayString())
                         .foregroundStyle(.secondary)
                         .font(.caption)
                 }

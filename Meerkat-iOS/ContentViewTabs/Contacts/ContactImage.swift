@@ -41,6 +41,10 @@ struct ContactImage: View {
     private func getContactImage() async throws {
         if let photo = self.contact.photo, !photo.isEmpty {
             self.imageData = try await self.connectionHandler.getContactImage(self.contact)
+        } else if let photoThumbnail = contact.photoThumbnail, !photoThumbnail.isEmpty {
+            // TODO: Check why this doesn't work
+            // self.imageData = Data(base64Encoded: photoThumbnail, options: .ignoreUnknownCharacters)
+            self.imageData = try await self.connectionHandler.getContactImage(self.contact)
         }
     }
 }

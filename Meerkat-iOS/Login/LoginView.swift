@@ -190,6 +190,8 @@ struct LoginView: View {
                     return
                 }
                 
+                try? await ApiHandler.logout(serverURL)
+                
                 if self.isInitialSetup {
                     self.connectionHandler = try ConnectionHandler(serverURL: serverURL, username: self.username, token: token)
                 } else {

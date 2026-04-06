@@ -40,90 +40,100 @@ struct ContactDetailView: View {
     
     @State private var showArchivalConfirmation: Bool = false
     
+    var contactHeader: some View {
+        Group {
+            if self.contact.archived {
+                Label("Archived", systemImage: "tray.and.arrow.down")
+                    .font(.caption)
+                    .foregroundStyle(.white)
+                    .padding(10)
+                    .background(.orange)
+                    .clipShape(.capsule)
+            }
+            HStack {
+                ContactImage(contact: self.contact)
+                    .clipShape(Circle())
+                    .frame(maxWidth: 75)
+                
+                VStack(alignment: .leading) {
+                    Text(contact.fullName)
+                        .font(.title)
+                    if let gender = contact.gender {
+                        Text(gender.localizedRepresentation)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+            
+            HFlow {
+                ForEach(self.contact.circles ?? [], id: \.self) { circle in
+                    CircleItem(circle: circle)
+                }
+                
+                if (self.contact.circles?.isEmpty ?? true) {
+                    Spacer()
+                }
+            }
+        }
+    }
+    
+    var messengerList: some View {
+        HFlow {
+            if let phone = contact.phone, !phone.isEmpty {
+                if let url = URL(string: "tel:\(phone)") {
+                    Link(destination: url) {
+                        Image(systemName: "phone")
+                            .frame(width: 30, height: 20)
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                
+                if let url = URL(string: "sms:\(phone)") {
+                    Link(destination: url) {
+                        Image(systemName: "message")
+                            .frame(maxWidth: 30, maxHeight: 20)
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+            }
+            
+            if let email = contact.email, !email.isEmpty {
+                if let url = URL(string: "mailto:\(email)") {
+                    Link(destination: url) {
+                        Image(systemName: "envelope")
+                            .frame(maxWidth: 30, maxHeight: 20)
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+            }
+            
+            ForEach(self.contact.getMatchingMessengers(self.supportedMessengers)) { messengerLink in
+                
+                if let url = messengerLink.url {
+                    Link(destination: url) {
+                        if let imageData = messengerLink.messenger.imageData, let img = Image(data: imageData) {
+                            img
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: 30, maxHeight: 20)
+                        } else {
+                            Text(messengerLink.messenger.name)
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(messengerLink.messenger.color)
+                }
+            }
+        }
+    }
+    
     var body: some View {
         List {
             Section {
                 VStack(alignment: .leading) {
-                    if self.contact.archived {
-                        Label("Archived", systemImage: "tray.and.arrow.down")
-                            .font(.caption)
-                            .foregroundStyle(.white)
-                            .padding(10)
-                            .background(.orange)
-                            .clipShape(.capsule)
-                    }
-                    HStack {
-                        ContactImage(contact: self.contact)
-                            .clipShape(Circle())
-                            .frame(maxWidth: 75)
-                        
-                        VStack(alignment: .leading) {
-                            Text(contact.fullName)
-                                .font(.title)
-                            if let gender = contact.gender {
-                                Text(gender.localizedRepresentation)
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
-                    }
+                    self.contactHeader
                     
-                    HFlow {
-                        ForEach(self.contact.circles ?? [], id: \.self) { circle in
-                            CircleItem(circle: circle)
-                        }
-                        
-                        if (self.contact.circles?.isEmpty ?? true) {
-                            Spacer()
-                        }
-                    }
-                    
-                    HFlow {
-                        if let phone = contact.phone, !phone.isEmpty {
-                            if let url = URL(string: "tel:\(phone)") {
-                                Link(destination: url) {
-                                    Image(systemName: "phone")
-                                        .frame(width: 30, height: 20)
-                                }
-                                .buttonStyle(.borderedProminent)
-                            }
-                            
-                            if let url = URL(string: "sms:\(phone)") {
-                                Link(destination: url) {
-                                    Image(systemName: "message")
-                                        .frame(maxWidth: 30, maxHeight: 20)
-                                }
-                                .buttonStyle(.borderedProminent)
-                            }
-                        }
-                        
-                        if let email = contact.email, !email.isEmpty {
-                            if let url = URL(string: "mailto:\(email)") {
-                                Link(destination: url) {
-                                    Image(systemName: "envelope")
-                                        .frame(maxWidth: 30, maxHeight: 20)
-                                }
-                                .buttonStyle(.borderedProminent)
-                            }
-                        }
-                        
-                        ForEach(self.contact.getMatchingMessengers(self.supportedMessengers)) { messengerLink in
-                            
-                            if let url = messengerLink.url {
-                                Link(destination: url) {
-                                    if let imageData = messengerLink.messenger.imageData, let img = Image(data: imageData) {
-                                        img
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(maxWidth: 30, maxHeight: 20)
-                                    } else {
-                                        Text(messengerLink.messenger.name)
-                                    }
-                                }
-                                .buttonStyle(.borderedProminent)
-                                .tint(messengerLink.messenger.color)
-                            }
-                        }
-                    }
+                    self.messengerList
                     
                     Picker("About", selection: self.$currentTab) {
                         Label("About", systemImage: "house")
@@ -150,45 +160,7 @@ struct ContactDetailView: View {
             
             switch self.currentTab {
             case .about:
-                Section("About \(self.contact.firstname)") {
-                    if let birthday = contact.birthday {
-                        Label(birthday.toAgeString(), systemImage: "birthday.cake")
-                    }
-                    if let address = contact.address, !address.isEmpty {
-                        Label(address, systemImage: "house")
-                    }
-                    
-                    if let workInformation = contact.workInformation, !workInformation.isEmpty {
-                        Label(workInformation, systemImage: "suitcase")
-                    }
-                    
-                    if let foodPreference = contact.foodPreference, !foodPreference.isEmpty {
-                        Label(foodPreference, systemImage: "fork.knife")
-                    }
-                    
-                    if let howWeMet = contact.howWeMet, !howWeMet.isEmpty {
-                        Label(howWeMet, systemImage: "person.2")
-                    }
-                    
-                    if let contactInfo = contact.contactInformation, !contactInfo.isEmpty {
-                        Label(contactInfo, systemImage: "list.clipboard")
-                    }
-                    
-                    ForEach(self.contact.nonMessengerFields(self.supportedMessengers).sorted(by: >), id: \.key) { label, value in
-                        if !value.isEmpty {
-                            Label {
-                                VStack(alignment: .leading) {
-                                    Text(label)
-                                        .foregroundStyle(.secondary)
-                                        .font(.caption)
-                                    Text(value)
-                                }
-                            } icon: {
-                                Image(systemName: "pencil")
-                            }
-                        }
-                    }
-                }
+                ContactDetailAboutSection(contact: self.contact)
             case .relationships:
                 Section("Relationships") {
                     ForEach(self.outgoingRelationships) { relationship in
@@ -203,14 +175,12 @@ struct ContactDetailView: View {
                         }
                     }
                 }
-                    
             case .reminders:
                 Section("Reminders") {
                     ForEach(self.reminders) { reminder in
                         ReminderListItem(reminder: reminder)
                     }
                 }
-                
             case .timeline:
                 Section("Timeline") {
                     ForEach(self.timelineEntries.sorted(by: {$0.time ?? .distantPast > $1.time ?? .distantPast}), id: \.uuid) { timelineEntry in
@@ -220,7 +190,7 @@ struct ContactDetailView: View {
             }
         }
         .throwingTask(taskDescription: "loading relationships for \(contact.firstname)", self.loadDetails)
-            .toolbar {
+        .toolbar {
             
             ToolbarItemGroup(placement: .confirmationAction) {
                 Button("Stay in touch", systemImage: "repeat") {

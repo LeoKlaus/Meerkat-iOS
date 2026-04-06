@@ -11,17 +11,20 @@ import MeerkatAPI
 extension Contact {
     nonisolated static let mock = Contact(
         id: 1,
-        createdAt: Date(), // Current date/time
-        updatedAt: Calendar.current.date(byAdding: .day, value: -7, to: Date()), // 7 days ago
-        deletedAt: nil,  // Not deleted
-        firstname: "Alice",
+        createdAt: Date(),
+        // Current date/time
+        updatedAt: Calendar.current.date(byAdding: .day, value: -7, to: Date()),
+        // 7 days ago
+        deletedAt: nil,
+        // Not deleted
+        firstname: "Robert",
         lastname: "Smith",
-        nickname: "Ali",
-        gender: .female,
-        email: "alice.smith@example.com",
+        nickname: "Bob",
+        gender: .male,
+        email: "robert.smith@example.com",
         phone: "+15551234567",
-        birthday: "1985-03-15",
-        photo: "alice_profile.jpg",
+        birthday: DateComponents(calendar: .current, year: 1985, month: 3, day: 15),
+        photo: "bob_profile.jpg",
         relationships: [],
         address: "123 Main St, Anytown",
         howWeMet: "Online Dating",
@@ -29,7 +32,13 @@ extension Contact {
         workInformation: "Software Engineer at TechCorp",
         contactInformation: "Preferred contact via email",
         circles: ["Friends", "Family"],
-        customFields: ["favoriteColor": "blue", "interests": "reading, hiking"],
+        customFields: [
+            "Favorite Color": "blue",
+            "Interests": "reading, hiking",
+            "Discord-ID": "123456789",
+            "Signal-ID": "+1 (555) 1234567",
+            "WhatsApp-ID": "+1 (555) 1234567"
+        ],
         archived: false,
         photoThumbnail: "alice_thumbnail.jpg"
     )
@@ -45,7 +54,7 @@ extension Contact {
         gender: .male,
         email: "bob@example.com",
         phone: nil, // No phone number
-        birthday: "1992-08-20",
+        birthday: DateComponents(calendar: .current, year: 1992, month: 8, day: 20),
         photo: nil, // No photo
         relationships: [],
         address: "456 Oak Ave, Somecity",

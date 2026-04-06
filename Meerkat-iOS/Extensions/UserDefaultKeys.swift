@@ -10,6 +10,7 @@ import Foundation
 enum UserDefaultKey: String, CaseIterable {
     case connectedInstances
     case activeInstance
+    case supportedMessengers
 }
 
 extension String {

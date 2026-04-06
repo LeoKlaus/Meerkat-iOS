@@ -17,7 +17,11 @@ extension Activity {
         title: "Morning Yoga",
         description: "Start your day with flexibility and mindfulness.",
         location: "Community Center Hall A",
-        date: Calendar.current.date(byAdding: .day, value: 1, to: .now)!
+        date: Calendar.current.date(byAdding: .day, value: 1, to: .now)!,
+        contacts: [
+            .mock,
+            .mock2
+        ]
     )
     
     nonisolated static let mock2 = Activity(

@@ -19,13 +19,9 @@ struct SettingsView: View {
             List {
                 InstanceMenu()
                 
-                Button("Log out") {
-                    Task {
-                        do {
-                            try await self.connectionHandler.apiHandler.logout()
-                        } catch {
-                            self.errorHandler.handle(error, while: "logging out")
-                        }
+                Section {
+                    NavigationLink(destination: MessengerSettings()) {
+                        Label("Configure Messengers", systemImage: "bubble")
                     }
                 }
             }

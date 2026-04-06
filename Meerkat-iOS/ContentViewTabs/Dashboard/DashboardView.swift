@@ -68,10 +68,9 @@ struct DashboardView: View {
                 if !self.randomContacts.isEmpty {
                     Section("Stay in Touch") {
                         ForEach(self.randomContacts.prefix(5)) { contact in
-                            NavigationLink(value: contact) {
-                                ContactListItem(contact: contact)
-                            }
-                            .frame(maxHeight: 40)
+                            // TODO: This is kinda ugly, maybe come up with a better solution
+                            PartialContactListItem(contact: contact)
+                                .frame(maxHeight: 40)
                         }
                     }
                 }

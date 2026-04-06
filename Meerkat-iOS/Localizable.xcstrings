@@ -1,12 +1,41 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "(Meerkat version %@)" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "(Meerkat Version %@)"
+          }
+        }
+      }
+    },
+    "%@ (%@ years old)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$@ years old)"
+          }
+        }
+      }
+    },
+    "%@ (%lld years old)" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (%2$lld Jahre alt)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ (%2$lld years old)"
           }
         }
       }
@@ -26,6 +55,12 @@
           }
         }
       }
+    },
+    "About" : {
+
+    },
+    "About %@" : {
+
     },
     "Activities" : {
       "localizations" : {
@@ -76,6 +111,24 @@
           }
         }
       }
+    },
+    "Archive %@" : {
+
+    },
+    "Archive %@?" : {
+
+    },
+    "Archived" : {
+
+    },
+    "Are you sure you want to archive this contact? All reminders will be deleted. You can unarchive later, but reminders won't be restored." : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Configure Messengers" : {
+
     },
     "Connect" : {
       "localizations" : {
@@ -187,6 +240,12 @@
         }
       }
     },
+    "Discord" : {
+
+    },
+    "Edit" : {
+
+    },
     "Email" : {
       "localizations" : {
         "de" : {
@@ -226,6 +285,9 @@
           }
         }
       }
+    },
+    "Field Name:" : {
+
     },
     "Flexible" : {
       "localizations" : {
@@ -287,6 +349,9 @@
         }
       }
     },
+    "Incoming Relationships" : {
+
+    },
     "Language (for web only)" : {
       "localizations" : {
         "de" : {
@@ -297,7 +362,11 @@
         }
       }
     },
+    "Link Format:" : {
+
+    },
     "Log out" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -376,6 +445,9 @@
           }
         }
       }
+    },
+    "Note" : {
+
     },
     "Notes" : {
       "localizations" : {
@@ -477,6 +549,15 @@
         }
       }
     },
+    "Relationships" : {
+
+    },
+    "Reminder Completed" : {
+
+    },
+    "Reminders" : {
+
+    },
     "Reset Password" : {
       "localizations" : {
         "de" : {
@@ -517,6 +598,9 @@
         }
       }
     },
+    "Stay in touch" : {
+
+    },
     "Stay in Touch" : {
       "localizations" : {
         "de" : {
@@ -537,6 +621,9 @@
         }
       }
     },
+    "Timeline" : {
+
+    },
     "Token" : {
       "localizations" : {
         "de" : {
@@ -546,6 +633,9 @@
           }
         }
       }
+    },
+    "Unarchive %@" : {
+
     },
     "Unauthorized" : {
       "localizations" : {
@@ -576,6 +666,9 @@
           }
         }
       }
+    },
+    "Unsupported type" : {
+
     },
     "Upcoming Birthdays" : {
       "localizations" : {
@@ -626,6 +719,9 @@
           }
         }
       }
+    },
+    "Yes" : {
+
     },
     "You don't have any activities" : {
       "localizations" : {

@@ -20,7 +20,8 @@ extension Relationship {
         birthday: "1987-05-20",
         contactId: 1,
         relatedContactId: 2,
-        relatedContact: Contact.mock
+        relatedContact: Contact.mock,
+        sourceContact: nil
     )
     
     nonisolated static let mock2 = Relationship(
@@ -34,7 +35,8 @@ extension Relationship {
         birthday: nil,
         contactId: 2,
         relatedContactId: 3,
-        relatedContact: Contact.mock2
+        relatedContact: Contact.mock2,
+        sourceContact: nil
     )
     
     nonisolated static let mock3 = Relationship(
@@ -48,6 +50,7 @@ extension Relationship {
         birthday: "2015-11-10",
         contactId: 3,
         relatedContactId: 1,
-        relatedContact: Contact.mock3
+        relatedContact: Contact.mock3,
+        sourceContact: nil
     )
 }

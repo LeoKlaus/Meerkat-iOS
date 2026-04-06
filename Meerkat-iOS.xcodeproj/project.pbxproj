@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4ABFB9CD2F82C66600237307 /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 4ABFB9CC2F82C66600237307 /* Flow */; };
 		4AE064A02F792A89008E3CAB /* MeerkatAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4AE0649F2F792A89008E3CAB /* MeerkatAPI */; };
 		4AE064A92F794F18008E3CAB /* EasyErrorHandling in Frameworks */ = {isa = PBXBuildFile; productRef = 4AE064A82F794F18008E3CAB /* EasyErrorHandling */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 			files = (
 				4AE064A92F794F18008E3CAB /* EasyErrorHandling in Frameworks */,
 				4AE064A02F792A89008E3CAB /* MeerkatAPI in Frameworks */,
+				4ABFB9CD2F82C66600237307 /* Flow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +68,7 @@
 			packageProductDependencies = (
 				4AE0649F2F792A89008E3CAB /* MeerkatAPI */,
 				4AE064A82F794F18008E3CAB /* EasyErrorHandling */,
+				4ABFB9CC2F82C66600237307 /* Flow */,
 			);
 			productName = "Meerkat-iOS";
 			productReference = 4A321CA82F7B0841006D5EC0 /* Meerkat-iOS.app */;
@@ -99,6 +102,7 @@
 			packageReferences = (
 				4AE0649E2F792A89008E3CAB /* XCLocalSwiftPackageReference "../MeerkatAPI" */,
 				4AE064A72F794F18008E3CAB /* XCLocalSwiftPackageReference "../EasyErrorHandling" */,
+				4ABFB9CB2F82C66600237307 /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4AE064872F792457008E3CAB;
@@ -296,6 +300,7 @@
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -353,6 +358,7 @@
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -397,7 +403,23 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		4ABFB9CB2F82C66600237307 /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tevelee/SwiftUI-Flow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		4ABFB9CC2F82C66600237307 /* Flow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4ABFB9CB2F82C66600237307 /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */;
+			productName = Flow;
+		};
 		4AE0649F2F792A89008E3CAB /* MeerkatAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MeerkatAPI;

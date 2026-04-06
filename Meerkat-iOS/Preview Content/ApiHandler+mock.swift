@@ -36,6 +36,8 @@ class MockApiHandler: ApiHandler {
             return User.mock as! T
         case .contacts:
             return PaginatedResponse<Contact>.getContactsMock() as! T
+        case .randomContacts:
+            return PaginatedResponse<Contact>.getContactsMock() as! T
         case .contact(let id):
             switch id {
             case 1:
@@ -47,14 +49,20 @@ class MockApiHandler: ApiHandler {
             default:
                 throw ApiError.notFound
             }
-        case .unassignedNotes:
+        case .unassignedNotes, .contactNotes(_):
             return PaginatedResponse<Note>.getNotesMock() as! T
         case .activities:
             return PaginatedResponse<Activity>.getActivitiesMock() as! T
         case .birthdays:
             return PaginatedResponse<Birthday>.getBirthdaysMock() as! T
-        case .upcomingReminders:
+        case .upcomingReminders, .contactReminders(_):
             return PaginatedResponse<Reminder>.getRemindersMock() as! T
+        case .completedReminders(_):
+            return PaginatedResponse<ReminderCompletion>.getReminderCompletionsMock() as! T
+        case .relationships(_), .incomingRelationships(_):
+            return PaginatedResponse<Relationship>.getRelationshipsMock() as! T
+        case .contactActivities(_):
+            return PaginatedResponse<Activity>.getActivitiesMock() as! T
         default:
             throw ApiError.forbidden
         }

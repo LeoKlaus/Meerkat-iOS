@@ -106,4 +106,18 @@ extension PaginatedResponse {
             totalPages: 1
         )
     }
+    
+    nonisolated static func getReminderCompletionsMock() -> PaginatedResponse<ReminderCompletion> {
+        return PaginatedResponse<ReminderCompletion>(
+            results: [
+                .mock,
+                .mock2,
+                .mock3
+            ],
+            limit: 10,
+            page: 1,
+            total: 3,
+            totalPages: 1
+        )
+    }
 }

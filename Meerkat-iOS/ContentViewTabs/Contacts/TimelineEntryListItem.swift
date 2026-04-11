@@ -35,7 +35,7 @@ struct TimelineEntryListItem: View {
                         .foregroundStyle(.secondary)
                 }
                 if let contacts = activity.contacts, !contacts.isEmpty {
-                    Label(contacts.map(\.fullName).joined(separator: ","), systemImage: "person.2")
+                    Label(contacts.map(\.firstAndLastName).joined(separator: ","), systemImage: "person.2")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }

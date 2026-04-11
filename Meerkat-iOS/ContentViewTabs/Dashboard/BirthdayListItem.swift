@@ -42,7 +42,7 @@ struct BirthdayListItem: View {
             }
             .throwingTask(taskDescription: "loading associated contact for birthday \(birthday.name)") {
                 if let contactId = birthday.contactId {
-                    let contact = try await self.connectionHandler.apiHandler.getContact(id: contactId)
+                    let contact = try await self.connectionHandler.getContact(id: contactId)
                     withAnimation {
                         self.associatedContact = contact
                     }

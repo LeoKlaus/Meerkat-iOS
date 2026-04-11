@@ -28,7 +28,7 @@ struct NoteList: View {
         .shimmerEffect()
         .redacted(reason: .placeholder)
         .throwingTask(id: self.page, taskDescription: "loading notes") {
-            try await self.connectionHandler.getNotes(limit: 50, page: self.page)
+            try await self.connectionHandler.getUnassignedNotes(limit: 50, page: self.page)
             self.page += 1
         }
     }
@@ -61,7 +61,7 @@ struct NoteList: View {
                         }
                     }
                     .throwingRefreshable(taskDescription: "reloading notes") {
-                        try await self.connectionHandler.getNotes()
+                        try await self.connectionHandler.getUnassignedNotes()
                         self.page = 1
                     }
                 }

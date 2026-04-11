@@ -40,6 +40,10 @@ struct ContactDetailView: View {
     
     @State private var showArchivalConfirmation: Bool = false
     
+    @State private var reminderToAdd: Reminder? = nil
+    
+    @State private var isEditing: Bool = false
+    
     var contactHeader: some View {
         Group {
             if self.contact.archived {
@@ -56,7 +60,7 @@ struct ContactDetailView: View {
                     .frame(maxWidth: 75)
                 
                 VStack(alignment: .leading) {
-                    Text(contact.fullName)
+                    Text(contact.displayName)
                         .font(.title)
                     if let gender = contact.gender {
                         Text(gender.localizedRepresentation)
@@ -128,127 +132,202 @@ struct ContactDetailView: View {
     }
     
     var body: some View {
-        List {
-            Section {
-                VStack(alignment: .leading) {
-                    self.contactHeader
-                    
-                    self.messengerList
-                    
-                    Picker("About", selection: self.$currentTab) {
-                        Label("About", systemImage: "house")
-                            .tag(ContactDetailViewTab.about)
-                            .labelStyle(.iconOnly)
-                        
-                        Label("Relationships", systemImage: "point.3.connected.trianglepath.dotted")
-                            .tag(ContactDetailViewTab.relationships)
-                            .labelStyle(.iconOnly)
-                        
-                        Label("Timeline", systemImage: "calendar.day.timeline.left")
-                            .tag(ContactDetailViewTab.timeline)
-                            .labelStyle(.iconOnly)
-                        
-                        Label("Reminders", systemImage: "bell")
-                            .tag(ContactDetailViewTab.reminders)
-                            .labelStyle(.iconOnly)
+        Group {
+            if self.isEditing {
+                EditContactView(contact: self.contact) {
+                    withAnimation {
+                        self.isEditing = false
                     }
-                    .padding(.top)
-                    .pickerStyle(.segmented)
-                }
-                
-            }
-            
-            switch self.currentTab {
-            case .about:
-                ContactDetailAboutSection(contact: self.contact)
-            case .relationships:
-                Section("Relationships") {
-                    ForEach(self.outgoingRelationships) { relationship in
-                        RelationShipListItem(relationShip: relationship)
+                    
+                    let updatedContact = try await self.connectionHandler.getContact(id: self.contact.id)
+                    
+                    withAnimation {
+                        self.contact = updatedContact
                     }
                 }
-                
-                if !self.incomingRelationships.isEmpty {
-                    Section("Incoming Relationships") {
-                        ForEach(self.incomingRelationships) { relationship in
-                            RelationShipListItem(relationShip: relationship, isIncoming: true)
+            } else {
+                List {
+                    Section {
+                        VStack(alignment: .leading) {
+                            self.contactHeader
+                            
+                            self.messengerList
+                            
+                            Picker("About", selection: self.$currentTab) {
+                                Label("About", systemImage: "house")
+                                    .tag(ContactDetailViewTab.about)
+                                    .labelStyle(.iconOnly)
+                                
+                                Label("Relationships", systemImage: "point.3.connected.trianglepath.dotted")
+                                    .tag(ContactDetailViewTab.relationships)
+                                    .labelStyle(.iconOnly)
+                                
+                                Label("Timeline", systemImage: "calendar.day.timeline.left")
+                                    .tag(ContactDetailViewTab.timeline)
+                                    .labelStyle(.iconOnly)
+                                
+                                Label("Reminders", systemImage: "bell")
+                                    .tag(ContactDetailViewTab.reminders)
+                                    .labelStyle(.iconOnly)
+                            }
+                            .padding(.top)
+                            .pickerStyle(.segmented)
                         }
+                        
                     }
-                }
-            case .reminders:
-                Section("Reminders") {
-                    ForEach(self.reminders) { reminder in
-                        ReminderListItem(reminder: reminder)
-                    }
-                }
-            case .timeline:
-                Section("Timeline") {
-                    ForEach(self.timelineEntries.sorted(by: {$0.time ?? .distantPast > $1.time ?? .distantPast}), id: \.uuid) { timelineEntry in
-                        TimelineEntryListItem(entry: timelineEntry)
+                    
+                    switch self.currentTab {
+                    case .about:
+                        ContactDetailAboutSection(contact: self.contact)
+                    case .relationships:
+                        Section("Relationships") {
+                            ForEach(self.outgoingRelationships) { relationship in
+                                RelationShipListItem(relationShip: relationship)
+                            }
+                        }
+                        
+                        if !self.incomingRelationships.isEmpty {
+                            Section("Incoming Relationships") {
+                                ForEach(self.incomingRelationships) { relationship in
+                                    RelationShipListItem(relationShip: relationship, isIncoming: true)
+                                }
+                            }
+                        }
+                    case .reminders:
+                        Section("Reminders") {
+                            ForEach(self.reminders) { reminder in
+                                ReminderListItem(reminder: reminder, refreshParent: self.loadDetails)
+                            }
+                        }
+                        Button("Add reminder", systemImage: "plus") {
+                            self.reminderToAdd = .empty
+                        }
+                    case .timeline:
+                        Section("Timeline") {
+                            ForEach(self.timelineEntries.sorted(by: {$0.time ?? .distantPast > $1.time ?? .distantPast}), id: \.uuid) { timelineEntry in
+                                TimelineEntryListItem(entry: timelineEntry)
+                            }
+                        }
                     }
                 }
             }
         }
-        .throwingTask(taskDescription: "loading relationships for \(contact.firstname)", self.loadDetails)
+        .sheet(item: self.$reminderToAdd, onDismiss: self.loadDetailsWrapped) { reminder in
+            EditReminderView(contactId: self.contact.id, reminder: reminder, isNewReminder: true)
+        }
+        .throwingTask(taskDescription: "loading details for \(contact.firstname)", self.loadDetails)
+        .throwingRefreshable(taskDescription: "reloading details for \(contact.firstname)", self.loadDetails)
         .toolbar {
-            
-            ToolbarItemGroup(placement: .confirmationAction) {
-                Button("Stay in touch", systemImage: "repeat") {
-                    // TODO: Implement this
-                }
-                
-                if self.contact.archived {
-                    Button("Unarchive \(self.contact.firstname)", systemImage: "tray.and.arrow.up", role: .destructive) {
-                        self.unArchiveContact()
+            if !self.isEditing {
+                ToolbarItemGroup(placement: .confirmationAction) {
+                    Button("Stay in touch", systemImage: "repeat") {
+                        let stayInTouchSuggestion = Reminder(
+                            id: 0,
+                            createdAt: .now,
+                            message: String(localized: "Catch-up with \(self.contact.firstAndLastName)"),
+                            byMail: true,
+                            remindAt: Calendar.current.date(byAdding: .month, value: 3, to: Date()) ?? .now,
+                            recurrence: .quarterly,
+                            reoccurFromCompletion: true,
+                            completed: false,
+                            emailSent: false,
+                            contactId: self.contact.id
+                        )
+                        self.reminderToAdd = stayInTouchSuggestion
                     }
-                } else {
-                    Button("Archive \(self.contact.firstname)", systemImage: "tray.and.arrow.down", role: .destructive) {
-                        self.showArchivalConfirmation = true
-                    }
-                    .tint(.orange)
-                    .confirmationDialog("Archive \(self.contact.firstname)?", isPresented: self.$showArchivalConfirmation) {
-                        Button("Yes", role: .destructive) {
-                            self.archiveContact()
+                    
+                    if self.contact.archived {
+                        Button("Unarchive \(self.contact.firstname)", systemImage: "tray.and.arrow.up", role: .destructive) {
+                            self.unArchiveContact()
                         }
-                        Button("Cancel", role: .cancel) {
-                            self.showArchivalConfirmation = false
+                    } else {
+                        Button("Archive \(self.contact.firstname)", systemImage: "tray.and.arrow.down", role: .destructive) {
+                            self.showArchivalConfirmation = true
                         }
-                    } message: {
-                        Text("Are you sure you want to archive this contact? All reminders will be deleted. You can unarchive later, but reminders won't be restored.")
+                        .tint(.orange)
+                        .confirmationDialog("Archive \(self.contact.firstname)?", isPresented: self.$showArchivalConfirmation) {
+                            Button("Yes", role: .destructive) {
+                                self.archiveContact()
+                            }
+                            Button("Cancel", role: .cancel) {
+                                self.showArchivalConfirmation = false
+                            }
+                        } message: {
+                            Text("Are you sure you want to archive this contact? All reminders will be deleted. You can unarchive later, but reminders won't be restored.")
+                        }
                     }
                 }
             }
             
             ToolbarItem(placement: .confirmationAction) {
-                Button("Edit", systemImage: "pencil") {
-                    self.supportedMessengers = SupportedMessenger.standard
+                /*if self.isEditing {
+                    Button("Done", systemImage: "checkmark") {
+                        Task {
+                            do {
+                                let updated = try await self.connectionHandler.updateContact(self.contact)
+                                
+                                withAnimation {
+                                    self.contact = updated
+                                    self.isEditing = false
+                                }
+                            } catch {
+                                self.errorHandler.handle(error, while: "updating \(self.contact.firstname)")
+                            }
+                        }
+                    }
+                 } else*/ if !self.isEditing {
+                    Button("Edit", systemImage: "pencil") {
+                        withAnimation {
+                            self.isEditing = true
+                        }
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
         }
     }
     
     func loadDetails() async throws {
-        self.outgoingRelationships = try await self.connectionHandler.apiHandler.getOutgoingRelationships(self.contact)
-        self.incomingRelationships = try await self.connectionHandler.apiHandler.getIncomingRelationships(self.contact)
+        async let outgoingRelationships = try await self.connectionHandler.getOutgoingRelationships(self.contact)
+        async let incomingRelationships = try await self.connectionHandler.getIncomingRelationships(self.contact)
         
-        self.reminders = try await self.connectionHandler.apiHandler.getContactReminders(self.contact)
-        self.completedReminders = try await self.connectionHandler.apiHandler.getCompletedReminders(for: self.contact)
         
-        self.timelineEntries.append(contentsOf: self.completedReminders)
+        async let reminders = try await self.connectionHandler.getContactReminders(self.contact)
+        async let completedReminders = try await self.connectionHandler.getCompletedReminders(for: self.contact)
         
-        self.notes = try await self.connectionHandler.apiHandler.getContactNotes(self.contact)
-        self.timelineEntries.append(contentsOf: self.notes)
         
-        self.activities = try await self.connectionHandler.apiHandler.getContactActivities(self.contact)
+        async let notes = try await self.connectionHandler.getContactNotes(self.contact)
         
-        self.timelineEntries.append(contentsOf: self.activities)
+        async let activities = try await self.connectionHandler.getContactActivities(self.contact)
+        
+        self.outgoingRelationships = try await outgoingRelationships
+        self.incomingRelationships = try await incomingRelationships
+        self.reminders = try await reminders
+        self.completedReminders = try await completedReminders
+        self.notes = try await notes
+        self.activities = try await activities
+        
+        self.timelineEntries = self.notes + self.completedReminders + self.activities
+    }
+    
+    func loadDetailsWrapped() {
+        Task {
+            do {
+                try await self.loadDetails()
+            } catch {
+                self.errorHandler.handle(error, while: "reloading details for \(contact.firstname)")
+            }
+        }
     }
     
     func archiveContact() {
         Task {
             do {
-                self.contact = try await self.connectionHandler.apiHandler.archiveContact(self.contact)
+                let contact = try await self.connectionHandler.archiveContact(self.contact)
+                
+                withAnimation {
+                    self.contact = contact
+                }
             } catch {
                 self.errorHandler.handle(error, while: "archiving contact")
             }
@@ -258,7 +337,11 @@ struct ContactDetailView: View {
     func unArchiveContact() {
         Task {
             do {
-                self.contact = try await self.connectionHandler.apiHandler.unarchiveContact(self.contact)
+                let contact = try await self.connectionHandler.unarchiveContact(self.contact)
+                
+                withAnimation {
+                    self.contact = contact
+                }
             } catch {
                 self.errorHandler.handle(error, while: "archiving contact")
             }

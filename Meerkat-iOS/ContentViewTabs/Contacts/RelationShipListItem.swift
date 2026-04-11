@@ -30,7 +30,7 @@ struct RelationShipListItem: View {
         if let relatedContact {
             NavigationLink(value: relatedContact) {
                 VStack(alignment: .leading) {
-                    Text(relatedContact.fullName)
+                    Text(relatedContact.firstAndLastName)
                         .bold()
                     Text(relationShip.type)
                 }
@@ -47,7 +47,7 @@ struct RelationShipListItem: View {
     
     func loadContact() async throws {
         if self.relatedContact == nil, let contactId = self.isIncoming ? self.relationShip.contactId : self.relationShip.relatedContactId{
-            self.relatedContact = try await self.connectionHandler.apiHandler.getContact(id: contactId)
+            self.relatedContact = try await self.connectionHandler.getContact(id: contactId)
         }
     }
 }

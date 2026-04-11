@@ -31,7 +31,7 @@ extension Reminder {
         createdAt: Date().addingTimeInterval(-172800),
         updatedAt: Date().addingTimeInterval(-10000),
         deletedAt: nil,
-        message: "Buy groceries",
+        message: "Buy groceries\nand snacks",
         byMail: false,
         remindAt: Date().addingTimeInterval(-3600),
         recurrence: .weekly,

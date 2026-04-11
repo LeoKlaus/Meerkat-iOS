@@ -16,6 +16,13 @@ struct ContactList: View {
     
     @State private var page: Int = 1
     
+    @StateObject private var searchText = DebouncedText(delay: .milliseconds(250))
+    
+    @State private var sortBy: Contact.CodingKeys = .id
+    @State private var sortOrder: SortOrder = .reverse
+    @State private var includeArchived: Bool = false
+    @State private var circleFilter: String? = nil
+    
     var placeholder: some View {
         Group {
             ContactListItem(contact: .placeholder)
@@ -28,8 +35,7 @@ struct ContactList: View {
         .shimmerEffect()
         .redacted(reason: .placeholder)
         .throwingTask(id: self.page, taskDescription: "loading contacts") {
-            try await self.connectionHandler.getContacts(limit: 50, page: self.page)
-            self.page += 1
+            try await self.loadContacts()
         }
     }
     
@@ -61,9 +67,14 @@ struct ContactList: View {
                         }
                     }
                     .throwingRefreshable(taskDescription: "reloading contacts") {
-                        try await self.connectionHandler.getContacts()
-                        self.page = 1
+                        try await self.loadContacts(isRefresh: true)
                     }
+                }
+            }
+            .searchable(text: self.$searchText.inputText)
+            .onChange(of: self.searchText.debouncedText) {
+                Task {
+                    try await self.loadContacts(isRefresh: true)
                 }
             }
             .navigationTitle("Contacts")
@@ -71,13 +82,132 @@ struct ContactList: View {
                 ContactDetailView(contact: contact)
             }
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("Add Contact", systemImage: "plus") {
+                ToolbarItem(placement: .navigation) {
+                    Menu {
+                        SortButton(title: "Created", systemImage: "calendar") {
+                            self.sortBy == .id
+                        } action: {
+                            self.sortBy = .id
+                            self.loadContactsWrapped()
+                        }
                         
+                        SortButton(title: "First Name", systemImage: "person.wave.2") {
+                            self.sortBy == .firstname
+                        } action: {
+                            self.sortBy = .firstname
+                            self.loadContactsWrapped()
+                        }
+                        
+                        SortButton(title: "Last Name", systemImage: "person.text.rectangle") {
+                            self.sortBy == .lastname
+                        } action: {
+                            self.sortBy = .lastname
+                            self.loadContactsWrapped()
+                        }
+                        
+                        Divider()
+                        
+                        SortButton(title: "Ascending", systemImage: "arrow.up.to.line") {
+                            self.sortOrder == .forward
+                        } action: {
+                            self.sortOrder = .forward
+                            self.loadContactsWrapped()
+                        }
+                        
+                        SortButton(title: "Descending", systemImage: "arrow.down.to.line") {
+                            self.sortOrder == .reverse
+                        } action: {
+                            self.sortOrder = .reverse
+                            self.loadContactsWrapped()
+                        }
+                        
+                        Divider()
+                        
+                        
+                        Button(
+                            self.includeArchived ? "Exclude Archived": "Include Archived",
+                            systemImage: self.includeArchived ? "archivebox.fill" : "archivebox"
+                        ) {
+                            self.includeArchived.toggle()
+                            self.loadContactsWrapped()
+                        }
+                    } label: {
+                        Label("Sort options", systemImage: "arrow.up.arrow.down")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigation) {
+                    Menu {
+                        Button("All") {
+                            self.circleFilter = nil
+                            self.loadContactsWrapped()
+                        }.disabled(self.circleFilter == nil)
+                        
+                        Divider()
+                        
+                        ForEach(self.connectionHandler.circles, id: \.self) { circle in
+                            Button(circle) {
+                                self.circleFilter = circle
+                                self.loadContactsWrapped()
+                            }.disabled(self.circleFilter == circle)
+                        }
+                    } label: {
+                        Label("Filter by Circles", systemImage: self.circleFilter == nil ? "person.2.badge.gearshape" : "person.2.badge.gearshape.fill")
+                    }
+                }
+                
+                ToolbarItem(placement: .primaryAction) {
+                    NavigationLink(destination: EditContactView() {
+                        try await self.loadContacts(isRefresh: true)
+                    }) {
+                        Label("Add Contact", systemImage: "plus")
                     }
                 }
             }
         }
+    }
+    
+    func loadContactsWrapped() {
+        Task {
+            do {
+                try await self.loadContacts(isRefresh: true)
+            } catch {
+                self.errorHandler.handle(error, while: "refreshing contacts")
+            }
+        }
+    }
+    
+    func loadContacts(isRefresh: Bool = false) async throws {
+        if isRefresh {
+            self.page = 1
+        }
+        
+        try await self.connectionHandler.getCircles()
+        
+        if self.searchText.debouncedText.isEmpty {
+            try await self.connectionHandler.getContacts(limit: 50, page: self.page, sortBy: self.sortBy, sortOrder: self.sortOrder, includeArchived: self.includeArchived, circleFilter: self.circleFilter)
+        } else {
+            try await self.connectionHandler.getContacts(limit: 50, page: self.page, searchText: self.searchText.debouncedText, sortBy: self.sortBy, sortOrder: self.sortOrder, includeArchived: self.includeArchived, circleFilter: self.circleFilter)
+        }
+        
+        if !isRefresh {
+            self.page += 1
+        }
+    }
+}
+
+struct SortButton: View {
+    
+    let title: LocalizedStringKey
+    let systemImage: String
+    let condition: () -> Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: self.action) {
+            Label(self.title, systemImage: self.condition() ? "checkmark" : self.systemImage)
+        }
+        .disabled(self.condition())
     }
 }
 

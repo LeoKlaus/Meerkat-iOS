@@ -34,7 +34,7 @@ struct ContactImage: View {
                     .scaledToFit()
                     .padding()
             }
-            .throwingTask(taskDescription: "loading contact image for \(contact.fullName)", self.getContactImage)
+            .throwingTask(taskDescription: "loading contact image for \(contact.firstAndLastName)", self.getContactImage)
         }
     }
     
@@ -52,6 +52,12 @@ struct ContactImage: View {
 #Preview {
     ContactImage(contact: .mock)
         .frame(width: 50)
+        .withErrorHandling()
+        .environment(ConnectionHandler.mock)
+    
+    
+    ContactImage(contact: .mock3)
+        .frame(width: 150)
         .withErrorHandling()
         .environment(ConnectionHandler.mock)
 }

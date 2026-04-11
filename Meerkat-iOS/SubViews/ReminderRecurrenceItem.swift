@@ -34,6 +34,8 @@ struct ReminderRecurrenceItem: View {
 
 #Preview {
     List {
-        ReminderListItem(reminder: .mock2)
+        ReminderListItem(reminder: .mock2) {
+            
+        }
     }
 }

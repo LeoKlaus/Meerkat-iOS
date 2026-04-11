@@ -82,6 +82,9 @@
         }
       }
     },
+    "Add Birthday" : {
+
+    },
     "Add Contact" : {
       "localizations" : {
         "de" : {
@@ -112,6 +115,21 @@
         }
       }
     },
+    "Add reminder" : {
+
+    },
+    "Add Year" : {
+
+    },
+    "Address" : {
+
+    },
+    "All" : {
+
+    },
+    "April" : {
+
+    },
     "Archive %@" : {
 
     },
@@ -124,7 +142,16 @@
     "Are you sure you want to archive this contact? All reminders will be deleted. You can unarchive later, but reminders won't be restored." : {
 
     },
+    "Ascending" : {
+
+    },
+    "August" : {
+
+    },
     "Cancel" : {
+
+    },
+    "Catch-up with %@" : {
 
     },
     "Configure Messengers" : {
@@ -220,6 +247,9 @@
         }
       }
     },
+    "Created" : {
+
+    },
     "Dashboard" : {
       "localizations" : {
         "de" : {
@@ -229,6 +259,21 @@
           }
         }
       }
+    },
+    "Date" : {
+
+    },
+    "Day" : {
+
+    },
+    "December" : {
+
+    },
+    "Delete" : {
+
+    },
+    "Descending" : {
+
     },
     "Disconnect" : {
       "localizations" : {
@@ -241,6 +286,9 @@
       }
     },
     "Discord" : {
+
+    },
+    "Done" : {
 
     },
     "Edit" : {
@@ -276,6 +324,12 @@
         }
       }
     },
+    "Exclude Archived" : {
+
+    },
+    "February" : {
+
+    },
     "Female" : {
       "localizations" : {
         "de" : {
@@ -287,6 +341,12 @@
       }
     },
     "Field Name:" : {
+
+    },
+    "Filter by Circles" : {
+
+    },
+    "First Name" : {
 
     },
     "Flexible" : {
@@ -319,6 +379,9 @@
         }
       }
     },
+    "Gender" : {
+
+    },
     "German" : {
       "localizations" : {
         "de" : {
@@ -349,7 +412,19 @@
         }
       }
     },
+    "Include Archived" : {
+
+    },
     "Incoming Relationships" : {
+
+    },
+    "January" : {
+
+    },
+    "July" : {
+
+    },
+    "June" : {
 
     },
     "Language (for web only)" : {
@@ -361,6 +436,9 @@
           }
         }
       }
+    },
+    "Last Name" : {
+
     },
     "Link Format:" : {
 
@@ -386,6 +464,21 @@
         }
       }
     },
+    "March" : {
+
+    },
+    "Mark as completed" : {
+
+    },
+    "May" : {
+
+    },
+    "Message" : {
+
+    },
+    "Month" : {
+
+    },
     "Monthly" : {
       "localizations" : {
         "de" : {
@@ -405,6 +498,9 @@
           }
         }
       }
+    },
+    "Nickname" : {
+
     },
     "No matching instance found" : {
       "localizations" : {
@@ -459,6 +555,12 @@
         }
       }
     },
+    "November" : {
+
+    },
+    "October" : {
+
+    },
     "Once" : {
       "localizations" : {
         "de" : {
@@ -488,6 +590,9 @@
           }
         }
       }
+    },
+    "Phone" : {
+
     },
     "Prefer not to say" : {
       "localizations" : {
@@ -539,6 +644,9 @@
         }
       }
     },
+    "Recurrence" : {
+
+    },
     "Register" : {
       "localizations" : {
         "de" : {
@@ -558,6 +666,12 @@
     "Reminders" : {
 
     },
+    "Remove Birthday" : {
+
+    },
+    "Reschedule from completion date" : {
+
+    },
     "Reset Password" : {
       "localizations" : {
         "de" : {
@@ -568,6 +682,12 @@
         }
       }
     },
+    "Save" : {
+
+    },
+    "Send email notification" : {
+
+    },
     "Send reset email" : {
       "localizations" : {
         "de" : {
@@ -577,6 +697,9 @@
           }
         }
       }
+    },
+    "September" : {
+
     },
     "Server" : {
       "localizations" : {
@@ -597,6 +720,9 @@
           }
         }
       }
+    },
+    "Sort options" : {
+
     },
     "Stay in touch" : {
 
@@ -620,6 +746,9 @@
           }
         }
       }
+    },
+    "Take a Photo" : {
+
     },
     "Timeline" : {
 
@@ -690,6 +819,12 @@
         }
       }
     },
+    "Upload from Files" : {
+
+    },
+    "Upload from Photos" : {
+
+    },
     "Username" : {
       "localizations" : {
         "de" : {
@@ -709,6 +844,9 @@
           }
         }
       }
+    },
+    "Year" : {
+
     },
     "Yearly" : {
       "localizations" : {

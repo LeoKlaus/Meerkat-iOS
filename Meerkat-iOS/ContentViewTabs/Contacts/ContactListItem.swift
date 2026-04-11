@@ -19,7 +19,7 @@ struct ContactListItem: View {
                 .clipShape(Circle())
             
             VStack(alignment: .leading) {
-                Text(self.contact.fullName)
+                Text(self.contact.displayName)
                 
                 if let circles = self.contact.circles, !circles.isEmpty {
                     HStack {
@@ -29,6 +29,16 @@ struct ContactListItem: View {
                         }
                     }
                 }
+            }
+            
+            if self.contact.archived {
+                Spacer()
+                Text("Archived")
+                    .font(.caption2)
+                    .foregroundStyle(.white)
+                    .padding(7)
+                    .background(.orange)
+                    .clipShape(.capsule)
             }
         }
     }
@@ -61,6 +71,34 @@ struct ContactListItem: View {
                 circles: nil,
                 customFields: nil,
                 archived: false,
+                photoThumbnail: nil
+            )
+        )
+        .frame(maxHeight: 50)
+        
+        ContactListItem(
+            contact: Contact(
+                id: 4,
+                createdAt: .now,
+                updatedAt: nil,
+                deletedAt: nil,
+                firstname: "Max",
+                lastname: "Archived",
+                nickname: nil,
+                gender: .male,
+                email: nil,
+                phone: nil,
+                birthday: nil,
+                photo: nil,
+                relationships: nil,
+                address: nil,
+                howWeMet: nil,
+                foodPreference: nil,
+                workInformation: nil,
+                contactInformation: nil,
+                circles: nil,
+                customFields: nil,
+                archived: true,
                 photoThumbnail: nil
             )
         )

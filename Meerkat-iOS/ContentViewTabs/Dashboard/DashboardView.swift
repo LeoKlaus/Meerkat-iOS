@@ -47,9 +47,7 @@ struct DashboardView: View {
                 
                 Section("Upcoming Reminders") {
                     ForEach(self.upcomingReminders) { reminder in
-                        NavigationLink(value: reminder) {
-                            ReminderListItem(reminder: reminder)
-                        }
+                        ReminderListItem(reminder: reminder, refreshParent: self.loadDashboard)
                     }
                     
                     if !self.doneLoading && self.upcomingReminders.isEmpty {
@@ -81,16 +79,23 @@ struct DashboardView: View {
             .navigationDestination(for: Contact.self) { contact in
                 ContactDetailView(contact: contact)
             }
-            .navigationDestination(for: Reminder.self) { reminder in
-                ReminderDetailView(reminder: reminder)
-            }
         }
     }
     
     private func loadDashboard() async throws {
-        self.upcomingBirthdays = try await self.connectionHandler.apiHandler.getUpcomingBirthdays()
-        self.upcomingReminders = try await self.connectionHandler.apiHandler.getUpcomingReminders()
-        self.randomContacts = try await self.connectionHandler.apiHandler.getRandomContacts()
+        async let asyncUpcomingBirthdays = try await self.connectionHandler.getUpcomingBirthdays()
+        async let asyncUpcomingReminders = try await self.connectionHandler.getUpcomingReminders()
+        async let asyncRandomContacts = try await self.connectionHandler.getRandomContacts()
+        
+        let upcomingBirthdays = try await asyncUpcomingBirthdays
+        let upcomingReminders = try await asyncUpcomingReminders
+        let randomContacts = try await asyncRandomContacts
+        
+        withAnimation {
+            self.upcomingBirthdays = upcomingBirthdays
+            self.upcomingReminders = upcomingReminders
+            self.randomContacts = randomContacts
+        }
         withAnimation {
             self.doneLoading = true
         }

@@ -11,6 +11,7 @@ import EasyErrorHandling
 
 struct EditContactView: View {
     
+    
     @Environment(\.dismiss) var dismiss
     
     @Environment(ConnectionHandler.self) var connectionHandler
@@ -76,29 +77,27 @@ struct EditContactView: View {
                 }
             }
             
-            Section {
+            EditContactCircleSection(contact: self.$contact)
+            
+            Section("Birthday") {
                 NullableDatePickerWithOptionalYear(dateComponents: self.$contact.birthday)
             }
             
-            Section {
-                NullableTextField("Email", text: self.$contact.email)
-                NullableTextField("Phone", text: self.$contact.phone)
-                MultiLineTextField(
-                    "Address",
-                    text: Binding(
-                        get: {
-                            self.contact.address ?? ""
-                        },
-                        set: { newValue in
-                            if !newValue.isEmpty {
-                                self.contact.address = newValue
-                            } else {
-                                self.contact.address = nil
-                            }
-                        })
-                )
+            EditContactMessengerSection(contact: self.$contact)
+            
+            Section("Additional Information") {
+                NullableTextField("Work Information", text: self.$contact.workInformation)
+                
+                NullableTextField("Food Preferences", text: self.$contact.foodPreference)
+                
+                NullableTextField("How We Met", text: self.$contact.howWeMet)
+                
+                NullableTextField("Additional Information", text: self.$contact.contactInformation)
             }
+            
+            EditContactCustomFieldsSection(contact: self.$contact)
         }
+        .throwingTask(taskDescription: "loading custom fields", self.connectionHandler.getCustomFields)
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save", systemImage: "checkmark") {
@@ -114,6 +113,7 @@ struct EditContactView: View {
                             if self.isNewContact {
                                 self.dismiss()
                             }
+                            self.errorHandler.showInfo("Contact saved!")
                         } catch {
                             self.errorHandler.handle(error, while: "updating contact")
                         }

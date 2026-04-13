@@ -83,6 +83,7 @@ struct NullableDatePickerWithOptionalYear: View {
                         Text(day, format: .number).tag(day)
                     }
                 }
+                .tint(.primary)
                 .fixedSize(horizontal: true, vertical: false)
                 .labelsHidden()
                 
@@ -91,6 +92,7 @@ struct NullableDatePickerWithOptionalYear: View {
                         Text(month.localizedName).tag(month.rawValue)
                     }
                 }
+                .tint(.primary)
                 .fixedSize(horizontal: true, vertical: false)
                 .labelsHidden()
                 
@@ -100,6 +102,7 @@ struct NullableDatePickerWithOptionalYear: View {
                             Text(String(year)).tag(year)
                         }
                     }
+                    .tint(.primary)
                     .fixedSize(horizontal: true, vertical: false)
                     .labelsHidden()
                 } else {
@@ -118,7 +121,7 @@ struct NullableDatePickerWithOptionalYear: View {
                         .labelStyle(.iconOnly)
                 }
                 .buttonStyle(.plain)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.tertiary)
             } else {
                 Button("Add Birthday") {
                     self.dateComponents = DateComponents(calendar: .current, year: nil, month: 1, day: 1)

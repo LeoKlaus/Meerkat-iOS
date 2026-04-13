@@ -69,11 +69,14 @@ extension SupportedMessenger {
 struct MessengerLink: Identifiable {
     let id = UUID()
     let messenger: SupportedMessenger
-    let url: URL?
+    var userId: String
+    var url: URL? {
+        self.messenger.generateLink(for: userId)
+    }
     
     init(messenger: SupportedMessenger, userId: String) {
         self.messenger = messenger
-        self.url = messenger.generateLink(for: userId)
+        self.userId = userId
     }
 }
 

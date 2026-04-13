@@ -46,9 +46,9 @@ struct ContactList: View {
                     ContentUnavailableView {
                         Label("You don't have any contacts", systemImage: "person.circle.fill")
                     } actions: {
-                        Button {
-                            
-                        } label: {
+                        NavigationLink(destination: EditContactView() {
+                            try await self.loadContacts(isRefresh: true)
+                        }) {
                             Label("Create a Contact", systemImage: "plus")
                         }
                         .glassProminentButtonStyleIfAvailable()
@@ -76,6 +76,9 @@ struct ContactList: View {
                 Task {
                     try await self.loadContacts(isRefresh: true)
                 }
+            }
+            .onChange(of: self.connectionHandler.currentInstance.id) {
+                self.page = 1
             }
             .navigationTitle("Contacts")
             .navigationDestination(for: Contact.self) { contact in

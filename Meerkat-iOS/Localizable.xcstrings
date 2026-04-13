@@ -105,6 +105,12 @@
         }
       }
     },
+    "Add Messenger" : {
+
+    },
+    "Add new..." : {
+
+    },
     "Add Note" : {
       "localizations" : {
         "de" : {
@@ -119,6 +125,9 @@
 
     },
     "Add Year" : {
+
+    },
+    "Additional Information" : {
 
     },
     "Address" : {
@@ -148,10 +157,22 @@
     "August" : {
 
     },
+    "Birthday" : {
+
+    },
+    "Call %@" : {
+
+    },
     "Cancel" : {
 
     },
     "Catch-up with %@" : {
+
+    },
+    "Circle Name" : {
+
+    },
+    "Circles" : {
 
     },
     "Configure Messengers" : {
@@ -176,6 +197,12 @@
           }
         }
       }
+    },
+    "Contact %@" : {
+
+    },
+    "Contact Information" : {
+
     },
     "Contacts" : {
       "localizations" : {
@@ -217,6 +244,9 @@
         }
       }
     },
+    "Create a Circle" : {
+
+    },
     "Create a Contact" : {
       "localizations" : {
         "de" : {
@@ -226,6 +256,9 @@
           }
         }
       }
+    },
+    "Create a Custom Field" : {
+
     },
     "Create a Note" : {
       "localizations" : {
@@ -247,7 +280,16 @@
         }
       }
     },
+    "Create Circle" : {
+
+    },
+    "Create Custom Field" : {
+
+    },
     "Created" : {
+
+    },
+    "Custom Fields" : {
 
     },
     "Dashboard" : {
@@ -292,6 +334,9 @@
 
     },
     "Edit" : {
+
+    },
+    "Edit ID for %@" : {
 
     },
     "Email" : {
@@ -340,6 +385,9 @@
         }
       }
     },
+    "Field Name" : {
+
+    },
     "Field Name:" : {
 
     },
@@ -358,6 +406,9 @@
           }
         }
       }
+    },
+    "Food Preferences" : {
+
     },
     "Forbidden" : {
       "localizations" : {
@@ -391,6 +442,9 @@
           }
         }
       }
+    },
+    "How We Met" : {
+
     },
     "http://" : {
       "localizations" : {
@@ -476,6 +530,9 @@
     "Message" : {
 
     },
+    "Message %@" : {
+
+    },
     "Month" : {
 
     },
@@ -489,6 +546,12 @@
         }
       }
     },
+    "New Activity" : {
+
+    },
+    "New Note" : {
+
+    },
     "New Password" : {
       "localizations" : {
         "de" : {
@@ -500,6 +563,9 @@
       }
     },
     "Nickname" : {
+
+    },
+    "No Circles" : {
 
     },
     "No matching instance found" : {
@@ -559,6 +625,9 @@
 
     },
     "October" : {
+
+    },
+    "OK" : {
 
     },
     "Once" : {
@@ -666,6 +735,9 @@
     "Reminders" : {
 
     },
+    "Remove %@" : {
+
+    },
     "Remove Birthday" : {
 
     },
@@ -720,6 +792,9 @@
           }
         }
       }
+    },
+    "Skip" : {
+
     },
     "Sort options" : {
 
@@ -825,6 +900,18 @@
     "Upload from Photos" : {
 
     },
+    "Use Mail Address" : {
+
+    },
+    "Use Phone Number" : {
+
+    },
+    "User ID" : {
+
+    },
+    "User ID for %@" : {
+
+    },
     "Username" : {
       "localizations" : {
         "de" : {
@@ -835,6 +922,9 @@
         }
       }
     },
+    "View %@" : {
+
+    },
     "Weekly" : {
       "localizations" : {
         "de" : {
@@ -844,6 +934,9 @@
           }
         }
       }
+    },
+    "Work Information" : {
+
     },
     "Year" : {
 

@@ -151,33 +151,144 @@ struct ContactDetailView: View {
                         VStack(alignment: .leading) {
                             self.contactHeader
                             
-                            self.messengerList
-                            
-                            Picker("About", selection: self.$currentTab) {
-                                Label("About", systemImage: "house")
-                                    .tag(ContactDetailViewTab.about)
-                                    .labelStyle(.iconOnly)
-                                
-                                Label("Relationships", systemImage: "point.3.connected.trianglepath.dotted")
-                                    .tag(ContactDetailViewTab.relationships)
-                                    .labelStyle(.iconOnly)
-                                
-                                Label("Timeline", systemImage: "calendar.day.timeline.left")
-                                    .tag(ContactDetailViewTab.timeline)
-                                    .labelStyle(.iconOnly)
-                                
-                                Label("Reminders", systemImage: "bell")
-                                    .tag(ContactDetailViewTab.reminders)
-                                    .labelStyle(.iconOnly)
-                            }
-                            .padding(.top)
-                            .pickerStyle(.segmented)
+                            //self.messengerList
                         }
-                        
                     }
+                    
+                    Section {
+                        HStack {
+                            Button {
+                                
+                            } label: {
+                                Label("Add Activity", systemImage: "calendar")
+                                    .lineLimit(1)
+                                    .foregroundStyle(.white)
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .glassProminentButtonStyleIfAvailable()
+                            
+                            Button {
+                                
+                            } label: {
+                                Label("Add Note", systemImage: "note.text")
+                                    .lineLimit(1)
+                                    .foregroundStyle(.white)
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .glassProminentButtonStyleIfAvailable()
+                        }
+                    }
+                    .listRowBackground(
+                        EmptyView()
+                    )
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    
+                    Picker("About", selection: self.$currentTab) {
+                        Label("About", systemImage: "house")
+                            .tag(ContactDetailViewTab.about)
+                            .labelStyle(.iconOnly)
+                        
+                        Label("Relationships", systemImage: "point.3.connected.trianglepath.dotted")
+                            .tag(ContactDetailViewTab.relationships)
+                            .labelStyle(.iconOnly)
+                        
+                        Label("Timeline", systemImage: "calendar.day.timeline.left")
+                            .tag(ContactDetailViewTab.timeline)
+                            .labelStyle(.iconOnly)
+                        
+                        Label("Reminders", systemImage: "bell")
+                            .tag(ContactDetailViewTab.reminders)
+                            .labelStyle(.iconOnly)
+                    }
+                    .pickerStyle(.segmented)
+                    .listRowBackground(
+                        EmptyView()
+                    )
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     
                     switch self.currentTab {
                     case .about:
+                        
+                        Section("Contact \(self.contact.firstname)") {
+                            if let phone = contact.phone, !phone.isEmpty {
+                                Menu {
+                                    if let url = URL(string: "tel:\(phone)") {
+                                        Link(destination: url) {
+                                            Label("Call \(self.contact.firstname)", systemImage: "phone")
+                                        }
+                                        .buttonStyle(.plain)
+                                    }
+                                    
+                                    if let url = URL(string: "sms:\(phone)") {
+                                        Link(destination: url) {
+                                            Label("Message \(self.contact.firstname)", systemImage: "message")
+                                        }
+                                        .buttonStyle(.plain)
+                                    }
+                                } label: {
+                                    Label(phone, systemImage: "phone")
+                                }
+                                .buttonStyle(.plain)
+                            }
+                            
+                            if let email = contact.email, !email.isEmpty {
+                                if let url = URL(string: "mailto:\(email)") {
+                                    Link(destination: url) {
+                                        Label(email, systemImage: "envelope")
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+                            
+                            ForEach(self.contact.getMatchingMessengers(self.supportedMessengers)) { messengerLink in
+                                
+                                if let url = messengerLink.url {
+                                    Link(destination: url) {
+                                        Label {
+                                            Text(messengerLink.userId)
+                                        } icon: {
+                                            /*Group {
+                                             if let imageData = messengerLink.messenger.imageData, let img = Image(data: imageData) {
+                                             img
+                                             .resizable()
+                                             .scaledToFit()
+                                             } else {
+                                             Image(systemName: "bubble")
+                                             .resizable()
+                                             .scaledToFit()
+                                             }
+                                             }
+                                             .padding(5)
+                                             .background {
+                                             Circle()
+                                             .fill(messengerLink.messenger.color ?? .accent)
+                                             .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                             }*/
+                                            ZStack {
+                                                Circle()
+                                                    .fill(messengerLink.messenger.color ?? .accent)
+                                                
+                                                if let imageData = messengerLink.messenger.imageData, let img = Image(data: imageData) {
+                                                    img
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .padding(5)
+                                                } else {
+                                                    Image(systemName: "bubble")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .foregroundStyle(.white)
+                                                        .padding(5)
+                                                }
+                                                
+                                            }
+                                        }
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+                        }
+                        
                         ContactDetailAboutSection(contact: self.contact)
                     case .relationships:
                         Section("Relationships") {
@@ -210,6 +321,7 @@ struct ContactDetailView: View {
                         }
                     }
                 }
+                .listSectionSpacing(5)
             }
         }
         .sheet(item: self.$reminderToAdd, onDismiss: self.loadDetailsWrapped) { reminder in
@@ -219,7 +331,10 @@ struct ContactDetailView: View {
         .throwingRefreshable(taskDescription: "reloading details for \(contact.firstname)", self.loadDetails)
         .toolbar {
             if !self.isEditing {
-                ToolbarItemGroup(placement: .confirmationAction) {
+                ToolbarItemGroup(placement: .secondaryAction) {
+                    Button("Add Note", systemImage: "note.text") { }
+                    Button("Add Activity", systemImage: "calendar") { }
+                    
                     Button("Stay in touch", systemImage: "repeat") {
                         let stayInTouchSuggestion = Reminder(
                             id: 0,
@@ -241,7 +356,7 @@ struct ContactDetailView: View {
                             self.unArchiveContact()
                         }
                     } else {
-                        Button("Archive \(self.contact.firstname)", systemImage: "tray.and.arrow.down", role: .destructive) {
+                        Button("Archive \(self.contact.firstname)", systemImage: "tray.and.arrow.down") {
                             self.showArchivalConfirmation = true
                         }
                         .tint(.orange)
@@ -261,28 +376,28 @@ struct ContactDetailView: View {
             
             ToolbarItem(placement: .confirmationAction) {
                 /*if self.isEditing {
-                    Button("Done", systemImage: "checkmark") {
-                        Task {
-                            do {
-                                let updated = try await self.connectionHandler.updateContact(self.contact)
-                                
-                                withAnimation {
-                                    self.contact = updated
-                                    self.isEditing = false
-                                }
-                            } catch {
-                                self.errorHandler.handle(error, while: "updating \(self.contact.firstname)")
-                            }
-                        }
-                    }
+                 Button("Done", systemImage: "checkmark") {
+                 Task {
+                 do {
+                 let updated = try await self.connectionHandler.updateContact(self.contact)
+                 
+                 withAnimation {
+                 self.contact = updated
+                 self.isEditing = false
+                 }
+                 } catch {
+                 self.errorHandler.handle(error, while: "updating \(self.contact.firstname)")
+                 }
+                 }
+                 }
                  } else*/ if !self.isEditing {
-                    Button("Edit", systemImage: "pencil") {
-                        withAnimation {
-                            self.isEditing = true
-                        }
-                    }
-                    .buttonStyle(.plain)
-                }
+                     Button("Edit", systemImage: "pencil") {
+                         withAnimation {
+                             self.isEditing = true
+                         }
+                     }
+                     .buttonStyle(.plain)
+                 }
             }
         }
     }

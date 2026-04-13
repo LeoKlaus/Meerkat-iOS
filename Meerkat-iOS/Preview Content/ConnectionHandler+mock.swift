@@ -69,22 +69,20 @@ class MockConnectionHandler: ConnectionHandler {
         throw ApiError.forbidden
     }
     
-    override func getCustomFields() async throws -> CustomFields {
+    override func getCustomFields() async throws {
         try await self.delayResponse()
-        return CustomFields(
-            customFieldNames: [
-                "Favorite Color",
-                "Interests",
-                "Discord-ID",
-                "Signal-ID",
-                "WhatsApp-ID"
-            ]
-        )
+        self.customFields = [
+            "Favorite Color",
+            "Interests",
+            "Discord-ID",
+            "Signal-ID",
+            "WhatsApp-ID"
+        ]
     }
     
-    override func updateCustomFields(_ newFields: CustomFields) async throws -> CustomFields {
+    override func updateCustomFields(_ newFields: CustomFields) async throws {
         try await self.delayResponse()
-        return newFields
+        self.customFields = newFields.customFieldNames
     }
     
     override func getContacts(limit: Int = 50, page: Int = 1, searchText: String? = nil, sortBy: Contact.CodingKeys = .id, sortOrder: SortOrder, includeArchived: Bool = false, circleFilter: String? = nil) async throws {
@@ -399,7 +397,7 @@ class MockConnectionHandler: ConnectionHandler {
         try await self.delayResponse()
     }
     
-    override func completeReminder(_ reminder: Reminder) async throws {
+    override func completeReminder(_ reminder: Reminder, skip: Bool = false) async throws {
         try await self.delayResponse()
     }
     

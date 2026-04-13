@@ -18,7 +18,7 @@ struct ContactListItem: View {
             ContactImage(contact: self.contact)
                 .clipShape(Circle())
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 6) {
                 Text(self.contact.displayName)
                 
                 if let circles = self.contact.circles, !circles.isEmpty {

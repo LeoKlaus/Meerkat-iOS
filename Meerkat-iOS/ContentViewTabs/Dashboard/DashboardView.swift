@@ -52,9 +52,9 @@ struct DashboardView: View {
                     
                     if !self.doneLoading && self.upcomingReminders.isEmpty {
                         Group {
-                            ReminderListItem(reminder: .mock)
-                            ReminderListItem(reminder: .mock2)
-                            ReminderListItem(reminder: .mock3)
+                            ReminderListItem(reminder: .mock, isPlaceholder: true)
+                            ReminderListItem(reminder: .mock2, isPlaceholder: true)
+                            ReminderListItem(reminder: .mock3, isPlaceholder: true)
                         }
                         .redacted(reason: .placeholder)
                         .shimmerEffect()
@@ -70,6 +70,21 @@ struct DashboardView: View {
                             PartialContactListItem(contact: contact)
                                 .frame(maxHeight: 40)
                         }
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Menu {
+                        Button("New Activity", systemImage: "calendar.badge.plus") {
+                            
+                        }
+                        
+                        Button("New Note", systemImage: "text.badge.plus") {
+                            
+                        }
+                    } label: {
+                        Label("Add new...", systemImage: "plus")
                     }
                 }
             }

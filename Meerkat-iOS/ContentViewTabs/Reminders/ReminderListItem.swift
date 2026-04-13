@@ -15,6 +15,9 @@ struct ReminderListItem: View {
     @EnvironmentObject var errorHandler: ErrorHandler
     
     @State var reminder: Reminder
+    @State private var associatedContact: Contact?
+    
+    var isPlaceholder: Bool = false
     
     @State private var showEditSheet: Bool = false
     
@@ -23,6 +26,14 @@ struct ReminderListItem: View {
     var body: some View {
         Menu {
             Button("Mark as completed", systemImage: "checkmark", action: self.markCompleted)
+            
+            Button("Skip", systemImage: "arrow.right.to.line", action: self.skip)
+            
+            if let contact = self.associatedContact {
+                NavigationLink(value: contact) {
+                    Label("View \(contact.firstname)",systemImage: "person")
+                }
+            }
             
             Divider()
             
@@ -65,6 +76,17 @@ struct ReminderListItem: View {
         .sheet(isPresented: self.$showEditSheet, onDismiss: self.reloadReminder) {
             EditReminderView(contactId: self.reminder.contactId, reminder: self.reminder)
         }
+        .throwingTask(taskDescription: "loading associated contact for reminder \(self.reminder.message)", self.loadAssociatedContact)
+    }
+    
+    private func loadAssociatedContact() async throws {
+        if self.isPlaceholder {
+            return
+        }
+        let contact = try await self.connectionHandler.getContact(id: self.reminder.contactId)
+        withAnimation {
+            self.associatedContact = contact
+        }
     }
     
     private func reloadReminder() {
@@ -87,6 +109,17 @@ struct ReminderListItem: View {
                 try await self.refreshParent()
             } catch {
                 self.errorHandler.handle(error, while: "marking reminder \(self.reminder.id) as completed")
+            }
+        }
+    }
+    
+    private func skip() {
+        Task {
+            do {
+                try await self.connectionHandler.completeReminder(self.reminder)
+                try await self.refreshParent()
+            } catch {
+                self.errorHandler.handle(error, while: "skipping reminder \(self.reminder.id)")
             }
         }
     }

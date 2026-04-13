@@ -59,5 +59,7 @@ struct ContactDetailAboutSection: View {
 }
 
 #Preview {
-    ContactDetailAboutSection(contact: .mock)
+    List {
+        ContactDetailAboutSection(contact: .mock)
+    }
 }

@@ -24,6 +24,7 @@ class ConnectionHandler {
     var hasRemainingActivities: Bool = true
     
     var circles: [String] = []
+    var customFields: [String] = []
     
     var currentInstance: ConnectedInstance
     
@@ -70,6 +71,7 @@ class ConnectionHandler {
     
     func switchInstance(to newInstance: ConnectedInstance) throws {
         self.apiHandler = ApiHandler(serverURL: newInstance.serverURL, token: try newInstance.getToken())
+        self.currentInstance = newInstance
         
         self.contacts = []
         self.hasRemainingContacts = true
@@ -178,8 +180,8 @@ class ConnectionHandler {
      Get custom field names
      - Returns: CustomFields object containing all custom field names
      */
-    public func getCustomFields() async throws -> CustomFields {
-        return try await self.apiHandler.getCustomFields()
+    public func getCustomFields() async throws {
+        self.customFields = try await self.apiHandler.getCustomFields().customFieldNames
     }
     
     /**
@@ -188,8 +190,8 @@ class ConnectionHandler {
      
      - Returns: CustomFields object containing all custom field names
      */
-    public func updateCustomFields(_ newFields: CustomFields) async throws -> CustomFields {
-        return try await self.apiHandler.updateCustomFields(newFields)
+    public func updateCustomFields(_ newFields: CustomFields) async throws {
+        self.customFields = try await self.apiHandler.updateCustomFields(newFields).customFieldNames
     }
     
     
@@ -210,6 +212,7 @@ class ConnectionHandler {
             self.contacts = []
         }
         
+        
         let contactResponse = try await self.apiHandler.getContacts(limit: limit, page: page, search: searchText, sort: sortBy, order: sortOrder, includeArchived: includeArchived, circleFilter: circleFilter)
         
         self.contacts += contactResponse.results
@@ -226,7 +229,11 @@ class ConnectionHandler {
      - Returns: The newly created contact
      */
     public func createContact(_ newContact: Contact) async throws -> Contact {
-        try await self.apiHandler.createContact(newContact)
+        let createdContact = try await self.apiHandler.createContact(newContact)
+        
+        self.contacts.insert(createdContact, at: 0)
+        
+        return createdContact
     }
     
     /**
@@ -244,7 +251,13 @@ class ConnectionHandler {
      - Returns: The updated contact
      */
     public func updateContact(_ contact: Contact) async throws -> Contact {
-        return try await self.apiHandler.updateContact(contact)
+        let updatedContact = try await self.apiHandler.updateContact(contact)
+        
+        if let index = self.contacts.firstIndex(where: {$0.id == updatedContact.id}) {
+            self.contacts[index] = updatedContact
+        }
+        
+        return updatedContact
     }
     
     /**
@@ -567,8 +580,9 @@ class ConnectionHandler {
     /**
      Mark a reminder complete (creates timeline entry)
      - Parameter reminder: Reminder to mark completed
+     - Parameter skip: Whether to skip the reminder
      */
-    public func completeReminder(_ reminder: Reminder) async throws {
+    public func completeReminder(_ reminder: Reminder, skip: Bool = false) async throws {
         return try await self.apiHandler.completeReminder(reminder)
     }
     

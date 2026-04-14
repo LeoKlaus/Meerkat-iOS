@@ -22,16 +22,16 @@ struct ContentView: View {
                 ContactList()
             }
             
-            Tab("Activities", systemImage: "calendar") {
-                ActivityList()
-            }
-            
             Tab("Notes", systemImage: "list.clipboard") {
                 NoteList()
             }
             
             Tab("Settings", systemImage: "gear") {
                 SettingsView()
+            }
+            
+            Tab("Search", systemImage: "magnifyingglass", role: .search) {
+                ContactList(isSearchContext: true)
             }
         }
         //.id(self.connectionHandler?.currentInstance.id)

@@ -14,6 +14,8 @@ struct ContactList: View {
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(ConnectionHandler.self) var connectionHandler
     
+    var isSearchContext: Bool = false
+    
     @State private var page: Int = 1
     
     @StateObject private var searchText = DebouncedText(delay: .milliseconds(250))
@@ -43,15 +45,20 @@ struct ContactList: View {
         NavigationStack {
             Group {
                 if !self.connectionHandler.hasRemainingContacts && self.connectionHandler.contacts.isEmpty {
-                    ContentUnavailableView {
-                        Label("You don't have any contacts", systemImage: "person.circle.fill")
-                    } actions: {
-                        NavigationLink(destination: EditContactView() {
-                            try await self.loadContacts(isRefresh: true)
-                        }) {
-                            Label("Create a Contact", systemImage: "plus")
+                    if self.isSearchContext {
+                        ContentUnavailableView("No matching contacts found", systemImage: "person.fill.questionmark")
+                        
+                    } else {
+                        ContentUnavailableView {
+                            Label("You don't have any contacts", systemImage: "person.circle.fill")
+                        } actions: {
+                            NavigationLink(destination: EditContactView() {
+                                try await self.loadContacts(isRefresh: true)
+                            }) {
+                                Label("Create a Contact", systemImage: "plus")
+                            }
+                            .glassProminentButtonStyleIfAvailable()
                         }
-                        .glassProminentButtonStyleIfAvailable()
                     }
                 } else {
                     List {
@@ -80,7 +87,7 @@ struct ContactList: View {
             .onChange(of: self.connectionHandler.currentInstance.id) {
                 self.page = 1
             }
-            .navigationTitle("Contacts")
+            .navigationTitle(self.isSearchContext ? "Search" : "Contacts")
             .navigationDestination(for: Contact.self) { contact in
                 ContactDetailView(contact: contact)
             }
@@ -159,11 +166,13 @@ struct ContactList: View {
                     }
                 }
                 
-                ToolbarItem(placement: .primaryAction) {
-                    NavigationLink(destination: EditContactView() {
-                        try await self.loadContacts(isRefresh: true)
-                    }) {
-                        Label("Add Contact", systemImage: "plus")
+                if !self.isSearchContext {
+                    ToolbarItem(placement: .primaryAction) {
+                        NavigationLink(destination: EditContactView() {
+                            try await self.loadContacts(isRefresh: true)
+                        }) {
+                            Label("Add Contact", systemImage: "plus")
+                        }
                     }
                 }
             }

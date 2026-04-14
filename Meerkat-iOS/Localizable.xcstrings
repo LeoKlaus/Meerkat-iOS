@@ -568,6 +568,9 @@
     "No Circles" : {
 
     },
+    "No matching contacts found" : {
+
+    },
     "No matching instance found" : {
       "localizations" : {
         "de" : {
@@ -755,6 +758,9 @@
       }
     },
     "Save" : {
+
+    },
+    "Search" : {
 
     },
     "Send email notification" : {

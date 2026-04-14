@@ -1,4 +1,4 @@
-# Meerkat-iOS (pending change)
+# Meerkat-iOS (name pending change)
 
 Native iOS client app for [Meerkat CRM](https://github.com/fbuchner/meerkat-crm)
 
@@ -16,3 +16,8 @@ You can download the TestFlight beta here https://testflight.apple.com/join/brYG
 
 - [ ] Add widgets
 - [ ] Implement AppIntents for integration with Shortcuts and Siri
+
+
+## Screenshots
+
+![Screenshots of the apps UI](./images/Screenshots-Horizontal.webp)

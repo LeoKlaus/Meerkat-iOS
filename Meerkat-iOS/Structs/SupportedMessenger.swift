@@ -19,17 +19,19 @@ struct SupportedMessenger: Codable, Hashable, Identifiable {
     let color: Color?
     let fieldId: String
     let linkFormat: String
+    let disclaimner: String?
     
     func generateLink(for userId: String) -> URL? {
         URL(string: self.linkFormat.replacingOccurrences(of: "{user_id}", with: userId))
     }
     
-    init(name: String, imageData: Data? = nil, color: Color? = nil, fieldId: String, linkFormat: String) {
+    init(name: String, imageData: Data? = nil, color: Color? = nil, fieldId: String, linkFormat: String, disclaimer: String? = nil) {
         self.name = name
         self.imageData = imageData
         self.color = color
         self.fieldId = fieldId
         self.linkFormat = linkFormat
+        self.disclaimner = disclaimer
     }
 }
 
@@ -46,7 +48,8 @@ extension SupportedMessenger {
         imageData: UIImage(resource: .discord).pngData(),
         color: Color(hex: "#5865F2"),
         fieldId: "Discord-ID",
-        linkFormat: "https://discord.com/users/{user_id}"
+        linkFormat: "https://discord.com/users/{user_id}",
+        disclaimer: "Discord and the “Clyde” Logo are trademarks of Discord. \(Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? "Meerkat-iOS") is not affiliated with Discord in any form. The Discord branding is only used to refer to the Discord app."
     )
     
     static let whatsApp = SupportedMessenger(
@@ -54,7 +57,8 @@ extension SupportedMessenger {
         imageData: UIImage(resource: .whatsApp).pngData(),
         color: Color(hex: "#25d366"),
         fieldId: "WhatsApp-ID",
-        linkFormat: "https://wa.me/{user_id}"
+        linkFormat: "https://wa.me/{user_id}",
+        disclaimer: "WhatsApp is a trademark of Meta. \(Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? "Meerkat-iOS") is not affiliated with WhatsApp or Meta in any form. The WhatsApp branding is only used to refer to the WhatsApp app."
     )
     
     static let signal = SupportedMessenger(
@@ -62,7 +66,8 @@ extension SupportedMessenger {
         imageData: UIImage(resource: .signal).pngData(),
         color: Color(hex: "3b45fd"),
         fieldId: "Signal-ID",
-        linkFormat: "https://signal.me/#p/{user_id}"
+        linkFormat: "https://signal.me/#p/{user_id}",
+        disclaimer: "Signal's Brand Assets are owned by Signal Technology Foundation. \(Bundle.main.infoDictionary?[kCFBundleNameKey as String] as? String ?? "Meerkat-iOS") is not affiliated with Signal in any form. The Signal branding is only used to refer to the Signal app."
     )
 }
 

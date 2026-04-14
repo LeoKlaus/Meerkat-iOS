@@ -46,6 +46,13 @@ struct MessengerSettings: View {
                         Text(messenger.linkFormat)
                             .font(.system(size: 13).monospaced())
                     }
+                    
+                    if let disclaimer = messenger.disclaimner {
+                        Text(disclaimer)
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .padding(.top, 5)
+                    }
                 }
             }
             .onDelete(perform: self.removeMessenger)

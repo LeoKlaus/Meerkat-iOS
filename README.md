@@ -1,4 +1,4 @@
-# Meerkat-iOS (pending change)
+# Meerkat-iOS (name pending change)
 
 Native iOS client app for [Meerkat CRM](https://github.com/fbuchner/meerkat-crm)
 
@@ -20,8 +20,4 @@ You can download the TestFlight beta here https://testflight.apple.com/join/brYG
 
 ## Screenshots
 
-<p>
-    <img src="./images/Dashboard-Framed-Small.webp" >
-    <img src="./images/Contacts-Framed-Small.webp" >
-    <img src="./images/ContactDetail-Framed-Small.webp" >
-</p>
+![Screenshots of the apps UI](./images/Screenshots-Horizontal.webp)

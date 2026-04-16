@@ -42,6 +42,7 @@ struct ContactDetailView: View {
     
     @State private var reminderToAdd: Reminder? = nil
     @State private var showAddNoteView: Bool = false
+    @State private var showAddActivitySheet: Bool = false
     
     @State private var isEditing: Bool = false
     
@@ -82,56 +83,6 @@ struct ContactDetailView: View {
         }
     }
     
-    var messengerList: some View {
-        HFlow {
-            if let phone = contact.phone, !phone.isEmpty {
-                if let url = URL(string: "tel:\(phone)") {
-                    Link(destination: url) {
-                        Image(systemName: "phone")
-                            .frame(width: 30, height: 20)
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-                
-                if let url = URL(string: "sms:\(phone)") {
-                    Link(destination: url) {
-                        Image(systemName: "message")
-                            .frame(maxWidth: 30, maxHeight: 20)
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-            }
-            
-            if let email = contact.email, !email.isEmpty {
-                if let url = URL(string: "mailto:\(email)") {
-                    Link(destination: url) {
-                        Image(systemName: "envelope")
-                            .frame(maxWidth: 30, maxHeight: 20)
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-            }
-            
-            ForEach(self.contact.getMatchingMessengers(self.supportedMessengers)) { messengerLink in
-                
-                if let url = messengerLink.url {
-                    Link(destination: url) {
-                        if let imageData = messengerLink.messenger.imageData, let img = Image(data: imageData) {
-                            img
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxWidth: 30, maxHeight: 20)
-                        } else {
-                            Text(messengerLink.messenger.name)
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(messengerLink.messenger.color)
-                }
-            }
-        }
-    }
-    
     var body: some View {
         Group {
             if self.isEditing {
@@ -151,15 +102,13 @@ struct ContactDetailView: View {
                     Section {
                         VStack(alignment: .leading) {
                             self.contactHeader
-                            
-                            //self.messengerList
                         }
                     }
                     
                     Section {
                         HStack {
                             Button {
-                                
+                                self.showAddActivitySheet = true
                             } label: {
                                 Label("Add Activity", systemImage: "calendar")
                                     .lineLimit(1)
@@ -328,11 +277,22 @@ struct ContactDetailView: View {
         .sheet(item: self.$reminderToAdd, onDismiss: self.loadDetailsWrapped) { reminder in
             EditReminderView(contactId: self.contact.id, reminder: reminder, isNewReminder: true)
         }
-        .sheet(isPresented: self.$showAddNoteView) {
-            EditNoteView(contactId: self.contact.id) {
-                try await self.loadDetails()
+        .sheet(isPresented: self.$showAddActivitySheet, onDismiss: self.loadDetailsWrapped) {
+            NavigationStack {
+                EditActivityView(prefilledContacts: [self.contact])
             }
-            .presentationDetents([.medium, .large])
+        }
+        .sheet(isPresented: self.$showAddNoteView) {
+            Task {
+                do {
+                    try await self.loadDetails()
+                } catch {
+                    self.errorHandler.handle(error, while: "reloading details for \(contact.firstname)")
+                }
+            }
+        } content: {
+            EditNoteView(contactId: self.contact.id)
+                .presentationDetents([.medium, .large])
         }
         .throwingTask(taskDescription: "loading details for \(contact.firstname)", self.loadDetails)
         .throwingRefreshable(taskDescription: "reloading details for \(contact.firstname)", self.loadDetails)
@@ -342,7 +302,9 @@ struct ContactDetailView: View {
                     Button("Add Note", systemImage: "note.text") {
                         self.showAddNoteView = true
                     }
-                    Button("Add Activity", systemImage: "calendar") { }
+                    Button("Add Activity", systemImage: "calendar") {
+                        self.showAddActivitySheet = true
+                    }
                     
                     Button("Stay in touch", systemImage: "repeat") {
                         let stayInTouchSuggestion = Reminder(

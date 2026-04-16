@@ -53,8 +53,8 @@ struct NoteList: View {
                     List {
                         ForEach(self.connectionHandler.notes) { note in
                             NoteListItem(note: note) {
-                                try await self.connectionHandler.getUnassignedNotes()
                                 self.page = 1
+                                try await self.connectionHandler.getUnassignedNotes()
                             }
                         }
                         
@@ -63,8 +63,8 @@ struct NoteList: View {
                         }
                     }
                     .throwingRefreshable(taskDescription: "reloading notes") {
-                        try await self.connectionHandler.getUnassignedNotes()
                         self.page = 1
+                        try await self.connectionHandler.getUnassignedNotes()
                     }
                 }
             }
@@ -77,10 +77,16 @@ struct NoteList: View {
                 }
             }
             .sheet(isPresented: self.$showAddNoteSheet) {
-                EditNoteView() {
-                    try await self.connectionHandler.getUnassignedNotes()
-                    self.page = 1
+                Task {
+                    do {
+                        try await self.connectionHandler.getUnassignedNotes()
+                        self.page = 1
+                    } catch {
+                        self.errorHandler.handle(error, while: "reloading notes")
+                    }
                 }
+            } content: {
+                EditNoteView()
             }
         }
     }

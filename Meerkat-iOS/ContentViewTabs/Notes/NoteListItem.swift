@@ -68,9 +68,15 @@ struct NoteListItem: View {
         .contentShape(.rect)
         .foregroundStyle(.primary)
         .sheet(isPresented: self.$showEditNoteSheet) {
-            EditNoteView(note: self.note) {
-                try await self.reloadNote()
+            Task {
+                do {
+                    try await self.reloadNote()
+                } catch {
+                    self.errorHandler.handle(error, while: "reloading note \(self.note.id)")
+                }
             }
+        } content: {
+            EditNoteView(note: self.note)
             .presentationDetents([.medium, .large])
         }
         .throwingTask(taskDescription: "loading associated contact for note \(self.note.content)", self.loadAssociatedContact)

@@ -17,6 +17,8 @@ struct ActivityList: View {
     
     @State private var page: Int = 1
     
+    @State private var showAddActivitySheet: Bool = false
+    
     var placeholder: some View {
         Group {
             ActivityListItem(activity: .mock)
@@ -62,8 +64,8 @@ struct ActivityList: View {
                         }
                     }
                     .throwingRefreshable(taskDescription: "reloading activities") {
-                        try await self.connectionHandler.getActivities()
                         self.page = 1
+                        try await self.connectionHandler.getActivities()
                     }
                 }
             }
@@ -74,8 +76,22 @@ struct ActivityList: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Add Activity", systemImage: "plus") {
-                        
+                        self.showAddActivitySheet = true
                     }
+                }
+            }
+            .sheet(isPresented: self.$showAddActivitySheet) {
+                Task {
+                    do {
+                        self.page = 1
+                        try await self.connectionHandler.getActivities()
+                    } catch {
+                        self.errorHandler.handle(error, while: "reloading activities")
+                    }
+                }
+            } content: {
+                NavigationStack {
+                    EditActivityView()
                 }
             }
         }

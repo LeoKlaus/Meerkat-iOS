@@ -282,6 +282,9 @@
         }
       }
     },
+    "Available" : {
+
+    },
     "Birthday" : {
       "localizations" : {
         "de" : {
@@ -562,6 +565,9 @@
         }
       }
     },
+    "Date: " : {
+
+    },
     "Day" : {
       "localizations" : {
         "de" : {
@@ -601,6 +607,9 @@
           }
         }
       }
+    },
+    "Description" : {
+
     },
     "Disconnect" : {
       "localizations" : {
@@ -915,6 +924,9 @@
         }
       }
     },
+    "Location" : {
+
+    },
     "Male" : {
       "localizations" : {
         "de" : {
@@ -1044,6 +1056,15 @@
           }
         }
       }
+    },
+    "No contacts" : {
+
+    },
+    "No description" : {
+
+    },
+    "No location" : {
+
     },
     "No matching contacts found" : {
       "localizations" : {
@@ -1345,6 +1366,9 @@
         }
       }
     },
+    "Selected" : {
+
+    },
     "Send email notification" : {
       "localizations" : {
         "de" : {
@@ -1464,6 +1488,9 @@
           }
         }
       }
+    },
+    "Title" : {
+
     },
     "Token" : {
       "localizations" : {

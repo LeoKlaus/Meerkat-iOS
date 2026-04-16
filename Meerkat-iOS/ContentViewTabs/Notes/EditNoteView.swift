@@ -19,20 +19,16 @@ struct EditNoteView: View {
     @State var note: Note
     let isNewNote: Bool
     
-    let onDismiss: (() async throws -> Void)?
-    
     @State private var isSaving: Bool = false
     
-    init(contactId: Int? = nil, onDismiss: (() async throws -> Void)? = nil) {
+    init(contactId: Int? = nil) {
         self.note = .empty(contactId: contactId)
         self.isNewNote = true
-        self.onDismiss = onDismiss
     }
     
-    init(note: Note, onDismiss: (() async throws -> Void)? = nil) {
+    init(note: Note) {
         self.note = note
         self.isNewNote = false
-        self.onDismiss = onDismiss
     }
     
     var bindableDate: Binding<Date> {
@@ -83,10 +79,6 @@ struct EditNoteView: View {
                 }
                 self.errorHandler.showInfo(self.isNewNote ? "Note created!" : "Note saved!")
                 
-                if let onDismiss {
-                    try await onDismiss()
-                }
-                
                 self.dismiss()
             } catch {
                 self.errorHandler.handle(error, while: "saving note")
@@ -103,14 +95,4 @@ struct EditNoteView: View {
     EditNoteView(note: .mock)
         .environment(ConnectionHandler.mock)
         .withErrorHandling()
-}
-
-#Preview("Inline") {
-    NavigationStack {
-        EditNoteView(note: .mock) {
-            
-        }
-    }
-    .environment(ConnectionHandler.mock)
-    .withErrorHandling()
 }

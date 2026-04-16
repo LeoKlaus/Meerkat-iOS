@@ -41,6 +41,7 @@ struct ContactDetailView: View {
     @State private var showArchivalConfirmation: Bool = false
     
     @State private var reminderToAdd: Reminder? = nil
+    @State private var showAddNoteView: Bool = false
     
     @State private var isEditing: Bool = false
     
@@ -168,7 +169,7 @@ struct ContactDetailView: View {
                             .glassProminentButtonStyleIfAvailable()
                             
                             Button {
-                                
+                                self.showAddNoteView = true
                             } label: {
                                 Label("Add Note", systemImage: "note.text")
                                     .lineLimit(1)
@@ -327,12 +328,20 @@ struct ContactDetailView: View {
         .sheet(item: self.$reminderToAdd, onDismiss: self.loadDetailsWrapped) { reminder in
             EditReminderView(contactId: self.contact.id, reminder: reminder, isNewReminder: true)
         }
+        .sheet(isPresented: self.$showAddNoteView) {
+            EditNoteView(contactId: self.contact.id) {
+                try await self.loadDetails()
+            }
+            .presentationDetents([.medium, .large])
+        }
         .throwingTask(taskDescription: "loading details for \(contact.firstname)", self.loadDetails)
         .throwingRefreshable(taskDescription: "reloading details for \(contact.firstname)", self.loadDetails)
         .toolbar {
             if !self.isEditing {
                 ToolbarItemGroup(placement: .secondaryAction) {
-                    Button("Add Note", systemImage: "note.text") { }
+                    Button("Add Note", systemImage: "note.text") {
+                        self.showAddNoteView = true
+                    }
                     Button("Add Activity", systemImage: "calendar") { }
                     
                     Button("Stay in touch", systemImage: "repeat") {

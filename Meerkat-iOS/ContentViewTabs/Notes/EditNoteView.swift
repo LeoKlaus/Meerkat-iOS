@@ -24,16 +24,7 @@ struct EditNoteView: View {
     @State private var isSaving: Bool = false
     
     init(contactId: Int? = nil, onDismiss: (() async throws -> Void)? = nil) {
-        self.note = Note(
-            id: 0,
-            createdAt: .now,
-            updatedAt: nil,
-            deletedAt: nil,
-            content: "",
-            date: .now,
-            contactId: contactId,
-            contact: nil
-        )
+        self.note = .empty(contactId: contactId)
         self.isNewNote = true
         self.onDismiss = onDismiss
     }

@@ -16,9 +16,22 @@
 		4A321CA82F7B0841006D5EC0 /* Meerkat-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meerkat-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4A53DF582F9113F1009FB54A /* Exceptions for "Meerkat-iOS" folder in "Meerkat-iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4AE0648F2F792457008E3CAB /* Meerkat-iOS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4AE064922F792457008E3CAB /* Meerkat-iOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4A53DF582F9113F1009FB54A /* Exceptions for "Meerkat-iOS" folder in "Meerkat-iOS" target */,
+			);
 			path = "Meerkat-iOS";
 			sourceTree = "<group>";
 		};
@@ -277,6 +290,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Meerkat-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Meerkat;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -335,6 +349,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Meerkat-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Meerkat;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

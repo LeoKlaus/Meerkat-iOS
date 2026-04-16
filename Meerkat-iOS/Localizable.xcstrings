@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "shouldTranslate" : false
     },
     "(Meerkat version %@)" : {
       "localizations" : {
@@ -16,6 +16,12 @@
     },
     "%@ (%@ years old)" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (%2$@ Jahre alt)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -57,10 +63,24 @@
       }
     },
     "About" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über"
+          }
+        }
+      }
     },
     "About %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über (%@)"
+          }
+        }
+      }
     },
     "Activities" : {
       "localizations" : {
@@ -83,7 +103,14 @@
       }
     },
     "Add Birthday" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geburtstag hinzufügen"
+          }
+        }
+      }
     },
     "Add Contact" : {
       "localizations" : {
@@ -106,10 +133,24 @@
       }
     },
     "Add Messenger" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Messenger hinzufügen"
+          }
+        }
+      }
     },
     "Add new..." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu anlegen..."
+          }
+        }
+      }
     },
     "Add Note" : {
       "localizations" : {
@@ -122,61 +163,194 @@
       }
     },
     "Add reminder" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerung hinzufügen"
+          }
+        }
+      }
     },
     "Add Year" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jahr hinzufügen"
+          }
+        }
+      }
     },
     "Additional Information" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zusätzliche Informationen"
+          }
+        }
+      }
     },
     "Address" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresse"
+          }
+        }
+      }
     },
     "All" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle"
+          }
+        }
+      }
     },
     "April" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "April"
+          }
+        }
+      }
     },
     "Archive %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ archivieren"
+          }
+        }
+      }
     },
     "Archive %@?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ archivieren?"
+          }
+        }
+      }
     },
     "Archived" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archiviert"
+          }
+        }
+      }
     },
     "Are you sure you want to archive this contact? All reminders will be deleted. You can unarchive later, but reminders won't be restored." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bist du sicher, dass du diesen Kontakt archivieren möchtest? Alle Erinnerungen werden gelöscht. Du kannst den Kontakt später wieder aus dem Archiv holen, die Erinnerungen werden allerdings nicht wiederhergestellt."
+          }
+        }
+      }
     },
     "Ascending" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufsteigen"
+          }
+        }
+      }
     },
     "August" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "August"
+          }
+        }
+      }
     },
     "Birthday" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geburtstag"
+          }
+        }
+      }
     },
     "Call %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ anrufen"
+          }
+        }
+      }
     },
     "Cancel" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        }
+      }
     },
     "Catch-up with %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit %@ in Kontakt bleiben"
+          }
+        }
+      }
     },
     "Circle Name" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name des Kreises"
+          }
+        }
+      }
     },
     "Circles" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kreise"
+          }
+        }
+      }
     },
     "Configure Messengers" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Messenger konfigurieren"
+          }
+        }
+      }
     },
     "Connect" : {
       "localizations" : {
@@ -199,10 +373,24 @@
       }
     },
     "Contact %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ kontaktieren"
+          }
+        }
+      }
     },
     "Contact Information" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontaktinformationen"
+          }
+        }
+      }
     },
     "Contacts" : {
       "localizations" : {
@@ -215,7 +403,14 @@
       }
     },
     "Content" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inhalt"
+          }
+        }
+      }
     },
     "Couldn't access UserDefaults" : {
       "localizations" : {
@@ -248,7 +443,14 @@
       }
     },
     "Create a Circle" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einen Kreis anlegen"
+          }
+        }
+      }
     },
     "Create a Contact" : {
       "localizations" : {
@@ -261,7 +463,14 @@
       }
     },
     "Create a Custom Field" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein benutzerdefiniertes Feld anlegen"
+          }
+        }
+      }
     },
     "Create a Note" : {
       "localizations" : {
@@ -284,16 +493,44 @@
       }
     },
     "Create Circle" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kreis anlegen"
+          }
+        }
+      }
     },
     "Create Custom Field" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzerdefiniertes Feld anlegen"
+          }
+        }
+      }
     },
     "Created" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstellt"
+          }
+        }
+      }
     },
     "Custom Fields" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzerdefinierte Felder"
+          }
+        }
+      }
     },
     "Dashboard" : {
       "localizations" : {
@@ -306,22 +543,64 @@
       }
     },
     "Date" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum"
+          }
+        }
+      }
     },
     "Date:" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum:"
+          }
+        }
+      }
     },
     "Day" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag"
+          }
+        }
+      }
     },
     "December" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dezember"
+          }
+        }
+      }
     },
     "Delete" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        }
+      }
     },
     "Descending" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Absteigen"
+          }
+        }
+      }
     },
     "Disconnect" : {
       "localizations" : {
@@ -334,16 +613,37 @@
       }
     },
     "Discord" : {
-
+      "shouldTranslate" : false
     },
     "Done" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        }
+      }
     },
     "Edit" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten"
+          }
+        }
+      }
     },
     "Edit ID for %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ID für %@ bearbeiten"
+          }
+        }
+      }
     },
     "Email" : {
       "localizations" : {
@@ -376,10 +676,24 @@
       }
     },
     "Exclude Archived" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivierte ausblenden"
+          }
+        }
+      }
     },
     "February" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Februar"
+          }
+        }
+      }
     },
     "Female" : {
       "localizations" : {
@@ -392,16 +706,44 @@
       }
     },
     "Field Name" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feldname"
+          }
+        }
+      }
     },
     "Field Name:" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feldname:"
+          }
+        }
+      }
     },
     "Filter by Circles" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Kreisen filtern"
+          }
+        }
+      }
     },
     "First Name" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorname"
+          }
+        }
+      }
     },
     "Flexible" : {
       "localizations" : {
@@ -414,7 +756,14 @@
       }
     },
     "Food Preferences" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essenspräferenzen"
+          }
+        }
+      }
     },
     "Forbidden" : {
       "localizations" : {
@@ -437,7 +786,14 @@
       }
     },
     "Gender" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschlecht"
+          }
+        }
+      }
     },
     "German" : {
       "localizations" : {
@@ -450,7 +806,14 @@
       }
     },
     "How We Met" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie wir uns kennenlernten"
+          }
+        }
+      }
     },
     "http://" : {
       "localizations" : {
@@ -473,19 +836,54 @@
       }
     },
     "Include Archived" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivierte einblenden"
+          }
+        }
+      }
     },
     "Incoming Relationships" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eingehende Beziehungen"
+          }
+        }
+      }
     },
     "January" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Januar"
+          }
+        }
+      }
     },
     "July" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juli"
+          }
+        }
+      }
     },
     "June" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juni"
+          }
+        }
+      }
     },
     "Language (for web only)" : {
       "localizations" : {
@@ -498,18 +896,21 @@
       }
     },
     "Last Name" : {
-
-    },
-    "Link Format:" : {
-
-    },
-    "Log out" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ausloggen"
+            "value" : "Nachname"
+          }
+        }
+      }
+    },
+    "Link Format:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linkformat:"
           }
         }
       }
@@ -525,22 +926,64 @@
       }
     },
     "March" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "März"
+          }
+        }
+      }
     },
     "Mark as completed" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als abgeschlossen markieren"
+          }
+        }
+      }
     },
     "May" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mai"
+          }
+        }
+      }
     },
     "Message" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nachricht"
+          }
+        }
+      }
     },
     "Message %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ kontaktieren"
+          }
+        }
+      }
     },
     "Month" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monat"
+          }
+        }
+      }
     },
     "Monthly" : {
       "localizations" : {
@@ -553,10 +996,24 @@
       }
     },
     "New Activity" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Aktivität"
+          }
+        }
+      }
     },
     "New Note" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Notiz"
+          }
+        }
+      }
     },
     "New Password" : {
       "localizations" : {
@@ -569,13 +1026,34 @@
       }
     },
     "Nickname" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spitzname"
+          }
+        }
+      }
     },
     "No Circles" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Kreise"
+          }
+        }
+      }
     },
     "No matching contacts found" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine passenden Kontakte gefunden"
+          }
+        }
+      }
     },
     "No matching instance found" : {
       "localizations" : {
@@ -618,7 +1096,14 @@
       }
     },
     "Note" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notiz"
+          }
+        }
+      }
     },
     "Notes" : {
       "localizations" : {
@@ -631,13 +1116,34 @@
       }
     },
     "November" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "November"
+          }
+        }
+      }
     },
     "October" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oktober"
+          }
+        }
+      }
     },
     "OK" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
     },
     "Once" : {
       "localizations" : {
@@ -670,7 +1176,14 @@
       }
     },
     "Phone" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefon"
+          }
+        }
+      }
     },
     "Prefer not to say" : {
       "localizations" : {
@@ -723,7 +1236,14 @@
       }
     },
     "Recurrence" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiederholung"
+          }
+        }
+      }
     },
     "Register" : {
       "localizations" : {
@@ -736,22 +1256,64 @@
       }
     },
     "Relationships" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beziehungen"
+          }
+        }
+      }
     },
     "Reminder Completed" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerung abgeschlossen"
+          }
+        }
+      }
     },
     "Reminders" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerungen"
+          }
+        }
+      }
     },
     "Remove %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ entfernen"
+          }
+        }
+      }
     },
     "Remove Birthday" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geburtstag entfernen"
+          }
+        }
+      }
     },
     "Reschedule from completion date" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vom Abschlussdatum neustarten"
+          }
+        }
+      }
     },
     "Reset Password" : {
       "localizations" : {
@@ -764,13 +1326,34 @@
       }
     },
     "Save" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern"
+          }
+        }
+      }
     },
     "Search" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suche"
+          }
+        }
+      }
     },
     "Send email notification" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per Email erinnern"
+          }
+        }
+      }
     },
     "Send reset email" : {
       "localizations" : {
@@ -783,7 +1366,14 @@
       }
     },
     "September" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "September"
+          }
+        }
+      }
     },
     "Server" : {
       "localizations" : {
@@ -806,13 +1396,34 @@
       }
     },
     "Skip" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überspringen"
+          }
+        }
+      }
     },
     "Sort options" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sortierung"
+          }
+        }
+      }
     },
     "Stay in touch" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Kontakt bleiben"
+          }
+        }
+      }
     },
     "Stay in Touch" : {
       "localizations" : {
@@ -835,10 +1446,24 @@
       }
     },
     "Take a Photo" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Foto aufnehmen"
+          }
+        }
+      }
     },
     "Timeline" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline"
+          }
+        }
+      }
     },
     "Token" : {
       "localizations" : {
@@ -851,7 +1476,14 @@
       }
     },
     "Unarchive %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus dem Archiv holen"
+          }
+        }
+      }
     },
     "Unauthorized" : {
       "localizations" : {
@@ -884,7 +1516,14 @@
       }
     },
     "Unsupported type" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht unterstützter Typ"
+          }
+        }
+      }
     },
     "Upcoming Birthdays" : {
       "localizations" : {
@@ -907,22 +1546,64 @@
       }
     },
     "Upload from Files" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus Dateien hochladen"
+          }
+        }
+      }
     },
     "Upload from Photos" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto auswählen"
+          }
+        }
+      }
     },
     "Use Mail Address" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mailadresse verwenden"
+          }
+        }
+      }
     },
     "Use Phone Number" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonnummer verwenden"
+          }
+        }
+      }
     },
     "User ID" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzer-ID"
+          }
+        }
+      }
     },
     "User ID for %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzer-iD für %@"
+          }
+        }
+      }
     },
     "Username" : {
       "localizations" : {
@@ -935,7 +1616,14 @@
       }
     },
     "View %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ anzeigen"
+          }
+        }
+      }
     },
     "Weekly" : {
       "localizations" : {
@@ -948,10 +1636,24 @@
       }
     },
     "Work Information" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informationen zur Arbeit"
+          }
+        }
+      }
     },
     "Year" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jahr"
+          }
+        }
+      }
     },
     "Yearly" : {
       "localizations" : {
@@ -964,7 +1666,14 @@
       }
     },
     "Yes" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja"
+          }
+        }
+      }
     },
     "You don't have any activities" : {
       "localizations" : {

@@ -88,7 +88,7 @@ struct EditReminderView: View {
                 } else {
                     _ = try await self.connectionHandler.updateReminder(self.reminder)
                 }
-                self.errorHandler.showInfo("Reminder created!")
+                self.errorHandler.showInfo(self.isNewReminder ? "Reminder created!" : "Reminder saved!")
                 self.dismiss()
             } catch {
                 self.errorHandler.handle(error, while: "saving reminder")

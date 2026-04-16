@@ -260,7 +260,7 @@ class MockConnectionHandler: ConnectionHandler {
         ]
     }
     
-    override func createContactNote(contact: Contact, note: Note) async throws -> Note {
+    override func createContactNote(contactId: Int, note: Note) async throws -> Note {
         try await self.delayResponse()
         return note
     }

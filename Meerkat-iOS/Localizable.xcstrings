@@ -214,6 +214,9 @@
         }
       }
     },
+    "Content" : {
+
+    },
     "Couldn't access UserDefaults" : {
       "localizations" : {
         "de" : {
@@ -303,6 +306,9 @@
       }
     },
     "Date" : {
+
+    },
+    "Date:" : {
 
     },
     "Day" : {

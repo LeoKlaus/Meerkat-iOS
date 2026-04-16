@@ -395,13 +395,13 @@ class ConnectionHandler {
     
     /**
      Create a note for a contact
-     - Parameter contact: Contact to create a note for
+     - Parameter contactId: ID of the contact to create a note for
      - Parameter note: Note to create
      
      - Returns: The newly created note
      */
-    public func createContactNote(contact: Contact, note: Note) async throws -> Note {
-        return try await self.apiHandler.createContactNote(contact: contact, note: note)
+    public func createContactNote(contactId: Int, note: Note) async throws -> Note {
+        return try await self.apiHandler.createContactNote(contactId: contactId, note: note)
     }
     
     /**

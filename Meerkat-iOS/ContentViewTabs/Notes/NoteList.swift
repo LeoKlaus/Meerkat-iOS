@@ -16,13 +16,15 @@ struct NoteList: View {
     
     @State private var page: Int = 1
     
+    @State private var showAddNoteSheet: Bool = false
+    
     var placeholder: some View {
         Group {
-            NoteListItem(note: .mock)
+            NoteListItem(note: .mock, isPlaceholder: true)
                 .frame(maxHeight: 50)
-            NoteListItem(note: .mock2)
+            NoteListItem(note: .mock2, isPlaceholder: true)
                 .frame(maxHeight: 50)
-            NoteListItem(note: .mock3)
+            NoteListItem(note: .mock3, isPlaceholder: true)
                 .frame(maxHeight: 50)
         }
         .shimmerEffect()
@@ -41,7 +43,7 @@ struct NoteList: View {
                         Label("You don't have any notes", systemImage: "list.clipboard")
                     } actions: {
                         Button {
-                            
+                            self.showAddNoteSheet = true
                         } label: {
                             Label("Create a Note", systemImage: "plus")
                         }
@@ -50,10 +52,10 @@ struct NoteList: View {
                 } else {
                     List {
                         ForEach(self.connectionHandler.notes) { note in
-                            NavigationLink(value: note) {
-                                NoteListItem(note: note)
+                            NoteListItem(note: note) {
+                                try await self.connectionHandler.getUnassignedNotes()
+                                self.page = 1
                             }
-                            .frame(maxHeight: 50)
                         }
                         
                         if self.connectionHandler.hasRemainingNotes {
@@ -67,14 +69,17 @@ struct NoteList: View {
                 }
             }
             .navigationTitle("Notes")
-            .navigationDestination(for: Note.self) { note in
-                NoteDetailView(note: note)
-            }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Add Note", systemImage: "plus") {
-                        
+                        self.showAddNoteSheet = true
                     }
+                }
+            }
+            .sheet(isPresented: self.$showAddNoteSheet) {
+                EditNoteView() {
+                    try await self.connectionHandler.getUnassignedNotes()
+                    self.page = 1
                 }
             }
         }

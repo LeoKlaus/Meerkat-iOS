@@ -283,7 +283,14 @@
       }
     },
     "Available" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verfügbar"
+          }
+        }
+      }
     },
     "Birthday" : {
       "localizations" : {
@@ -566,7 +573,14 @@
       }
     },
     "Date: " : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum:"
+          }
+        }
+      }
     },
     "Day" : {
       "localizations" : {
@@ -609,7 +623,14 @@
       }
     },
     "Description" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        }
+      }
     },
     "Disconnect" : {
       "localizations" : {
@@ -925,7 +946,14 @@
       }
     },
     "Location" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ort"
+          }
+        }
+      }
     },
     "Male" : {
       "localizations" : {
@@ -1058,13 +1086,34 @@
       }
     },
     "No contacts" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Kontakte"
+          }
+        }
+      }
     },
     "No description" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Beschreibung"
+          }
+        }
+      }
     },
     "No location" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Ort"
+          }
+        }
+      }
     },
     "No matching contacts found" : {
       "localizations" : {
@@ -1367,7 +1416,14 @@
       }
     },
     "Selected" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgewählt"
+          }
+        }
+      }
     },
     "Send email notification" : {
       "localizations" : {
@@ -1490,7 +1546,14 @@
       }
     },
     "Title" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title"
+          }
+        }
+      }
     },
     "Token" : {
       "localizations" : {

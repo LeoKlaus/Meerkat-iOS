@@ -102,4 +102,5 @@ struct ActivityList: View {
     ActivityList()
         .withErrorHandling()
         .environment(ConnectionHandler.mock)
+        .environment(NavigationHandler.shared)
 }

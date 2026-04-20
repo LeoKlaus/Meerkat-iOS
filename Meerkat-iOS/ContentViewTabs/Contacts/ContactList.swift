@@ -13,6 +13,7 @@ struct ContactList: View {
     
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(ConnectionHandler.self) var connectionHandler
+    @Environment(NavigationHandler.self) var navigationHandler
     
     var isSearchContext: Bool = false
     
@@ -42,7 +43,8 @@ struct ContactList: View {
     }
     
     var body: some View {
-        NavigationStack {
+        @Bindable var navigationHandler = self.navigationHandler
+        NavigationStack(path: $navigationHandler.contactsTabPath) {
             Group {
                 if !self.connectionHandler.hasRemainingContacts && self.connectionHandler.contacts.isEmpty {
                     if self.isSearchContext {
@@ -90,6 +92,9 @@ struct ContactList: View {
             .navigationTitle(self.isSearchContext ? "Search" : "Contacts")
             .navigationDestination(for: Contact.self) { contact in
                 ContactDetailView(contact: contact)
+            }
+            .navigationDestination(for: Int.self) { contactId in
+                AsyncContactDetailView(contactId: contactId)
             }
             .toolbar {
                 ToolbarItem(placement: .navigation) {

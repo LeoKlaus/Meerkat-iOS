@@ -13,6 +13,7 @@ struct DashboardView: View {
     
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(ConnectionHandler.self) var connectionHandler
+    @Environment(NavigationHandler.self) var navigationHandler
     
     @State private var upcomingBirthdays: [Birthday] = []
     @State private var upcomingReminders: [Reminder] = []
@@ -21,7 +22,8 @@ struct DashboardView: View {
     @State private var doneLoading: Bool = false
     
     var body: some View {
-        NavigationStack {
+        @Bindable var navigationHandler = self.navigationHandler
+        NavigationStack(path: $navigationHandler.dashboardTabPath) {
             List {
                 Section("Upcoming Birthdays") {
                     ForEach(self.upcomingBirthdays, id:\.self) { birthday in

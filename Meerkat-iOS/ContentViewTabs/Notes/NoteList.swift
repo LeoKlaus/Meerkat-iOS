@@ -13,6 +13,7 @@ struct NoteList: View {
     
     @EnvironmentObject var errorHandler: ErrorHandler
     @Environment(ConnectionHandler.self) var connectionHandler
+    @Environment(NavigationHandler.self) var navigationHandler
     
     @State private var page: Int = 1
     
@@ -36,7 +37,8 @@ struct NoteList: View {
     }
     
     var body: some View {
-        NavigationStack {
+        @Bindable var navigationHandler = self.navigationHandler
+        NavigationStack(path: $navigationHandler.notesTabPath) {
             Group {
                 if !self.connectionHandler.hasRemainingNotes && self.connectionHandler.notes.isEmpty {
                     ContentUnavailableView {

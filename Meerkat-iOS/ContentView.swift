@@ -10,34 +10,40 @@ import EasyErrorHandling
 
 struct ContentView: View {
     
-    @State private var connectionHandler: ConnectionHandler?
+    @EnvironmentObject var errorHandler: ErrorHandler
+    @Environment(NavigationHandler.self) var navigationHandler
+    @Environment(ConnectionHandler.self) var connectionHandler
     
     var body: some View {
-        TabView {
-            Tab("Dashboard", systemImage: "text.rectangle.page") {
+        @Bindable var navigationHandler = self.navigationHandler
+        
+        TabView(selection: $navigationHandler.currentTab) {
+            Tab("Dashboard", systemImage: "text.rectangle.page", value: ContentViewTab.dashboard) {
                 DashboardView()
             }
             
-            Tab("Contacts", systemImage: "person.crop.circle.fill") {
+            Tab("Contacts", systemImage: "person.crop.circle.fill", value: ContentViewTab.contacts) {
                 ContactList()
             }
             
-            Tab("Notes", systemImage: "list.clipboard") {
+            Tab("Notes", systemImage: "list.clipboard", value: ContentViewTab.notes) {
                 NoteList()
             }
             
-            Tab("Settings", systemImage: "gear") {
+            Tab("Settings", systemImage: "gear", value: ContentViewTab.settings) {
                 SettingsView()
             }
             
-            Tab("Search", systemImage: "magnifyingglass", role: .search) {
+            Tab("Search", systemImage: "magnifyingglass", value: ContentViewTab.search, role: .search) {
                 ContactList(isSearchContext: true)
             }
         }
-        .onOpenURL { url in
-            ErrorHandler.shared.showInfo("Opening with URL: \(url.absoluteString)")
-        }
+        .onOpenURL(perform: self.handleURL)
         //.id(self.connectionHandler?.currentInstance.id)
+    }
+    
+    func handleURL(_ url: URL) {
+        self.navigationHandler.handleURL(url, with: self.connectionHandler)
     }
 }
 
@@ -45,4 +51,5 @@ struct ContentView: View {
     ContentView()
         .withErrorHandling()
         .environment(ConnectionHandler.mock)
+        .environment(NavigationHandler.shared)
 }

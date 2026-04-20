@@ -75,6 +75,7 @@
 				Extensions/UserDefaultKeys.swift,
 				Handlers/ConnectionHandler/ConnectedInstance.swift,
 				Handlers/KeychainHandler.swift,
+				Handlers/NavigationHandler/ContentViewTab.swift,
 				"Preview Content/Birthday+mock.swift",
 				"Preview Content/MockAssets.xcassets",
 			);

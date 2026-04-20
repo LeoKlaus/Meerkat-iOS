@@ -19,6 +19,7 @@ struct Meerkat_iOSApp: App {
                 if let connectionHandler {
                     ContentView()
                         .environment(connectionHandler)
+                        .environment(NavigationHandler.shared)
                 } else {
                     LoginView(connectionHandler: self.$connectionHandler)
                 }

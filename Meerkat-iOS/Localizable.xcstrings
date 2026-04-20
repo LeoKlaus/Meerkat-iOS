@@ -452,6 +452,9 @@
         }
       }
     },
+    "Couldn't load contact with ID %lld" : {
+
+    },
     "Create a Circle" : {
       "localizations" : {
         "de" : {
@@ -835,6 +838,9 @@
         }
       }
     },
+    "Go back" : {
+
+    },
     "How We Met" : {
       "localizations" : {
         "de" : {
@@ -947,6 +953,9 @@
           }
         }
       }
+    },
+    "Loading contact..." : {
+
     },
     "Location" : {
       "localizations" : {

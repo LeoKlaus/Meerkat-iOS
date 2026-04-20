@@ -14,11 +14,11 @@ enum UserDefaultKey: String, CaseIterable {
 }
 
 extension String {
-    static func userDefaults(_ key: UserDefaultKey) -> String {
+    nonisolated static func userDefaults(_ key: UserDefaultKey) -> String {
         key.rawValue
     }
 }
 
 extension UserDefaults {
-    static let meerkat = UserDefaults(suiteName: "group.me.wehrfritz.meerkat-ios")
+    nonisolated static let meerkat = UserDefaults(suiteName: "group.me.wehrfritz.meerkat-ios")
 }

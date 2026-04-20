@@ -10,10 +10,42 @@
 		4ABFB9CD2F82C66600237307 /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = 4ABFB9CC2F82C66600237307 /* Flow */; };
 		4AE064A02F792A89008E3CAB /* MeerkatAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4AE0649F2F792A89008E3CAB /* MeerkatAPI */; };
 		4AE064A92F794F18008E3CAB /* EasyErrorHandling in Frameworks */ = {isa = PBXBuildFile; productRef = 4AE064A82F794F18008E3CAB /* EasyErrorHandling */; };
+		4AEF14532F9612D500E3949B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AEF14522F9612D500E3949B /* WidgetKit.framework */; };
+		4AEF14552F9612D500E3949B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AEF14542F9612D500E3949B /* SwiftUI.framework */; };
+		4AEF14622F9612D600E3949B /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4AEF14502F9612D500E3949B /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4AEF1DB72F961F1000E3949B /* MeerkatAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4AEF1DB62F961F1000E3949B /* MeerkatAPI */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4AEF14602F9612D600E3949B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4AE064882F792457008E3CAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4AEF144F2F9612D500E3949B;
+			remoteInfo = WidgetsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4AEF14632F9612D600E3949B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4AEF14622F9612D600E3949B /* WidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4A321CA82F7B0841006D5EC0 /* Meerkat-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meerkat-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AEF14502F9612D500E3949B /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AEF14522F9612D500E3949B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
+		4AEF14542F9612D500E3949B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = /System/Library/Frameworks/SwiftUI.framework; sourceTree = "<absolute>"; };
+		4AEF1DB52F961D3500E3949B /* WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetsExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -24,6 +56,30 @@
 			);
 			target = 4AE0648F2F792457008E3CAB /* Meerkat-iOS */;
 		};
+		4AEF14672F9612D600E3949B /* Exceptions for "Widgets" folder in "WidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4AEF144F2F9612D500E3949B /* WidgetsExtension */;
+		};
+		4AEF14752F9616FD00E3949B /* Exceptions for "Meerkat-iOS" folder in "WidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Extensions/AppEntities/ConnectedInstance+AppEntity.swift",
+				"Extensions/Array+RawRepresentable.swift",
+				"Extensions/DateComponents+toBirthdayString.swift",
+				"Extensions/Image+data.swift",
+				"Extensions/Optional+RawRepresentable.swift",
+				"Extensions/UIImage+resize.swift",
+				Extensions/UserDefaultKeys.swift,
+				Handlers/ConnectionHandler/ConnectedInstance.swift,
+				Handlers/KeychainHandler.swift,
+				"Preview Content/Birthday+mock.swift",
+				"Preview Content/MockAssets.xcassets",
+			);
+			target = 4AEF144F2F9612D500E3949B /* WidgetsExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -31,8 +87,17 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				4A53DF582F9113F1009FB54A /* Exceptions for "Meerkat-iOS" folder in "Meerkat-iOS" target */,
+				4AEF14752F9616FD00E3949B /* Exceptions for "Meerkat-iOS" folder in "WidgetsExtension" target */,
 			);
 			path = "Meerkat-iOS";
+			sourceTree = "<group>";
+		};
+		4AEF14562F9612D500E3949B /* Widgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4AEF14672F9612D600E3949B /* Exceptions for "Widgets" folder in "WidgetsExtension" target */,
+			);
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -48,15 +113,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4AEF144D2F9612D500E3949B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AEF14552F9612D500E3949B /* SwiftUI.framework in Frameworks */,
+				4AEF14532F9612D500E3949B /* WidgetKit.framework in Frameworks */,
+				4AEF1DB72F961F1000E3949B /* MeerkatAPI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		4AE064872F792457008E3CAB = {
 			isa = PBXGroup;
 			children = (
+				4AEF1DB52F961D3500E3949B /* WidgetsExtension.entitlements */,
 				4AE064922F792457008E3CAB /* Meerkat-iOS */,
 				4A321CA82F7B0841006D5EC0 /* Meerkat-iOS.app */,
+				4AEF14502F9612D500E3949B /* WidgetsExtension.appex */,
+				4AEF14562F9612D500E3949B /* Widgets */,
+				4AEF14512F9612D500E3949B /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		4AEF14512F9612D500E3949B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AEF14522F9612D500E3949B /* WidgetKit.framework */,
+				4AEF14542F9612D500E3949B /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -69,10 +157,12 @@
 				4AE0648C2F792457008E3CAB /* Sources */,
 				4AE0648D2F792457008E3CAB /* Frameworks */,
 				4AE0648E2F792457008E3CAB /* Resources */,
+				4AEF14632F9612D600E3949B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4AEF14612F9612D600E3949B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				4AE064922F792457008E3CAB /* Meerkat-iOS */,
@@ -87,6 +177,29 @@
 			productReference = 4A321CA82F7B0841006D5EC0 /* Meerkat-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4AEF144F2F9612D500E3949B /* WidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4AEF14662F9612D600E3949B /* Build configuration list for PBXNativeTarget "WidgetsExtension" */;
+			buildPhases = (
+				4AEF144C2F9612D500E3949B /* Sources */,
+				4AEF144D2F9612D500E3949B /* Frameworks */,
+				4AEF144E2F9612D500E3949B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4AEF14562F9612D500E3949B /* Widgets */,
+			);
+			name = WidgetsExtension;
+			packageProductDependencies = (
+				4AEF1DB62F961F1000E3949B /* MeerkatAPI */,
+			);
+			productName = WidgetsExtension;
+			productReference = 4AEF14502F9612D500E3949B /* WidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -98,6 +211,9 @@
 				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					4AE0648F2F792457008E3CAB = {
+						CreatedOnToolsVersion = 26.4;
+					};
+					4AEF144F2F9612D500E3949B = {
 						CreatedOnToolsVersion = 26.4;
 					};
 				};
@@ -123,12 +239,20 @@
 			projectRoot = "";
 			targets = (
 				4AE0648F2F792457008E3CAB /* Meerkat-iOS */,
+				4AEF144F2F9612D500E3949B /* WidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4AE0648E2F792457008E3CAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4AEF144E2F9612D500E3949B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -145,7 +269,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4AEF144C2F9612D500E3949B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4AEF14612F9612D600E3949B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4AEF144F2F9612D500E3949B /* WidgetsExtension */;
+			targetProxy = 4AEF14602F9612D600E3949B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4AE064992F792458008E3CAB /* Debug */ = {
@@ -292,6 +431,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Meerkat-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Meerkat;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -351,6 +491,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Meerkat-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Meerkat;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -384,6 +525,114 @@
 			};
 			name = Release;
 		};
+		4AEF14642F9612D600E3949B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28KGVFV686;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Meerkat;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.wehrfritz.Meerkat-iOS.Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.6;
+			};
+			name = Debug;
+		};
+		4AEF14652F9612D600E3949B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28KGVFV686;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Meerkat;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.wehrfritz.Meerkat-iOS.Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.6;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -401,6 +650,15 @@
 			buildConfigurations = (
 				4AE0649C2F792458008E3CAB /* Debug */,
 				4AE0649D2F792458008E3CAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AEF14662F9612D600E3949B /* Build configuration list for PBXNativeTarget "WidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AEF14642F9612D600E3949B /* Debug */,
+				4AEF14652F9612D600E3949B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -442,6 +700,11 @@
 		4AE064A82F794F18008E3CAB /* EasyErrorHandling */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = EasyErrorHandling;
+		};
+		4AEF1DB62F961F1000E3949B /* MeerkatAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AE0649E2F792A89008E3CAB /* XCLocalSwiftPackageReference "../MeerkatAPI" */;
+			productName = MeerkatAPI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

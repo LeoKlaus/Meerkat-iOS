@@ -22,7 +22,7 @@ extension Reminder {
         completed: false,
         emailSent: false,
         lastSent: nil,
-        contactId: 101,
+        contactId: 1,
         contact: .mock
     )
     
@@ -39,7 +39,7 @@ extension Reminder {
         completed: true,
         emailSent: true,
         lastSent: Date().addingTimeInterval(-3600),
-        contactId: 102,
+        contactId: 2,
         contact: .mock2
     )
     
@@ -56,7 +56,7 @@ extension Reminder {
         completed: false,
         emailSent: false,
         lastSent: nil,
-        contactId: 103,
+        contactId: 3,
         contact: .mock3
     )
 }

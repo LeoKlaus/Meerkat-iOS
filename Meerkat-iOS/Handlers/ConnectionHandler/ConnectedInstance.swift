@@ -27,7 +27,8 @@ enum ConnectedInstanceError: LocalizedError {
     }
 }
 
-struct ConnectedInstance: Codable, Identifiable {
+
+nonisolated struct ConnectedInstance: Codable, Identifiable, Sendable {
     
     let id: UUID
     let serverURL: URL
@@ -80,6 +81,7 @@ struct ConnectedInstance: Codable, Identifiable {
      Save this instance to userdefaults
      - Parameter token: Auth token for this instance
      */
+    @MainActor
     func save(token: String) throws {
         guard let defaults = UserDefaults.meerkat else {
             throw ConnectedInstanceError.couldntAccessUserdefaults
@@ -102,6 +104,7 @@ struct ConnectedInstance: Codable, Identifiable {
      Get the auth token for this instance
      - Returns: The auth token
      */
+    @MainActor
     func getToken() throws -> String {
         guard let tokenData = KeychainHandler.standard.read(service: self.serverURL.absoluteString, account: self.username) else {
             throw ConnectedInstanceError.tokenDataNotFound
@@ -117,6 +120,7 @@ struct ConnectedInstance: Codable, Identifiable {
     /**
      Removes this instance and its stored token
      */
+    @MainActor
     func removeInstance() throws {
         guard let defaults = UserDefaults.meerkat else {
             throw ConnectedInstanceError.couldntAccessUserdefaults
@@ -136,6 +140,7 @@ struct ConnectedInstance: Codable, Identifiable {
         defaults.set(connectedInstances.rawValue, forKey: .userDefaults(.connectedInstances))
     }
     
+    @MainActor
     func markActive() throws {
         guard let defaults = UserDefaults.meerkat else {
             throw ConnectedInstanceError.couldntAccessUserdefaults

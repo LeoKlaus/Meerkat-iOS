@@ -34,6 +34,9 @@ struct ContentView: View {
                 ContactList(isSearchContext: true)
             }
         }
+        .onOpenURL { url in
+            ErrorHandler.shared.showInfo("Opening with URL: \(url.absoluteString)")
+        }
         //.id(self.connectionHandler?.currentInstance.id)
     }
 }

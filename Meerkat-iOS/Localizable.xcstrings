@@ -453,7 +453,14 @@
       }
     },
     "Couldn't load contact with ID %lld" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakt mit ID %lld konnte nicht geladen werden"
+          }
+        }
+      }
     },
     "Create a Circle" : {
       "localizations" : {
@@ -839,7 +846,14 @@
       }
     },
     "Go back" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurück"
+          }
+        }
+      }
     },
     "How We Met" : {
       "localizations" : {
@@ -892,7 +906,14 @@
       }
     },
     "Instance" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instanz"
+          }
+        }
+      }
     },
     "January" : {
       "localizations" : {
@@ -955,7 +976,14 @@
       }
     },
     "Loading contact..." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lade Kontakt…"
+          }
+        }
+      }
     },
     "Location" : {
       "localizations" : {
@@ -1568,7 +1596,14 @@
       }
     },
     "Today" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute"
+          }
+        }
+      }
     },
     "Token" : {
       "localizations" : {

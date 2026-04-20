@@ -57,12 +57,12 @@ struct UpcomingBirthdaysProvider: AppIntentTimelineProvider {
             var i = 0
             
             for birthday in upcomingBirthdays {
-                i += 1
                 if i < context.family.maxDisplayableBirthdays, let contactId = birthday.contactId, let data = try? await apiHandler.getContactImage(contactId) {
                     birthdaysWithImages.append(BirthdayWithImage(birthday: birthday, image: data))
                 } else {
                     birthdaysWithImages.append(BirthdayWithImage(birthday: birthday, image: nil))
                 }
+                i += 1
             }
             
             return BirthdayEntry(date: .now, birthdays: birthdaysWithImages)

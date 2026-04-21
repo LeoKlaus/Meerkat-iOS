@@ -11,6 +11,7 @@ enum UserDefaultKey: String, CaseIterable {
     case connectedInstances
     case activeInstance
     case supportedMessengers
+    case widgetCompletedReminder
 }
 
 extension String {

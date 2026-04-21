@@ -11,6 +11,7 @@ import SwiftUI
 @main
 struct WidgetsBundle: WidgetBundle {
     var body: some Widget {
-        UpcomingBirthdays()
+        UpcomingBirthdaysWidget()
+        UpcomingRemindersWidget()
     }
 }

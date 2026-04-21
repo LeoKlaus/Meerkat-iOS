@@ -42,8 +42,12 @@ struct UpcomingBirthdaysProvider: AppIntentTimelineProvider {
     }
     
     func snapshot(for configuration: UpcomingBirthdaysConfigurationAppIntent, in context: Context) async -> BirthdayEntry {
+        if context.isPreview {
+            return BirthdayEntry.placeholder
+        }
+        
         guard let instance = configuration.instance else {
-            return BirthdayEntry(date: .now, birthdays: [], error: String(localized: "Please configure the widget and select an instance."))
+            return BirthdayEntry(error: String(localized: "Please configure the widget and select an instance."))
         }
         
         do {
@@ -67,7 +71,7 @@ struct UpcomingBirthdaysProvider: AppIntentTimelineProvider {
             
             return BirthdayEntry(date: .now, birthdays: birthdaysWithImages)
         } catch {
-            return BirthdayEntry(date: .now, birthdays: [], error: String(localized: "Error loading birthdays: \(error.localizedDescription)"))
+            return BirthdayEntry(error: String(localized: "Error loading birthdays: \(error.localizedDescription)"))
         }
     }
     
@@ -75,7 +79,11 @@ struct UpcomingBirthdaysProvider: AppIntentTimelineProvider {
         
         let entry = await self.snapshot(for: configuration, in: context)
         
-        return Timeline(entries: [entry], policy: .after(.now.addingTimeInterval(3600)))
+        let midnight = Calendar.current.startOfDay(for: Date())
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: midnight)
+        
+        // This won't reflect newly added birthdays until midnight. After editing a contacts birthday in the app, this widget should be updated manually.
+        return Timeline(entries: [entry], policy: .after(tomorrow ?? .now.addingTimeInterval(3600)))
     }
     
     //    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {

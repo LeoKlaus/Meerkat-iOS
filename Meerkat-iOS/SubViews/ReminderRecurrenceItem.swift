@@ -17,6 +17,8 @@ struct ReminderRecurrenceItem: View {
             HStack {
                 Image(systemName: "repeat")
                 Text(self.reminder.recurrence.localizedRepresentation)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
             }
             .padding(.horizontal, 10)
             .foregroundStyle(.secondary)
@@ -32,10 +34,11 @@ struct ReminderRecurrenceItem: View {
     ReminderRecurrenceItem(reminder: .mock2)
 }
 
-#Preview {
+/*#Preview {
     List {
         ReminderListItem(reminder: .mock2) {
             
         }
     }
 }
+*/

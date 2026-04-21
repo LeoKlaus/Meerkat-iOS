@@ -352,6 +352,9 @@
         }
       }
     },
+    "Complete Reminder" : {
+
+    },
     "Configure Messengers" : {
       "localizations" : {
         "de" : {
@@ -815,6 +818,9 @@
         }
       }
     },
+    "Force reloads all widgets." : {
+
+    },
     "Forgot password?" : {
       "localizations" : {
         "de" : {
@@ -1024,6 +1030,9 @@
           }
         }
       }
+    },
+    "Mark the selected reminder as completed." : {
+
     },
     "May" : {
       "localizations" : {
@@ -1375,6 +1384,12 @@
         }
       }
     },
+    "Reload all widgets" : {
+
+    },
+    "Reminder" : {
+
+    },
     "Reminder Completed" : {
       "localizations" : {
         "de" : {
@@ -1574,6 +1589,9 @@
           }
         }
       }
+    },
+    "The reminder to complete" : {
+
     },
     "Timeline" : {
       "localizations" : {

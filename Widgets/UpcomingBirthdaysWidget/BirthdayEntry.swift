@@ -28,9 +28,15 @@ struct BirthdayEntry: WidgetKit.TimelineEntry {
         BirthdayWithImage(birthday: .mock3, image: nil)
     ])
     
-    init(date: Date, birthdays: [BirthdayWithImage], error: String? = nil) {
+    init(date: Date, birthdays: [BirthdayWithImage]) {
         self.date = date
         self.birthdays = birthdays
+        self.error = nil
+    }
+    
+    init(error: String) {
+        self.date = .now
+        self.birthdays = []
         self.error = error
     }
 }

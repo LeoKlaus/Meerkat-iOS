@@ -66,18 +66,26 @@
 		4AEF14752F9616FD00E3949B /* Exceptions for "Meerkat-iOS" folder in "WidgetsExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AppIntents/CompleteReminderIntent.swift,
+				AppIntents/ReloadAllWidgetsIntent.swift,
 				"Extensions/AppEntities/ConnectedInstance+AppEntity.swift",
+				"Extensions/AppEntities/Reminder+AppEntity.swift",
 				"Extensions/Array+RawRepresentable.swift",
+				"Extensions/Date+hasPassed.swift",
 				"Extensions/DateComponents+toBirthdayString.swift",
 				"Extensions/Image+data.swift",
 				"Extensions/Optional+RawRepresentable.swift",
+				"Extensions/ReminderOccurence+localizedRepresentation.swift",
 				"Extensions/UIImage+resize.swift",
 				Extensions/UserDefaultKeys.swift,
 				Handlers/ConnectionHandler/ConnectedInstance.swift,
 				Handlers/KeychainHandler.swift,
 				Handlers/NavigationHandler/ContentViewTab.swift,
 				"Preview Content/Birthday+mock.swift",
+				"Preview Content/Contact+mock.swift",
 				"Preview Content/MockAssets.xcassets",
+				"Preview Content/Reminder+mock.swift",
+				SubViews/ReminderRecurrenceItem.swift,
 			);
 			target = 4AEF144F2F9612D500E3949B /* WidgetsExtension */;
 		};

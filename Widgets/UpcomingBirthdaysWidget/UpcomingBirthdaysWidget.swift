@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 import MeerkatAPI
+import AppIntents
 
 struct UpcomingBirthdaysEntryView : View {
     
@@ -51,7 +52,7 @@ struct UpcomingBirthdaysEntryView : View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack {
             if let error = self.entry.error {
                 Text(error)
                     .font(.title3)
@@ -75,8 +76,10 @@ struct UpcomingBirthdaysEntryView : View {
                         if self.widgetFamily == .accessoryRectangular {
                             Label("No upcoming birthdays", systemImage: "birthday.cake.fill")
                         } else {
+                            Spacer()
                             ContentUnavailableView("No upcoming birthdays", systemImage: "birthday.cake.fill")
                                 .minimumScaleFactor(0.5)
+                            Spacer()
                         }
                     }
                     ForEach(self.entry.birthdays.prefix(self.widgetFamily.maxDisplayableBirthdays)) { birthday in
@@ -101,11 +104,27 @@ struct UpcomingBirthdaysEntryView : View {
                 EmptyView()
             default:
                 Spacer()
-                Label("Upcoming Birthdays", systemImage: "birthday.cake.fill")
+                HStack {
+                    Group {
+                        if self.widgetFamily == .systemSmall {
+                            Image(systemName: "birthday.cake.fill")
+                        } else {
+                            Label("Upcoming Birthdays", systemImage: "birthday.cake.fill")
+                        }
+                    }
                     .foregroundStyle(.secondary)
                     .font(.caption2)
                     .minimumScaleFactor(0.75)
                     .lineLimit(1)
+                    Spacer()
+                    
+                    Button(intent: ReloadAllWidgetsIntent()) {
+                        Label("\(entry.date, style: .time)", systemImage: "arrow.circlepath")
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+                }
             }
         }
     }
@@ -170,7 +189,7 @@ struct UpcomingBirthdaysEntryView : View {
     }
 }
 
-struct UpcomingBirthdays: Widget {
+struct UpcomingBirthdaysWidget: Widget {
     let kind: String = "UpcomingBirthdays"
     
     var body: some WidgetConfiguration {
@@ -191,55 +210,55 @@ struct UpcomingBirthdays: Widget {
 }
 
 #Preview("Regular", as: .systemLarge) {
-    UpcomingBirthdays()
+    UpcomingBirthdaysWidget()
 } timeline: {
     BirthdayEntry.placeholder
 }
 
 #Preview("Empty", as: .systemLarge) {
-    UpcomingBirthdays()
+    UpcomingBirthdaysWidget()
 } timeline: {
     BirthdayEntry(date: .now, birthdays: [])
 }
 
 #Preview("Error", as: .systemSmall) {
-    UpcomingBirthdays()
+    UpcomingBirthdaysWidget()
 } timeline: {
-    BirthdayEntry(date: .now, birthdays: [], error: "Please configure the widget and select an instance.")
+    BirthdayEntry(error: "Please configure the widget and select an instance.")
 }
 
 #Preview("Inline", as: .accessoryInline) {
-    UpcomingBirthdays()
+    UpcomingBirthdaysWidget()
 } timeline: {
     BirthdayEntry.placeholder
 }
 
 #Preview("Inline Empty", as: .accessoryInline) {
-    UpcomingBirthdays()
+    UpcomingBirthdaysWidget()
 } timeline: {
     BirthdayEntry(date: .now, birthdays: [])
 }
 
 #Preview("Circular", as: .accessoryCircular) {
-    UpcomingBirthdays()
+    UpcomingBirthdaysWidget()
 } timeline: {
     BirthdayEntry.placeholder
 }
 
 #Preview("Circular Empty", as: .accessoryCircular) {
-    UpcomingBirthdays()
+    UpcomingBirthdaysWidget()
 } timeline: {
     BirthdayEntry(date: .now, birthdays: [])
 }
 
 #Preview("Rectangular", as: .accessoryRectangular) {
-    UpcomingBirthdays()
+    UpcomingBirthdaysWidget()
 } timeline: {
     BirthdayEntry.placeholder
 }
 
 #Preview("Rectangular Empty", as: .accessoryRectangular) {
-    UpcomingBirthdays()
+    UpcomingBirthdaysWidget()
 } timeline: {
     BirthdayEntry(date: .now, birthdays: [])
 }

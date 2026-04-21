@@ -52,6 +52,30 @@ class NavigationHandler {
             } else {
                 ErrorHandler.shared.handle("Contact ID seems malformed: \(components[1])", while: "opening through URL")
             }
+        // TODO: Build reminder detail view and support this?
+        /*case "reminder":
+            let components = url.pathComponents
+            guard components.count > 1 else {
+                ErrorHandler.shared.handle("URL is missing reminder ID", while: "opening through URL")
+                return
+            }
+            
+            
+            if let id = Int(components[1]) {
+                Task {
+                    do {
+                        let reminder = try await connectionHandler.getReminder(id)
+                        withAnimation {
+                            self.currentTab = .dashboard
+                            self.dashboardTabPath.append(reminder)
+                        }
+                    } catch {
+                        ErrorHandler.shared.handle(error, while: "loading reminder")
+                    }
+                }
+            } else {
+                ErrorHandler.shared.handle("Reminder ID seems malformed: \(components[1])", while: "opening through URL")
+            }*/
         default:
             ErrorHandler.shared.handle("Unsupported URL path \(url.absoluteString)", while: "opening through URL")
         }

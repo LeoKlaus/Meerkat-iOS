@@ -193,7 +193,7 @@ struct UpcomingBirthdaysWidget: Widget {
     let kind: String = "UpcomingBirthdays"
     
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: UpcomingBirthdaysConfigurationAppIntent.self, provider: UpcomingBirthdaysProvider()) { entry in
+        AppIntentConfiguration(kind: kind, intent: InstanceSelectionConfigurationAppIntent.self, provider: UpcomingBirthdaysProvider()) { entry in
             UpcomingBirthdaysEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
@@ -206,6 +206,8 @@ struct UpcomingBirthdaysWidget: Widget {
             .systemMedium,
             .systemLarge
         ])
+        .configurationDisplayName("Upcoming Birthdays")
+        .description("Shows upcoming birthdays (two weeks) for the selected instance.")
     }
 }
 

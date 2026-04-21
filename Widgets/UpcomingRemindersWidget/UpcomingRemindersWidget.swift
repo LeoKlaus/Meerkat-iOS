@@ -171,7 +171,7 @@ struct UpcomingRemindersWidget: Widget {
     let kind: String = "UpcomingReminders"
     
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: UpcomingBirthdaysConfigurationAppIntent.self, provider: UpcomingRemindersProvider()) { entry in
+        AppIntentConfiguration(kind: kind, intent: InstanceSelectionConfigurationAppIntent.self, provider: UpcomingRemindersProvider()) { entry in
             UpcomingRemindersEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
@@ -184,6 +184,8 @@ struct UpcomingRemindersWidget: Widget {
             .systemMedium,
             .systemLarge
         ])
+        .configurationDisplayName("Upcoming Reminders")
+        .description("Shows upcoming reminders for the selected instance.")
     }
 }
 

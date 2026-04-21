@@ -7,6 +7,7 @@
 
 import WidgetKit
 import MeerkatAPI
+import SwiftUI
 
 extension WidgetFamily {
     var maxDisplayableReminders: Int {
@@ -26,7 +27,7 @@ extension WidgetFamily {
         case .accessoryCircular:
             1
         case .accessoryRectangular:
-            2
+            1
         case .accessoryInline:
             1
         @unknown default:
@@ -40,15 +41,24 @@ struct UpcomingRemindersProvider: AppIntentTimelineProvider {
         ReminderEntry.placeholder
     }
     
-    func snapshot(for configuration: UpcomingBirthdaysConfigurationAppIntent, in context: Context) async -> ReminderEntry {
+    func snapshot(for configuration: InstanceSelectionConfigurationAppIntent, in context: Context) async -> ReminderEntry {
         if context.isPreview {
             return ReminderEntry.placeholder
         }
         
         guard let instance = configuration.instance else {
-            return ReminderEntry(error: String(localized: "Please configure the widget and select an instance."))
+            do {
+                let activeInstance = try ConnectedInstance.getActiveInstance()
+                return await self.createEntry(with: activeInstance)
+            } catch {
+                return ReminderEntry(error: String(localized: "Please configure the widget and select an instance."))
+            }
         }
         
+        return await self.createEntry(with: instance)
+    }
+    
+    private func createEntry(with instance: ConnectedInstance) async -> ReminderEntry {
         do {
             let token = try await instance.getToken()
             let apiHandler = ApiHandler(serverURL: instance.serverURL, token: token)
@@ -57,15 +67,27 @@ struct UpcomingRemindersProvider: AppIntentTimelineProvider {
             
             return ReminderEntry(date: .now, reminders: upcomingReminders, instance: instance)
         } catch {
-            return ReminderEntry(error: String(localized: "Error loading birthdays: \(error.localizedDescription)"))
+            return ReminderEntry(error: String(localized: "Error loading reminders: \(error.localizedDescription)"))
         }
     }
     
-    func timeline(for configuration: UpcomingBirthdaysConfigurationAppIntent, in context: Context) async -> Timeline<ReminderEntry> {
+    func timeline(for configuration: InstanceSelectionConfigurationAppIntent, in context: Context) async -> Timeline<ReminderEntry> {
         
         let entry = await self.snapshot(for: configuration, in: context)
         
         return Timeline(entries: [entry], policy: .after(.now.addingTimeInterval(3600)))
+    }
+    
+    func recommendations() -> [AppIntentRecommendation<InstanceSelectionConfigurationAppIntent>] {
+        guard let userDefaults = UserDefaults.meerkat,
+              let rawString = userDefaults.string(forKey: .userDefaults(.connectedInstances)),
+              let connectedInstances = [ConnectedInstance](rawValue: rawString) else {
+            return []
+        }
+        
+        return connectedInstances.map { instance in
+            AppIntentRecommendation(intent: InstanceSelectionConfigurationAppIntent(instance: instance), description: instance.displayName)
+        }
     }
     
     //    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {

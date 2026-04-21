@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WidgetKit
 
 enum ConnectedInstanceError: LocalizedError {
     case couldntAccessUserdefaults
@@ -145,7 +146,8 @@ nonisolated struct ConnectedInstance: Codable, Identifiable, Sendable {
         guard let defaults = UserDefaults.meerkat else {
             throw ConnectedInstanceError.couldntAccessUserdefaults
         }
-        
+        WidgetCenter.shared.invalidateConfigurationRecommendations()
+        WidgetCenter.shared.reloadAllTimelines()
         defaults.set((self as ConnectedInstance?).rawValue, forKey: .userDefaults(.activeInstance))
     }
 }

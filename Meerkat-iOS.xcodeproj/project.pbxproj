@@ -82,6 +82,7 @@
 				Handlers/KeychainHandler.swift,
 				Handlers/NavigationHandler/ContentViewTab.swift,
 				"Preview Content/Birthday+mock.swift",
+				"Preview Content/ConnectedInstance+mock.swift",
 				"Preview Content/Contact+mock.swift",
 				"Preview Content/MockAssets.xcassets",
 				"Preview Content/Reminder+mock.swift",

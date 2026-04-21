@@ -107,9 +107,17 @@ struct UpcomingBirthdaysEntryView : View {
                 HStack {
                     Group {
                         if self.widgetFamily == .systemSmall {
-                            Image(systemName: "birthday.cake.fill")
+                            if let instance = entry.instance {
+                                Label("for \(instance.username)", systemImage: "birthday.cake.fill")
+                            } else {
+                                Image(systemName: "birthday.cake.fill")
+                            }
                         } else {
-                            Label("Upcoming Birthdays", systemImage: "birthday.cake.fill")
+                            if let instance = entry.instance {
+                                Label("Upcoming Birthdays for \(instance.username)", systemImage: "birthday.cake.fill")
+                            } else {
+                                Label("Upcoming Birthdays", systemImage: "birthday.cake.fill")
+                            }
                         }
                     }
                     .foregroundStyle(.secondary)
@@ -220,7 +228,7 @@ struct UpcomingBirthdaysWidget: Widget {
 #Preview("Empty", as: .systemLarge) {
     UpcomingBirthdaysWidget()
 } timeline: {
-    BirthdayEntry(date: .now, birthdays: [])
+    BirthdayEntry(date: .now, birthdays: [], instance: .mock)
 }
 
 #Preview("Error", as: .systemSmall) {
@@ -238,7 +246,7 @@ struct UpcomingBirthdaysWidget: Widget {
 #Preview("Inline Empty", as: .accessoryInline) {
     UpcomingBirthdaysWidget()
 } timeline: {
-    BirthdayEntry(date: .now, birthdays: [])
+    BirthdayEntry(date: .now, birthdays: [], instance: .mock)
 }
 
 #Preview("Circular", as: .accessoryCircular) {
@@ -250,7 +258,7 @@ struct UpcomingBirthdaysWidget: Widget {
 #Preview("Circular Empty", as: .accessoryCircular) {
     UpcomingBirthdaysWidget()
 } timeline: {
-    BirthdayEntry(date: .now, birthdays: [])
+    BirthdayEntry(date: .now, birthdays: [], instance: .mock)
 }
 
 #Preview("Rectangular", as: .accessoryRectangular) {
@@ -262,5 +270,5 @@ struct UpcomingBirthdaysWidget: Widget {
 #Preview("Rectangular Empty", as: .accessoryRectangular) {
     UpcomingBirthdaysWidget()
 } timeline: {
-    BirthdayEntry(date: .now, birthdays: [])
+    BirthdayEntry(date: .now, birthdays: [], instance: .mock)
 }

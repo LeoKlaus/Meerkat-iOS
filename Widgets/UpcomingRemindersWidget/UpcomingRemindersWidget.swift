@@ -83,9 +83,17 @@ struct UpcomingRemindersEntryView : View {
                 HStack {
                     Group {
                         if self.widgetFamily == .systemSmall {
-                            Image(systemName: "bell.fill")
+                            if let instance = entry.instance {
+                                Label("for \(instance.username)", systemImage: "bell.fill")
+                            } else {
+                                Image(systemName: "bell.fill")
+                            }
                         } else {
-                            Label("Upcoming Reminders", systemImage: "bell.fill")
+                            if let instance = entry.instance {
+                                Label("Upcoming Reminders for \(instance.username)", systemImage: "bell.fill")
+                            } else {
+                                Label("Upcoming Reminders ", systemImage: "bell.fill")
+                            }
                         }
                     }
                     .foregroundStyle(.secondary)
@@ -198,7 +206,7 @@ struct UpcomingRemindersWidget: Widget {
 #Preview("Empty", as: .systemLarge) {
     UpcomingRemindersWidget()
 } timeline: {
-    ReminderEntry(date: .now, reminders: [], instance: nil)
+    ReminderEntry(date: .now, reminders: [], instance: .mockLongUsername)
 }
 
 #Preview("Error", as: .systemSmall) {
@@ -216,7 +224,7 @@ struct UpcomingRemindersWidget: Widget {
 #Preview("Inline Empty", as: .accessoryInline) {
     UpcomingRemindersWidget()
 } timeline: {
-    ReminderEntry(date: .now, reminders: [], instance: nil)
+    ReminderEntry(date: .now, reminders: [], instance: .mock)
 }
 
 #Preview("Circular", as: .accessoryCircular) {
@@ -228,7 +236,7 @@ struct UpcomingRemindersWidget: Widget {
 #Preview("Circular Empty", as: .accessoryCircular) {
     UpcomingRemindersWidget()
 } timeline: {
-    ReminderEntry(date: .now, reminders: [], instance: nil)
+    ReminderEntry(date: .now, reminders: [], instance: .mock)
 }
 
 #Preview("Rectangular", as: .accessoryRectangular) {
@@ -240,5 +248,5 @@ struct UpcomingRemindersWidget: Widget {
 #Preview("Rectangular Empty", as: .accessoryRectangular) {
     UpcomingRemindersWidget()
 } timeline: {
-    ReminderEntry(date: .now, reminders: [], instance: nil)
+    ReminderEntry(date: .now, reminders: [], instance: .mock)
 }

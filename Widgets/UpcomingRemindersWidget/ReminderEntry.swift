@@ -21,10 +21,10 @@ struct ReminderEntry: WidgetKit.TimelineEntry {
             .mock2,
             .mock3
         ],
-        instance: nil
+        instance: .mock
     )
     
-    init(date: Date, reminders: [Reminder], instance: ConnectedInstance?) {
+    init(date: Date, reminders: [Reminder], instance: ConnectedInstance) {
         self.date = date
         self.reminders = reminders
         self.instance = instance

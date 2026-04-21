@@ -12,4 +12,9 @@ extension ConnectedInstance {
         serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!,
         username: "Leo"
     )
+    
+    static let mockLongUsername = ConnectedInstance(
+        serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!,
+        username: "Leopold-Garfield"
+    )
 }

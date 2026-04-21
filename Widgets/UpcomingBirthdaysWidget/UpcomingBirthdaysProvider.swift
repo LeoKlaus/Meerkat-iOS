@@ -78,7 +78,7 @@ struct UpcomingBirthdaysProvider: AppIntentTimelineProvider {
                 i += 1
             }
             
-            return BirthdayEntry(date: .now, birthdays: birthdaysWithImages)
+            return BirthdayEntry(date: .now, birthdays: birthdaysWithImages, instance: instance)
         } catch {
             return BirthdayEntry(error: String(localized: "Error loading birthdays: \(error.localizedDescription)"))
         }

@@ -125,12 +125,6 @@ struct UpcomingRemindersEntryView : View {
                 }
                 .buttonStyle(.plain)
                 .foregroundStyle(.accent)
-                
-                /*Button(intent: CompleteReminderIntent(instance: instance, reminder: reminder)) {
-                    Image(systemName: "circle")
-                        .foregroundStyle(.accent)
-                }
-                .buttonStyle(.plain)*/
             } else {
                 Image(systemName: "circle")
                     .foregroundStyle(.accent)

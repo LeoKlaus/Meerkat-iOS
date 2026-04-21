@@ -81,6 +81,7 @@
 				Handlers/ConnectionHandler/ConnectedInstance.swift,
 				Handlers/KeychainHandler.swift,
 				Handlers/NavigationHandler/ContentViewTab.swift,
+				Localizable.xcstrings,
 				"Preview Content/Birthday+mock.swift",
 				"Preview Content/ConnectedInstance+mock.swift",
 				"Preview Content/Contact+mock.swift",

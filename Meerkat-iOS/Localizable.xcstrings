@@ -14,6 +14,9 @@
         }
       }
     },
+    "%@" : {
+      "shouldTranslate" : false
+    },
     "%@ (%@ years old)" : {
       "localizations" : {
         "de" : {
@@ -61,6 +64,22 @@
           }
         }
       }
+    },
+    "%lld" : {
+      "shouldTranslate" : false
+    },
+    "%lld upcoming reminders" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld anstehende Erinnerungen"
+          }
+        }
+      }
+    },
+    "0" : {
+      "shouldTranslate" : false
     },
     "About" : {
       "localizations" : {
@@ -212,6 +231,16 @@
         }
       }
     },
+    "and %lld more..." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "und %lld weitere"
+          }
+        }
+      }
+    },
     "April" : {
       "localizations" : {
         "de" : {
@@ -353,7 +382,24 @@
       }
     },
     "Complete Reminder" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerung abschließen"
+          }
+        }
+      }
+    },
+    "Configuration" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konfiguration"
+          }
+        }
+      }
     },
     "Configure Messengers" : {
       "localizations" : {
@@ -708,6 +754,26 @@
         }
       }
     },
+    "Error loading birthdays: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler beim Laden der Geburtstage: %@"
+          }
+        }
+      }
+    },
+    "Error loading reminders: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler beim Laden der Erinnerungen: %@"
+          }
+        }
+      }
+    },
     "Every six months" : {
       "localizations" : {
         "de" : {
@@ -808,6 +874,16 @@
         }
       }
     },
+    "for %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "für %@"
+          }
+        }
+      }
+    },
     "Forbidden" : {
       "localizations" : {
         "de" : {
@@ -819,7 +895,14 @@
       }
     },
     "Force reloads all widgets." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualisiert alle Widgets."
+          }
+        }
+      }
     },
     "Forgot password?" : {
       "localizations" : {
@@ -1032,7 +1115,14 @@
       }
     },
     "Mark the selected reminder as completed." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markiert die ausgewählte Erinnerung als abgeschlossen."
+          }
+        }
+      }
     },
     "May" : {
       "localizations" : {
@@ -1204,6 +1294,16 @@
         }
       }
     },
+    "None" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine"
+          }
+        }
+      }
+    },
     "Not found" : {
       "localizations" : {
         "de" : {
@@ -1304,6 +1404,16 @@
         }
       }
     },
+    "Please configure the widget and select an instance." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte konfiguriere das Widget und wähle eine Instanz."
+          }
+        }
+      }
+    },
     "Prefer not to say" : {
       "localizations" : {
         "de" : {
@@ -1385,10 +1495,24 @@
       }
     },
     "Reload all widgets" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Widgets aktualisieren"
+          }
+        }
+      }
     },
     "Reminder" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnerung"
+          }
+        }
+      }
     },
     "Reminder Completed" : {
       "localizations" : {
@@ -1530,6 +1654,26 @@
         }
       }
     },
+    "Shows upcoming birthdays (two weeks) for the selected instance." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeigt anstehende Geburtstage (zwei Wochen) für die gewählte Instanz."
+          }
+        }
+      }
+    },
+    "Shows upcoming reminders for the selected instance." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeigt anstehende Erinnerungen für die gewählte Instanz."
+          }
+        }
+      }
+    },
     "Skip" : {
       "localizations" : {
         "de" : {
@@ -1591,7 +1735,14 @@
       }
     },
     "The reminder to complete" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Erinnerung, die abgeschlossen werden soll"
+          }
+        }
+      }
     },
     "Timeline" : {
       "localizations" : {
@@ -1619,6 +1770,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heute"
+          }
+        }
+      }
+    },
+    "Today:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute:"
+          }
+        }
+      }
+    },
+    "Today: %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute: %@"
+          }
+        }
+      }
+    },
+    "Today: None" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute: Keine"
           }
         }
       }
@@ -1693,12 +1874,42 @@
         }
       }
     },
+    "Upcoming Birthdays for %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anstehende Geburtstage für %@"
+          }
+        }
+      }
+    },
     "Upcoming Reminders" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ausstehende Erinnerungen"
+          }
+        }
+      }
+    },
+    "Upcoming Reminders " : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anstehende Erinnerungen"
+          }
+        }
+      }
+    },
+    "Upcoming Reminders for %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anstehende Erinnerungen für %@"
           }
         }
       }
@@ -1789,6 +2000,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wöchentlich"
+          }
+        }
+      }
+    },
+    "Widget displaying upcoming birthdays." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget für anstehende Geburtstage."
           }
         }
       }

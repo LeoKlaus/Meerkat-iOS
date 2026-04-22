@@ -291,7 +291,14 @@
       }
     },
     "Appearance" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aussehen"
+          }
+        }
+      }
     },
     "April" : {
       "localizations" : {
@@ -454,7 +461,14 @@
       }
     },
     "Color Scheme" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farbschema"
+          }
+        }
+      }
     },
     "Complete Reminder" : {
       "localizations" : {
@@ -687,10 +701,24 @@
       }
     },
     "Custom Accent Color" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigene Akzentfarbe"
+          }
+        }
+      }
     },
     "Custom Color" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigene Farbe"
+          }
+        }
+      }
     },
     "Custom Fields" : {
       "localizations" : {
@@ -703,7 +731,14 @@
       }
     },
     "Dark" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dunkel"
+          }
+        }
+      }
     },
     "Dashboard" : {
       "localizations" : {
@@ -1265,7 +1300,14 @@
       }
     },
     "Light" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hell"
+          }
+        }
+      }
     },
     "Link Format:" : {
       "localizations" : {
@@ -1358,7 +1400,14 @@
       }
     },
     "Meerkat Blue" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meerkat Blau"
+          }
+        }
+      }
     },
     "Message" : {
       "localizations" : {
@@ -1644,10 +1693,24 @@
       }
     },
     "Paperless Green" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paperless Grün"
+          }
+        }
+      }
     },
     "Paperparrot Purple" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paperparrot Lila"
+          }
+        }
+      }
     },
     "Password" : {
       "localizations" : {
@@ -1680,7 +1743,14 @@
       }
     },
     "Plappa Orange" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plappa Orange"
+          }
+        }
+      }
     },
     "Please configure the widget and select an instance." : {
       "localizations" : {
@@ -2103,7 +2173,14 @@
       }
     },
     "System" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
     },
     "Take a Photo" : {
       "localizations" : {
@@ -2356,7 +2433,14 @@
       }
     },
     "Use Per-Instance Accent Colors" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akzentfarbe pro Instanz"
+          }
+        }
+      }
     },
     "Use Phone Number" : {
       "localizations" : {
@@ -2419,7 +2503,14 @@
       }
     },
     "Warning: Changing the accent color can reduce contrast or make certain elements of the UI illegible." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warnung: Eigene Akzentfarben können den Kontrast reduzieren und einige Elemente des Interfaces unleserlich machen."
+          }
+        }
+      }
     },
     "Warning: Logs may contain personal information like names of contacts" : {
       "localizations" : {

@@ -82,6 +82,7 @@
 				"Extensions/ReminderOccurence+localizedRepresentation.swift",
 				"Extensions/UIImage+resize.swift",
 				Extensions/UserDefaultKeys.swift,
+				"Extensions/View/View+customTint.swift",
 				Handlers/ConnectionHandler/ConnectedInstance.swift,
 				Handlers/KeychainHandler.swift,
 				Handlers/NavigationHandler/ContentViewTab.swift,

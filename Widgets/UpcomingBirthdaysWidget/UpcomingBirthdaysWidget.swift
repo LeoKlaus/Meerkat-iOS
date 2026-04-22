@@ -135,6 +135,7 @@ struct UpcomingBirthdaysEntryView : View {
                 }
             }
         }
+        .customTint()
     }
     
     func birthdayItem(_ birthday: BirthdayWithImage) -> some View {

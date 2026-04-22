@@ -111,6 +111,7 @@ struct UpcomingRemindersEntryView : View {
                 }
             }
         }
+        .customTint()
     }
     
     func reminderItem(_ reminder: Reminder) -> some View {
@@ -124,7 +125,7 @@ struct UpcomingRemindersEntryView : View {
                     }
                 }
                 .buttonStyle(.plain)
-                .foregroundStyle(.accent)
+                .foregroundStyle(.tint)
             } else {
                 Image(systemName: "circle")
                     .foregroundStyle(.accent)

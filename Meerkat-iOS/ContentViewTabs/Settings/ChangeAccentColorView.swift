@@ -15,7 +15,7 @@ struct ChangeAccentColorView: View {
     @AppStorage(.userDefaults(.connectedInstances), store: .meerkat) var connectedInstances: [ConnectedInstance] = []
     @AppStorage(.userDefaults(.activeInstance), store: .meerkat) var activeInstance: ConnectedInstance? = nil
     
-    @State private var usePerInstanceAccentColors: Bool = false
+    @AppStorage(.userDefaults(.usePerInstanceAccentColors), store: .meerkat) var usePerInstanceAccentColors: Bool = false
     
     @State private var tempColor: Color = .accentColor
     
@@ -30,18 +30,6 @@ struct ChangeAccentColorView: View {
                 
                 
                 Toggle("Use Per-Instance Accent Colors", isOn: self.$usePerInstanceAccentColors)
-                    .onChange(of: self.usePerInstanceAccentColors) {
-                        if usePerInstanceAccentColors {
-                            self.globalAccentColor = nil
-                        } else {
-                            self.connectedInstances = self.connectedInstances.map {
-                                var instance = $0
-                                instance.accentColor = nil
-                                return instance
-                            }
-                            self.activeInstance?.accentColor = nil
-                        }
-                    }
             }
             
             if self.usePerInstanceAccentColors {

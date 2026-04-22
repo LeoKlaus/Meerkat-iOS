@@ -149,26 +149,40 @@ struct ContactList: View {
                     } label: {
                         Label("Sort options", systemImage: "arrow.up.arrow.down")
                     }
+                    .tint(.primary)
                 }
                 
                 ToolbarItem(placement: .navigation) {
                     Menu {
-                        Button("All") {
+                        Button {
                             self.circleFilter = nil
                             self.loadContactsWrapped()
+                        } label: {
+                            if self.circleFilter == nil {
+                                Label("All", systemImage: "checkmark")
+                            } else {
+                                Text("All")
+                            }
                         }.disabled(self.circleFilter == nil)
                         
                         Divider()
                         
                         ForEach(self.connectionHandler.circles, id: \.self) { circle in
-                            Button(circle) {
+                            Button {
                                 self.circleFilter = circle
                                 self.loadContactsWrapped()
+                            } label: {
+                                if self.circleFilter == circle {
+                                    Label(circle, systemImage: "checkmark")
+                                } else {
+                                    Text(circle)
+                                }
                             }.disabled(self.circleFilter == circle)
                         }
                     } label: {
                         Label("Filter by Circles", systemImage: self.circleFilter == nil ? "person.2.badge.gearshape" : "person.2.badge.gearshape.fill")
                     }
+                    .tint(.primary)
                 }
                 
                 if !self.isSearchContext {
@@ -178,6 +192,7 @@ struct ContactList: View {
                         }) {
                             Label("Add Contact", systemImage: "plus")
                         }
+                        .tint(.primary)
                     }
                 }
             }
@@ -232,4 +247,5 @@ struct SortButton: View {
     ContactList()
         .withErrorHandling()
         .environment(ConnectionHandler.mock)
+        .environment(NavigationHandler())
 }

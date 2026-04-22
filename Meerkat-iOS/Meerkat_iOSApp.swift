@@ -14,8 +14,17 @@ struct Meerkat_iOSApp: App {
     @AppStorage(.userDefaults(.colorScheme), store: .meerkat) var colorScheme: StorableColorScheme = .system
     @AppStorage(.userDefaults(.globalAccentColor), store: .meerkat) var globalAccentColor: StorableAccentColor? = nil
     @AppStorage(.userDefaults(.activeInstance), store: .meerkat) var activeInstance: ConnectedInstance? = nil
+    @AppStorage(.userDefaults(.usePerInstanceAccentColors), store: .meerkat) var usePerInstanceAccentColors: Bool = false
     
     @State private var connectionHandler: ConnectionHandler? = ConnectionHandler()
+    
+    var accentColor: Color {
+        if self.usePerInstanceAccentColors {
+            return self.activeInstance?.accentColor?.color ?? .accent
+        } else {
+            return self.globalAccentColor?.color ?? .accent
+        }
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -29,7 +38,7 @@ struct Meerkat_iOSApp: App {
                 }
             }
             .preferredColorScheme(colorScheme.colorScheme)
-            .tint(self.activeInstance?.accentColor?.color ?? self.globalAccentColor?.color ?? .accent)
+            .tint(self.accentColor)
             .withErrorHandling(onTap: self.handleErrorToast)
         }
     }

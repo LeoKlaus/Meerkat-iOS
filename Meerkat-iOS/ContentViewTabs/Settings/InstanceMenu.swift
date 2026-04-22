@@ -43,14 +43,19 @@ struct InstanceMenu: View {
                 Label("Add Instance", systemImage: "plus")
             }
         } label: {
-            Label(self.activeInstance?.displayName ?? "Switch Instance", systemImage: self.systemImage)
+            HStack {
+                Label(self.activeInstance?.displayName ?? "Switch Instance", systemImage: self.systemImage)
+                Spacer()
+            }
         }
     }
 }
 
 
 #Preview {
-    InstanceMenu()
-        .withErrorHandling()
-        .environment(ConnectionHandler.mock)
+    List {
+        InstanceMenu()
+    }
+    .withErrorHandling()
+    .environment(ConnectionHandler.mock)
 }

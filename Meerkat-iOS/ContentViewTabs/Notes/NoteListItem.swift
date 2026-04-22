@@ -50,6 +50,7 @@ struct NoteListItem: View {
             }
             
             Button("Delete", systemImage: "trash", role: .destructive, action: self.deleteNote)
+                .tint(.red)
             
         } label: {
             HStack {

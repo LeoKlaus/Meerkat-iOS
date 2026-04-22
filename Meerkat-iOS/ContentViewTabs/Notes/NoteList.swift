@@ -76,6 +76,7 @@ struct NoteList: View {
                     Button("Add Note", systemImage: "plus") {
                         self.showAddNoteSheet = true
                     }
+                    .tint(.primary)
                 }
             }
             .sheet(isPresented: self.$showAddNoteSheet) {
@@ -98,4 +99,5 @@ struct NoteList: View {
     NoteList()
         .withErrorHandling()
         .environment(ConnectionHandler.mock)
+        .environment(NavigationHandler())
 }

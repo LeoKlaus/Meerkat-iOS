@@ -42,6 +42,7 @@ struct ReminderListItem: View {
             }
             
             Button("Delete", systemImage: "trash", role: .destructive, action: self.deleteReminder)
+                .tint(.red)
             
         } label: {
             VStack(alignment: .leading) {

@@ -16,6 +16,7 @@ enum UserDefaultKey: String, CaseIterable {
     case showPatchNotes
     case colorScheme
     case globalAccentColor
+    case usePerInstanceAccentColors
 }
 
 extension String {

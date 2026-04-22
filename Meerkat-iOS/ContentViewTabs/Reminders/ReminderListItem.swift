@@ -49,6 +49,7 @@ struct ReminderListItem: View {
                     .multilineTextAlignment(.leading)
                 HStack {
                     Text(self.reminder.remindAt, style: .date)
+                        .foregroundStyle(reminder.remindAt.hasPassed ? .red : .secondary)
                     
                     if self.reminder.byMail {
                         Image(systemName: "envelope")
@@ -139,6 +140,16 @@ struct ReminderListItem: View {
 #Preview {
     List {
         ReminderListItem(reminder: .mock2) {
+            
+        }
+    }
+    .withErrorHandling()
+    .environment(ConnectionHandler.mock)
+}
+
+#Preview("Past Reminder") {
+    List {
+        ReminderListItem(reminder: .mock) {
             
         }
     }

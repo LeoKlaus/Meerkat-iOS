@@ -187,7 +187,7 @@ struct UpcomingRemindersWidget: Widget {
             .systemLarge
         ])
         .configurationDisplayName("Upcoming Reminders")
-        .description("Shows upcoming reminders for the selected instance.")
+        .description("Shows upcoming reminders for the selected instance. If no instance is selected, the currently active one from the app will be used.")
     }
 }
 

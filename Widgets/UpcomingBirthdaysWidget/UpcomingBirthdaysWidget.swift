@@ -215,7 +215,7 @@ struct UpcomingBirthdaysWidget: Widget {
             .systemLarge
         ])
         .configurationDisplayName("Upcoming Birthdays")
-        .description("Shows upcoming birthdays (two weeks) for the selected instance.")
+        .description("Shows upcoming birthdays (two weeks) for the selected instance. If no instance is selected, the currently active one from the app will be used.")
     }
 }
 

@@ -66,13 +66,33 @@
       }
     },
     "%@ ago" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vor %@"
+          }
+        }
+      }
     },
     "%@ is being developed by:" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ wird entwickelt von:"
+          }
+        }
+      }
     },
     "%@ version %@ (%@)" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ Version %2$@ (%3$@)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
@@ -95,10 +115,17 @@
       }
     },
     "%lldms" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lldms"
+          }
+        }
+      }
     },
     "•" : {
-
+      "shouldTranslate" : false
     },
     "0" : {
       "shouldTranslate" : false
@@ -344,7 +371,14 @@
       }
     },
     "Beta Release" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta Release"
+          }
+        }
+      }
     },
     "Birthday" : {
       "localizations" : {
@@ -537,7 +571,14 @@
       }
     },
     "Couldn't get server health status" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serverstatus konnte nicht geladen werden"
+          }
+        }
+      }
     },
     "Couldn't load contact with ID %lld" : {
       "localizations" : {
@@ -600,7 +641,14 @@
       }
     },
     "Create an Issue on GitHub" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Issue auf GitHub erstellen"
+          }
+        }
+      }
     },
     "Create Circle" : {
       "localizations" : {
@@ -653,7 +701,14 @@
       }
     },
     "Database" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenbank"
+          }
+        }
+      }
     },
     "Date" : {
       "localizations" : {
@@ -749,7 +804,14 @@
       "shouldTranslate" : false
     },
     "Do you want to include debug logs from %@?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchtest du die Logs von %@ anhängen?"
+          }
+        }
+      }
     },
     "Done" : {
       "localizations" : {
@@ -762,7 +824,14 @@
       }
     },
     "During the pre-release TestFlight beta, not all changes will be documented here. TestFlight will inform you on any changes whenever you open the app after an update." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Während der TestFlight-Beta werden nicht alle Änderungen hier dokumentiert. TestFlight informiert nach Updates dich beim Öffnen der App über Änderungen."
+          }
+        }
+      }
     },
     "Edit" : {
       "localizations" : {
@@ -845,7 +914,14 @@
       }
     },
     "Export Debug Logs" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debug Logs exportieren"
+          }
+        }
+      }
     },
     "February" : {
       "localizations" : {
@@ -968,7 +1044,14 @@
       }
     },
     "Gathering Debug Info" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sammle debug Info"
+          }
+        }
+      }
     },
     "Gender" : {
       "localizations" : {
@@ -1004,10 +1087,24 @@
       }
     },
     "Healthy" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesund"
+          }
+        }
+      }
     },
     "Help" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hilfe"
+          }
+        }
+      }
     },
     "How We Met" : {
       "localizations" : {
@@ -1069,6 +1166,26 @@
         }
       }
     },
+    "Instance the widget should use. If empty, the currently active instance from the app will be used." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instanz, die das Widget verwenden soll. Wenn keine Instanz gewählt ist, wird die gerade aktive aus der App verwendet."
+          }
+        }
+      }
+    },
+    "Intent to select an instance." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intent um eine Instanz zu wählen"
+          }
+        }
+      }
+    },
     "January" : {
       "localizations" : {
         "de" : {
@@ -1120,7 +1237,7 @@
       }
     },
     "Leo Wehrfritz\nLerchenstr. 24\n55270 Zornheim\nGermany\nTel.: +49 176 32326918\nE-Mail: contact@wehrfritz.me" : {
-
+      "shouldTranslate" : false
     },
     "License" : {
       "localizations" : {
@@ -1173,7 +1290,14 @@
       }
     },
     "Manage Instances" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instanzen verwalten"
+          }
+        }
+      }
     },
     "March" : {
       "localizations" : {
@@ -1296,7 +1420,14 @@
       }
     },
     "No" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nein"
+          }
+        }
+      }
     },
     "No Circles" : {
       "localizations" : {
@@ -1419,7 +1550,7 @@
       }
     },
     "Nothing to see here :)" : {
-
+      "shouldTranslate" : false
     },
     "November" : {
       "localizations" : {
@@ -1462,15 +1593,11 @@
       }
     },
     "Open Source Libraries" : {
-
-    },
-    "Open Source Licenses" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open Source Lizenzen"
+            "value" : "Open Source Bibliotheken"
           }
         }
       }
@@ -1496,7 +1623,14 @@
       }
     },
     "Patch Notes" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patchnotes"
+          }
+        }
+      }
     },
     "Phone" : {
       "localizations" : {
@@ -1639,7 +1773,14 @@
       }
     },
     "Remove" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entfernen"
+          }
+        }
+      }
     },
     "Remove %@" : {
       "localizations" : {
@@ -1652,7 +1793,14 @@
       }
     },
     "Remove %@?" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ entfernen?"
+          }
+        }
+      }
     },
     "Remove Birthday" : {
       "localizations" : {
@@ -1685,7 +1833,14 @@
       }
     },
     "Response Time" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Antwortzeit"
+          }
+        }
+      }
     },
     "Save" : {
       "localizations" : {
@@ -1718,7 +1873,14 @@
       }
     },
     "Send an email" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Mail schicken"
+          }
+        }
+      }
     },
     "Send email notification" : {
       "localizations" : {
@@ -1761,10 +1923,24 @@
       }
     },
     "Server Information" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serverinformationen"
+          }
+        }
+      }
     },
     "Server Status" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serverstatus"
+          }
+        }
+      }
     },
     "Settings" : {
       "localizations" : {
@@ -1777,27 +1953,41 @@
       }
     },
     "Show notes for new versions" : {
-
-    },
-    "Show this for every new version of %@. You can always view release notes in the about section in settings." : {
-
-    },
-    "Shows upcoming birthdays (two weeks) for the selected instance." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeigt anstehende Geburtstage (zwei Wochen) für die gewählte Instanz."
+            "value" : "Patchnotes für neue Versionen zeigen"
           }
         }
       }
     },
-    "Shows upcoming reminders for the selected instance." : {
+    "Show this for every new version of %@. You can always view release notes in the about section in settings." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zeigt anstehende Erinnerungen für die gewählte Instanz."
+            "value" : "Zeigt diese Ansicht für jede neue Version von %@. Du kannst die Patchnotes jedezeit im “Über”-Abschnitt der Einstellungen einsehen."
+          }
+        }
+      }
+    },
+    "Shows upcoming birthdays (two weeks) for the selected instance. If no instance is selected, the currently active one from the app will be used." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeigt anstehende Geburtstage (zwei Wochen) für die gewählte Instanz. Wenn keine Instanz gewählt ist, wird die gerade aktive aus der App genommen."
+          }
+        }
+      }
+    },
+    "Shows upcoming reminders for the selected instance. If no instance is selected, the currently active one from the app will be used." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeigt anstehende Erinnerungen für die gewählte Instanz. Wenn keine Instanz gewählt ist, wird die gerade aktive aus der App genommen."
           }
         }
       }
@@ -1823,7 +2013,14 @@
       }
     },
     "Status: " : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status:"
+          }
+        }
+      }
     },
     "Stay in touch" : {
       "localizations" : {
@@ -1876,7 +2073,14 @@
       }
     },
     "This will only remove this server from the app, your data on the server will not be deleted." : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hierdurch wird nur die Verbindung der App zum Server getrennt. Deine Daten auf dem Server werden nicht gelöscht."
+          }
+        }
+      }
     },
     "Timeline" : {
       "localizations" : {
@@ -1969,10 +2173,24 @@
       }
     },
     "Unexpected: %@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unerwartet: %@"
+          }
+        }
+      }
     },
     "Unhealthy" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungesund"
+          }
+        }
+      }
     },
     "Unknown" : {
       "localizations" : {
@@ -2125,7 +2343,14 @@
       }
     },
     "Version: " : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version:"
+          }
+        }
+      }
     },
     "View %@" : {
       "localizations" : {
@@ -2138,7 +2363,14 @@
       }
     },
     "Warning: Logs may contain personal information like names of contacts" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warnung: Logs können persönliche Informationen wie die Namen von Kontakten enthalten"
+          }
+        }
+      }
     },
     "Weekly" : {
       "localizations" : {
@@ -2150,18 +2382,15 @@
         }
       }
     },
-    "Widget displaying upcoming birthdays." : {
+    "With special thanks to" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widget für anstehende Geburtstage."
+            "value" : "Mit besonderem Dankeschön an"
           }
         }
       }
-    },
-    "With special thanks to" : {
-
     },
     "Work Information" : {
       "localizations" : {

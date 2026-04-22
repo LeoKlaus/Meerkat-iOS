@@ -21,6 +21,10 @@ struct DashboardView: View {
     
     @State private var doneLoading: Bool = false
     
+    @State private var reminderToAdd: Reminder? = nil
+    @State private var showAddNoteView: Bool = false
+    @State private var showAddActivitySheet: Bool = false
+    
     var body: some View {
         @Bindable var navigationHandler = self.navigationHandler
         NavigationStack(path: $navigationHandler.dashboardTabPath) {
@@ -77,17 +81,22 @@ struct DashboardView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Menu {
+                    ControlGroup {
                         Button("New Activity", systemImage: "calendar.badge.plus") {
-                            
+                            self.showAddActivitySheet = true
                         }
                         
                         Button("New Note", systemImage: "text.badge.plus") {
-                            
+                            self.showAddNoteView = true
+                        }
+                        
+                        Button("New Reminder", systemImage: "bell") {
+                            self.reminderToAdd = .empty
                         }
                     } label: {
                         Label("Add new...", systemImage: "plus")
                     }
+                    .controlGroupStyle(.palette)
                 }
             }
             .throwingTask(taskDescription: "loading dashboard", self.loadDashboard)
@@ -95,6 +104,31 @@ struct DashboardView: View {
             .navigationTitle("Dashboard")
             .navigationDestination(for: Contact.self) { contact in
                 ContactDetailView(contact: contact)
+            }
+            .sheet(item: self.$reminderToAdd, onDismiss: self.loadDashboardWrapped) { reminder in
+                NavigationStack {
+                    EditReminderView(reminder: reminder, isNewReminder: true)
+                }
+                .presentationDetents([.medium, .large])
+            }
+            .sheet(isPresented: self.$showAddActivitySheet, onDismiss: self.loadDashboardWrapped) {
+                NavigationStack {
+                    EditActivityView()
+                }
+            }
+            .sheet(isPresented: self.$showAddNoteView, onDismiss: self.loadDashboardWrapped) {
+                EditNoteView()
+                    .presentationDetents([.medium, .large])
+            }
+        }
+    }
+    
+    private func loadDashboardWrapped() {
+        Task {
+            do {
+                try await self.loadDashboard()
+            } catch {
+                self.errorHandler.handle(error, while: "reloading dashboard")
             }
         }
     }
@@ -123,4 +157,5 @@ struct DashboardView: View {
     DashboardView()
         .withErrorHandling()
         .environment(ConnectionHandler.mock)
+        .environment(NavigationHandler())
 }

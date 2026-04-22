@@ -1409,6 +1409,16 @@
         }
       }
     },
+    "New Reminder" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Erinnerung"
+          }
+        }
+      }
+    },
     "Nickname" : {
       "localizations" : {
         "de" : {
@@ -1858,6 +1868,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suche"
+          }
+        }
+      }
+    },
+    "Select" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auswählen"
           }
         }
       }

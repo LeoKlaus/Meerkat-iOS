@@ -75,7 +75,7 @@ struct ReminderListItem: View {
         }
         .foregroundStyle(.primary)
         .sheet(isPresented: self.$showEditSheet, onDismiss: self.reloadReminder) {
-            EditReminderView(contactId: self.reminder.contactId, reminder: self.reminder)
+            EditReminderView(contact: self.associatedContact, reminder: self.reminder)
         }
         .throwingTask(taskDescription: "loading associated contact for reminder \(self.reminder.message)", self.loadAssociatedContact)
     }

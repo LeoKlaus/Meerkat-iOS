@@ -104,13 +104,14 @@ struct ContactDetailView: View {
                             self.contactHeader
                         }
                     }
+                    .listSectionSpacing(5)
                     
                     Section {
                         HStack {
                             Button {
                                 self.showAddActivitySheet = true
                             } label: {
-                                Label("Add Activity", systemImage: "calendar")
+                                Label("Add Activity", systemImage: "calendar.badge.plus")
                                     .lineLimit(1)
                                     .foregroundStyle(.white)
                                     .frame(maxWidth: .infinity)
@@ -128,6 +129,7 @@ struct ContactDetailView: View {
                             .glassProminentButtonStyleIfAvailable()
                         }
                     }
+                    .listSectionSpacing(0)
                     .listRowBackground(
                         EmptyView()
                     )
@@ -150,6 +152,7 @@ struct ContactDetailView: View {
                             .tag(ContactDetailViewTab.reminders)
                             .labelStyle(.iconOnly)
                     }
+                    .listSectionSpacing(0)
                     .pickerStyle(.segmented)
                     .listRowBackground(
                         EmptyView()
@@ -197,23 +200,6 @@ struct ContactDetailView: View {
                                         Label {
                                             Text(messengerLink.userId)
                                         } icon: {
-                                            /*Group {
-                                             if let imageData = messengerLink.messenger.imageData, let img = Image(data: imageData) {
-                                             img
-                                             .resizable()
-                                             .scaledToFit()
-                                             } else {
-                                             Image(systemName: "bubble")
-                                             .resizable()
-                                             .scaledToFit()
-                                             }
-                                             }
-                                             .padding(5)
-                                             .background {
-                                             Circle()
-                                             .fill(messengerLink.messenger.color ?? .accent)
-                                             .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                             }*/
                                             ZStack {
                                                 Circle()
                                                     .fill(messengerLink.messenger.color ?? .accent)
@@ -271,38 +257,30 @@ struct ContactDetailView: View {
                         }
                     }
                 }
-                .listSectionSpacing(5)
             }
         }
+        .throwingTask(taskDescription: "loading details for \(contact.firstname)", self.loadDetails)
+        .throwingRefreshable(taskDescription: "reloading details for \(contact.firstname)", self.loadDetails)
         .sheet(item: self.$reminderToAdd, onDismiss: self.loadDetailsWrapped) { reminder in
-            EditReminderView(contactId: self.contact.id, reminder: reminder, isNewReminder: true)
+            EditReminderView(contact: self.contact, reminder: reminder, isNewReminder: true)
+                .presentationDetents([.medium, .large])
         }
         .sheet(isPresented: self.$showAddActivitySheet, onDismiss: self.loadDetailsWrapped) {
             NavigationStack {
                 EditActivityView(prefilledContacts: [self.contact])
             }
         }
-        .sheet(isPresented: self.$showAddNoteView) {
-            Task {
-                do {
-                    try await self.loadDetails()
-                } catch {
-                    self.errorHandler.handle(error, while: "reloading details for \(contact.firstname)")
-                }
-            }
-        } content: {
+        .sheet(isPresented: self.$showAddNoteView, onDismiss: self.loadDetailsWrapped) {
             EditNoteView(contactId: self.contact.id)
                 .presentationDetents([.medium, .large])
         }
-        .throwingTask(taskDescription: "loading details for \(contact.firstname)", self.loadDetails)
-        .throwingRefreshable(taskDescription: "reloading details for \(contact.firstname)", self.loadDetails)
         .toolbar {
             if !self.isEditing {
                 ToolbarItemGroup(placement: .secondaryAction) {
                     Button("Add Note", systemImage: "note.text") {
                         self.showAddNoteView = true
                     }
-                    Button("Add Activity", systemImage: "calendar") {
+                    Button("Add Activity", systemImage: "calendar.badge.plus") {
                         self.showAddActivitySheet = true
                     }
                     
@@ -346,22 +324,7 @@ struct ContactDetailView: View {
             }
             
             ToolbarItem(placement: .confirmationAction) {
-                /*if self.isEditing {
-                 Button("Done", systemImage: "checkmark") {
-                 Task {
-                 do {
-                 let updated = try await self.connectionHandler.updateContact(self.contact)
-                 
-                 withAnimation {
-                 self.contact = updated
-                 self.isEditing = false
-                 }
-                 } catch {
-                 self.errorHandler.handle(error, while: "updating \(self.contact.firstname)")
-                 }
-                 }
-                 }
-                 } else*/ if !self.isEditing {
+                if !self.isEditing {
                      Button("Edit", systemImage: "pencil") {
                          withAnimation {
                              self.isEditing = true

@@ -18,22 +18,22 @@ struct EditReminderView: View {
     
     @State private var reminder: Reminder
     
-    let contactId: Int
+    @State var contact: Contact?
     let isNewReminder: Bool
     
     @State private var isSaving: Bool = false
     
     @FocusState var isTextFieldFocused
     
-    init(contactId: Int) {
+    init(contact: Contact? = nil) {
         self.reminder = Reminder.empty
-        self.contactId = contactId
+        self.contact = contact
         self.isNewReminder = true
     }
     
-    init(contactId: Int, reminder: Reminder, isNewReminder: Bool = false) {
+    init(contact: Contact? = nil, reminder: Reminder, isNewReminder: Bool = false) {
         self.reminder = reminder
-        self.contactId = contactId
+        self.contact = contact
         self.isNewReminder = isNewReminder
     }
     
@@ -52,6 +52,17 @@ struct EditReminderView: View {
             
             DatePicker("Date", selection: self.$reminder.remindAt, displayedComponents: [.date])
             
+            if self.isNewReminder {
+                NavigationLink(destination:  SelectContactsView(selectedContact: self.$contact)){
+                    if let contact {
+                        Text(contact.firstAndLastName)
+                    } else {
+                        Text("Select")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
+            
             if self.reminder.recurrence != .once {
                 Section {
                     Toggle("Reschedule from completion date", isOn: self.$reminder.reoccurFromCompletion)
@@ -69,7 +80,7 @@ struct EditReminderView: View {
                     Text("Save")
                 }
             }
-            .disabled(self.reminder.message.isEmpty || self.isSaving)
+            .disabled(self.reminder.message.isEmpty || self.isSaving || self.contact == nil)
             
             Button("Cancel", role: .destructive) {
                 self.dismiss()
@@ -78,13 +89,18 @@ struct EditReminderView: View {
     }
     
     func save() {
+        guard let contact else {
+            self.errorHandler.handle("Select a contact first", while: "saving reminder")
+            return
+        }
+        
         withAnimation {
             self.isSaving = true
         }
         Task {
             do {
                 if self.isNewReminder {
-                    _ = try await self.connectionHandler.createContactReminder(contactId: self.contactId, reminder: self.reminder)
+                    _ = try await self.connectionHandler.createContactReminder(contactId: contact.id, reminder: self.reminder)
                 } else {
                     _ = try await self.connectionHandler.updateReminder(self.reminder)
                 }
@@ -102,13 +118,25 @@ struct EditReminderView: View {
 }
 
 #Preview("New Reminder") {
-    EditReminderView(contactId: 1)
-        .withErrorHandling()
-        .environment(ConnectionHandler.mock)
+    NavigationStack {
+        EditReminderView()
+    }
+    .withErrorHandling()
+    .environment(ConnectionHandler.mock)
+}
+
+#Preview("New Reminder (with preselected contact)") {
+    NavigationStack {
+        EditReminderView(contact: .mock)
+    }
+    .withErrorHandling()
+    .environment(ConnectionHandler.mock)
 }
 
 #Preview("Existing Reminder") {
-    EditReminderView(contactId: 1, reminder: .mock2)
-        .withErrorHandling()
-        .environment(ConnectionHandler.mock)
+    NavigationStack {
+        EditReminderView(contact: .mock, reminder: .mock2)
+    }
+    .withErrorHandling()
+    .environment(ConnectionHandler.mock)
 }

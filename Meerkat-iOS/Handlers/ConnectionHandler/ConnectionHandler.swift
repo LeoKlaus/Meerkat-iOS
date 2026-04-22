@@ -8,9 +8,15 @@
 import Foundation
 import MeerkatAPI
 import EasyErrorHandling
+import OSLog
 
 @Observable
 class ConnectionHandler {
+
+    private static let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: ConnectionHandler.self)
+    )
     
     private var apiHandler: ApiHandler
     
@@ -70,6 +76,7 @@ class ConnectionHandler {
     }
     
     func switchInstance(to newInstance: ConnectedInstance) throws {
+        Self.logger.debug("Switching instance to: \(newInstance.displayName)")
         self.apiHandler = ApiHandler(serverURL: newInstance.serverURL, token: try newInstance.getToken())
         self.currentInstance = newInstance
         
@@ -84,7 +91,6 @@ class ConnectionHandler {
         
         try newInstance.markActive()
     }
-
     
     // MARK: Auth
     /**

@@ -38,8 +38,8 @@ struct ContentView: View {
                 ContactList(isSearchContext: true)
             }
         }
+        .id(self.connectionHandler.currentInstance.id)
         .onOpenURL(perform: self.handleURL)
-        //.id(self.connectionHandler?.currentInstance.id)
     }
     
     func handleURL(_ url: URL) {

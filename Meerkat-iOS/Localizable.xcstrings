@@ -65,6 +65,22 @@
         }
       }
     },
+    "%@ ago" : {
+
+    },
+    "%@ is being developed by:" : {
+
+    },
+    "%@ version %@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ version %2$@ (%3$@)"
+          }
+        }
+      }
+    },
     "%lld" : {
       "shouldTranslate" : false
     },
@@ -77,6 +93,12 @@
           }
         }
       }
+    },
+    "%lldms" : {
+
+    },
+    "•" : {
+
     },
     "0" : {
       "shouldTranslate" : false
@@ -321,6 +343,9 @@
         }
       }
     },
+    "Beta Release" : {
+
+    },
     "Birthday" : {
       "localizations" : {
         "de" : {
@@ -377,6 +402,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kreise"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
           }
         }
       }
@@ -501,6 +536,9 @@
         }
       }
     },
+    "Couldn't get server health status" : {
+
+    },
     "Couldn't load contact with ID %lld" : {
       "localizations" : {
         "de" : {
@@ -561,6 +599,9 @@
         }
       }
     },
+    "Create an Issue on GitHub" : {
+
+    },
     "Create Circle" : {
       "localizations" : {
         "de" : {
@@ -610,6 +651,9 @@
           }
         }
       }
+    },
+    "Database" : {
+
     },
     "Date" : {
       "localizations" : {
@@ -704,6 +748,9 @@
     "Discord" : {
       "shouldTranslate" : false
     },
+    "Do you want to include debug logs from %@?" : {
+
+    },
     "Done" : {
       "localizations" : {
         "de" : {
@@ -713,6 +760,9 @@
           }
         }
       }
+    },
+    "During the pre-release TestFlight beta, not all changes will be documented here. TestFlight will inform you on any changes whenever you open the app after an update." : {
+
     },
     "Edit" : {
       "localizations" : {
@@ -793,6 +843,9 @@
           }
         }
       }
+    },
+    "Export Debug Logs" : {
+
     },
     "February" : {
       "localizations" : {
@@ -914,6 +967,9 @@
         }
       }
     },
+    "Gathering Debug Info" : {
+
+    },
     "Gender" : {
       "localizations" : {
         "de" : {
@@ -934,6 +990,9 @@
         }
       }
     },
+    "GitHub" : {
+      "shouldTranslate" : false
+    },
     "Go back" : {
       "localizations" : {
         "de" : {
@@ -943,6 +1002,12 @@
           }
         }
       }
+    },
+    "Healthy" : {
+
+    },
+    "Help" : {
+
     },
     "How We Met" : {
       "localizations" : {
@@ -1054,6 +1119,19 @@
         }
       }
     },
+    "Leo Wehrfritz\nLerchenstr. 24\n55270 Zornheim\nGermany\nTel.: +49 176 32326918\nE-Mail: contact@wehrfritz.me" : {
+
+    },
+    "License" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lizenz"
+          }
+        }
+      }
+    },
     "Link Format:" : {
       "localizations" : {
         "de" : {
@@ -1093,6 +1171,9 @@
           }
         }
       }
+    },
+    "Manage Instances" : {
+
     },
     "March" : {
       "localizations" : {
@@ -1214,6 +1295,9 @@
         }
       }
     },
+    "No" : {
+
+    },
     "No Circles" : {
       "localizations" : {
         "de" : {
@@ -1334,6 +1418,9 @@
         }
       }
     },
+    "Nothing to see here :)" : {
+
+    },
     "November" : {
       "localizations" : {
         "de" : {
@@ -1374,6 +1461,20 @@
         }
       }
     },
+    "Open Source Libraries" : {
+
+    },
+    "Open Source Licenses" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Source Lizenzen"
+          }
+        }
+      }
+    },
     "Other" : {
       "localizations" : {
         "de" : {
@@ -1393,6 +1494,9 @@
           }
         }
       }
+    },
+    "Patch Notes" : {
+
     },
     "Phone" : {
       "localizations" : {
@@ -1534,6 +1638,9 @@
         }
       }
     },
+    "Remove" : {
+
+    },
     "Remove %@" : {
       "localizations" : {
         "de" : {
@@ -1543,6 +1650,9 @@
           }
         }
       }
+    },
+    "Remove %@?" : {
+
     },
     "Remove Birthday" : {
       "localizations" : {
@@ -1574,6 +1684,9 @@
         }
       }
     },
+    "Response Time" : {
+
+    },
     "Save" : {
       "localizations" : {
         "de" : {
@@ -1603,6 +1716,9 @@
           }
         }
       }
+    },
+    "Send an email" : {
+
     },
     "Send email notification" : {
       "localizations" : {
@@ -1644,6 +1760,12 @@
         }
       }
     },
+    "Server Information" : {
+
+    },
+    "Server Status" : {
+
+    },
     "Settings" : {
       "localizations" : {
         "de" : {
@@ -1653,6 +1775,12 @@
           }
         }
       }
+    },
+    "Show notes for new versions" : {
+
+    },
+    "Show this for every new version of %@. You can always view release notes in the about section in settings." : {
+
     },
     "Shows upcoming birthdays (two weeks) for the selected instance." : {
       "localizations" : {
@@ -1693,6 +1821,9 @@
           }
         }
       }
+    },
+    "Status: " : {
+
     },
     "Stay in touch" : {
       "localizations" : {
@@ -1743,6 +1874,9 @@
           }
         }
       }
+    },
+    "This will only remove this server from the app, your data on the server will not be deleted." : {
+
     },
     "Timeline" : {
       "localizations" : {
@@ -1833,6 +1967,12 @@
           }
         }
       }
+    },
+    "Unexpected: %@" : {
+
+    },
+    "Unhealthy" : {
+
     },
     "Unknown" : {
       "localizations" : {
@@ -1984,6 +2124,9 @@
         }
       }
     },
+    "Version: " : {
+
+    },
     "View %@" : {
       "localizations" : {
         "de" : {
@@ -1993,6 +2136,9 @@
           }
         }
       }
+    },
+    "Warning: Logs may contain personal information like names of contacts" : {
+
     },
     "Weekly" : {
       "localizations" : {
@@ -2014,12 +2160,25 @@
         }
       }
     },
+    "With special thanks to" : {
+
+    },
     "Work Information" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Informationen zur Arbeit"
+          }
+        }
+      }
+    },
+    "written by %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "geschrieben von %@"
           }
         }
       }

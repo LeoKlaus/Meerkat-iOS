@@ -501,7 +501,6 @@ class MockConnectionHandler: ConnectionHandler {
         try await self.delayResponse()
     }
     
-    
     override func checkHealth() async throws -> HealthStatus {
         try await self.delayResponse()
         return .mock

@@ -14,6 +14,7 @@
 		4AEF14552F9612D500E3949B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AEF14542F9612D500E3949B /* SwiftUI.framework */; };
 		4AEF14622F9612D600E3949B /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4AEF14502F9612D500E3949B /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4AEF1DB72F961F1000E3949B /* MeerkatAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 4AEF1DB62F961F1000E3949B /* MeerkatAPI */; };
+		4AF989232F9904F800A7C053 /* ReleaseNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF989222F9904F800A7C053 /* ReleaseNotes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		4AEF14522F9612D500E3949B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
 		4AEF14542F9612D500E3949B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = /System/Library/Frameworks/SwiftUI.framework; sourceTree = "<absolute>"; };
 		4AEF1DB52F961D3500E3949B /* WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetsExtension.entitlements; sourceTree = "<group>"; };
+		4AF989222F9904F800A7C053 /* ReleaseNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -140,6 +142,7 @@
 		4AE064872F792457008E3CAB = {
 			isa = PBXGroup;
 			children = (
+				4AF989222F9904F800A7C053 /* ReleaseNotes.swift */,
 				4AEF1DB52F961D3500E3949B /* WidgetsExtension.entitlements */,
 				4AE064922F792457008E3CAB /* Meerkat-iOS */,
 				4A321CA82F7B0841006D5EC0 /* Meerkat-iOS.app */,
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF989232F9904F800A7C053 /* ReleaseNotes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

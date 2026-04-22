@@ -70,9 +70,11 @@
 			membershipExceptions = (
 				AppIntents/CompleteReminderIntent.swift,
 				AppIntents/ReloadAllWidgetsIntent.swift,
+				Assets.xcassets,
 				"Extensions/AppEntities/ConnectedInstance+AppEntity.swift",
 				"Extensions/AppEntities/Reminder+AppEntity.swift",
 				"Extensions/Array+RawRepresentable.swift",
+				"Extensions/Color+hex.swift",
 				"Extensions/Date+hasPassed.swift",
 				"Extensions/DateComponents+toBirthdayString.swift",
 				"Extensions/Image+data.swift",
@@ -89,6 +91,7 @@
 				"Preview Content/Contact+mock.swift",
 				"Preview Content/MockAssets.xcassets",
 				"Preview Content/Reminder+mock.swift",
+				Structs/StorableAccentColor.swift,
 				SubViews/ReminderRecurrenceItem.swift,
 			);
 			target = 4AEF144F2F9612D500E3949B /* WidgetsExtension */;

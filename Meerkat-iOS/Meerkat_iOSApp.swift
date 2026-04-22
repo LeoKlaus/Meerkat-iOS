@@ -11,6 +11,10 @@ import EasyErrorHandling
 @main
 struct Meerkat_iOSApp: App {
     
+    @AppStorage(.userDefaults(.colorScheme), store: .meerkat) var colorScheme: StorableColorScheme = .system
+    @AppStorage(.userDefaults(.globalAccentColor), store: .meerkat) var globalAccentColor: StorableAccentColor? = nil
+    @AppStorage(.userDefaults(.activeInstance), store: .meerkat) var activeInstance: ConnectedInstance? = nil
+    
     @State private var connectionHandler: ConnectionHandler? = ConnectionHandler()
     
     var body: some Scene {
@@ -24,6 +28,8 @@ struct Meerkat_iOSApp: App {
                     LoginView(connectionHandler: self.$connectionHandler)
                 }
             }
+            .preferredColorScheme(colorScheme.colorScheme)
+            .tint(self.activeInstance?.accentColor?.color ?? self.globalAccentColor?.color ?? .accent)
             .withErrorHandling(onTap: self.handleErrorToast)
         }
     }

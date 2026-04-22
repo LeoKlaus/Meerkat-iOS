@@ -70,7 +70,7 @@ struct ManageInstancesView: View {
 
 #Preview {
     NavigationStack {
-        ManageInstancesView()
+        ManageInstancesView(connectedInstances: [.mock, .mockLongUsername])
     }
     .withErrorHandling()
     .environment(ConnectionHandler.mock)

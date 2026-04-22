@@ -34,15 +34,17 @@ nonisolated struct ConnectedInstance: Codable, Identifiable, Sendable {
     let id: UUID
     let serverURL: URL
     let username: String
+    var accentColor: StorableAccentColor?
     
     var displayName: String {
         "\(self.username)@\(self.serverURL.host() ?? "Unknown Host)")"
     }
     
-    init(serverURL: URL, username: String) {
+    init(serverURL: URL, username: String, accentColor: StorableAccentColor? = nil) {
         self.id = UUID()
         self.serverURL = serverURL
         self.username = username
+        self.accentColor = accentColor
     }
     
     /**

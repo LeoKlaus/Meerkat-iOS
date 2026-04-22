@@ -10,11 +10,13 @@ import Foundation
 extension ConnectedInstance {
     static let mock = ConnectedInstance(
         serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!,
-        username: "Leo"
+        username: "Leo",
+        accentColor: StorableAccentColor(rawValue: "#2A5326")
     )
     
     static let mockLongUsername = ConnectedInstance(
         serverURL: URL(string: "https://meerkat-crm-demo.fly.dev")!,
-        username: "Leopold-Garfield"
+        username: "Leopold-Garfield",
+        accentColor: StorableAccentColor(rawValue: "#ED892E")
     )
 }

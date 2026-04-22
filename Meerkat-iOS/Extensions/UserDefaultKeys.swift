@@ -14,6 +14,8 @@ enum UserDefaultKey: String, CaseIterable {
     case widgetCompletedReminder
     case lastSeenPatchNote
     case showPatchNotes
+    case colorScheme
+    case globalAccentColor
 }
 
 extension String {

@@ -18,6 +18,11 @@ struct ConnectedInstanceListItem: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
+                if let color = self.instance.accentColor {
+                    Circle()
+                        .fill(color.color)
+                        .frame(maxHeight: 25)
+                }
                 Text(self.instance.username)
                     .bold()
                 if showRemovalButton {

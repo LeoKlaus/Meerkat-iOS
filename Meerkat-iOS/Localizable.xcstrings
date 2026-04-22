@@ -290,6 +290,9 @@
         }
       }
     },
+    "Appearance" : {
+
+    },
     "April" : {
       "localizations" : {
         "de" : {
@@ -449,6 +452,9 @@
           }
         }
       }
+    },
+    "Color Scheme" : {
+
     },
     "Complete Reminder" : {
       "localizations" : {
@@ -680,6 +686,12 @@
         }
       }
     },
+    "Custom Accent Color" : {
+
+    },
+    "Custom Color" : {
+
+    },
     "Custom Fields" : {
       "localizations" : {
         "de" : {
@@ -689,6 +701,9 @@
           }
         }
       }
+    },
+    "Dark" : {
+
     },
     "Dashboard" : {
       "localizations" : {
@@ -1249,6 +1264,9 @@
         }
       }
     },
+    "Light" : {
+
+    },
     "Link Format:" : {
       "localizations" : {
         "de" : {
@@ -1338,6 +1356,9 @@
           }
         }
       }
+    },
+    "Meerkat Blue" : {
+
     },
     "Message" : {
       "localizations" : {
@@ -1622,6 +1643,12 @@
         }
       }
     },
+    "Paperless Green" : {
+
+    },
+    "Paperparrot Purple" : {
+
+    },
     "Password" : {
       "localizations" : {
         "de" : {
@@ -1651,6 +1678,9 @@
           }
         }
       }
+    },
+    "Plappa Orange" : {
+
     },
     "Please configure the widget and select an instance." : {
       "localizations" : {
@@ -2072,6 +2102,9 @@
         }
       }
     },
+    "System" : {
+
+    },
     "Take a Photo" : {
       "localizations" : {
         "de" : {
@@ -2322,6 +2355,9 @@
         }
       }
     },
+    "Use Per-Instance Accent Colors" : {
+
+    },
     "Use Phone Number" : {
       "localizations" : {
         "de" : {
@@ -2381,6 +2417,9 @@
           }
         }
       }
+    },
+    "Warning: Changing the accent color can reduce contrast or make certain elements of the UI illegible." : {
+
     },
     "Warning: Logs may contain personal information like names of contacts" : {
       "localizations" : {

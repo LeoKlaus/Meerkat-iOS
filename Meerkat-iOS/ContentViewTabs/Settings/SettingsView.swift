@@ -33,6 +33,12 @@ struct SettingsView: View {
                 }
                 
                 Section {
+                    NavigationLink(destination: ChangeAccentColorView()) {
+                        Label("Appearance", systemImage: "paintpalette")
+                    }
+                }
+                
+                Section {
                     NavigationLink(destination: MessengerSettings()) {
                         Label("Configure Messengers", systemImage: "bubble")
                     }
